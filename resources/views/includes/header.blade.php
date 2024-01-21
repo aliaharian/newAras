@@ -49,7 +49,6 @@
 	<div class="wrap_menu">
 		<nav class="menu">
 			<ul class="main_menu">
-                <h1>{{$user_ip}}</h1>
 				<li>
 					<a title="صفحه اصلی حوله ارس" href="{{route('index')}}">صفحه اصلی</a>
 				</li>
