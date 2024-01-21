@@ -60,41 +60,41 @@ class mainController extends Controller
     public function index()
     {
         $products = Product::where('published', 1)->paginate(999999999);
-        $proproducts = Product::orderBy('id','DESC')->paginate(6);
+        $proproducts = Product::orderBy('id', 'DESC')->paginate(6);
         $sizes = product_to_size::all();
         $template = templateSetting::all();
-        $posts = blog::orderBy('id' , 'desc')->limit(3)->get();
-        $instas = InstagramPost::orderBy('id' , 'desc')->limit(21)->get();
-        return view('index', compact('products', 'sizes', 'template','proproducts','posts','instas'));
+        $posts = blog::orderBy('id', 'desc')->limit(3)->get();
+        $instas = InstagramPost::orderBy('id', 'desc')->limit(21)->get();
+        return view('index', compact('products', 'sizes', 'template', 'proproducts', 'posts', 'instas'));
     }
 
     public function shop()
     {
 
-        if (isset($_GET['ref'])){
-            $ref=$_GET['ref'];
+        if (isset($_GET['ref'])) {
+            $ref = $_GET['ref'];
             $ip = $this->getUserIP();
-            $agent=new Agent();
-            $robot=$agent->isRobot();
+            $agent = new Agent();
+            $robot = $agent->isRobot();
             $today = date('Y-m-d', strtotime(Carbon::now()));
-            $checkref=logHomeUsers::where('date',$today)->where('ip',$ip)->where('button_name',$ref)->count();
-            if($checkref==0 && $robot==0){
-                $addref=new logHomeUsers();
-                $addref->button_name=$ref;
-                $addref->ip=$ip;
-                $addref->date=$today;
+            $checkref = logHomeUsers::where('date', $today)->where('ip', $ip)->where('button_name', $ref)->count();
+            if ($checkref == 0 && $robot == 0) {
+                $addref = new logHomeUsers();
+                $addref->button_name = $ref;
+                $addref->ip = $ip;
+                $addref->date = $today;
                 $addref->save();
-                $checkref=countHome::where('date',$today)->where('ref',$ref)->count();
-                if ($checkref==0){
-                    $addref=new countHome();
-                    $addref->ref=$ref;
-                    $addref->count=1;
-                    $addref->date=$today;
+                $checkref = countHome::where('date', $today)->where('ref', $ref)->count();
+                if ($checkref == 0) {
+                    $addref = new countHome();
+                    $addref->ref = $ref;
+                    $addref->count = 1;
+                    $addref->date = $today;
                     $addref->save();
-                }else{
-                    $addref=countHome::where('date',$today)->where('ref',$ref)->value('id');
-                    $addref=countHome::findOrFail($addref);
-                    $addref->count=$addref->count+1;
+                } else {
+                    $addref = countHome::where('date', $today)->where('ref', $ref)->value('id');
+                    $addref = countHome::findOrFail($addref);
+                    $addref->count = $addref->count + 1;
                     $addref->save();
                 }
             }
@@ -105,17 +105,17 @@ class mainController extends Controller
 //        $products = Product::where('published', 1)->orderBy('qty', 'desc')->paginate(99999);
 
         $products = Product::whereHas('categories', function ($q) {
-            $q->where('english_name','<>', 'promotional-towel') -> where('english_name','<>', 'gift-towel');
+            $q->where('english_name', '<>', 'promotional-towel')->where('english_name', '<>', 'gift-towel');
         })->where('published', 1)->with(['categories' => function ($q) {
-            $q->where('english_name','<>', 'promotional-towel') -> where('english_name','<>', 'gift-towel');
+            $q->where('english_name', '<>', 'promotional-towel')->where('english_name', '<>', 'gift-towel');
         }])->orderBy('qty', 'desc')->paginate('9999999999');
 
 
         $sizes = product_to_size::all();
-        $instas = InstagramPost::orderBy('id' , 'desc')->limit(21)->get();
+        $instas = InstagramPost::orderBy('id', 'desc')->limit(21)->get();
 
 
-        return view('shop', compact('products', 'sizes', 'template','instas'));
+        return view('shop', compact('products', 'sizes', 'template', 'instas'));
     }
 
     public function shopCategory($category)
@@ -125,9 +125,9 @@ class mainController extends Controller
         $categoryArray = Category::find($categoryid);
         $products = Product::where('published', 1)->orderBy('qty', 'desc')->paginate('999999');
         $sizes = product_to_size::all();
-        $instas = InstagramPost::orderBy('id' , 'desc')->limit(21)->get();
+        $instas = InstagramPost::orderBy('id', 'desc')->limit(21)->get();
         $currCat = $category;
-        return view('category', compact('categoryArray', 'products', 'sizes', 'template','instas','currCat'));
+        return view('category', compact('categoryArray', 'products', 'sizes', 'template', 'instas', 'currCat'));
     }
 
     public function showProduct($product_id, $product_title)
@@ -148,7 +148,7 @@ class mainController extends Controller
 
     public function cart(Request $request)
     {
-        $user_ip = $request->ip();
+        $user_ip = $this->getUserIP();
         $agent = new Agent();
 
         $user_platform = $agent->platform();
@@ -161,7 +161,7 @@ class mainController extends Controller
 
     public function addGift(Request $request)
     {
-        $user_ip = $request->ip();
+        $user_ip = $this->getUserIp();
         $agent = new Agent();
 
         $user_platform = $agent->platform();
@@ -199,7 +199,7 @@ class mainController extends Controller
     public function deleteGift(Request $request)
     {
 
-        $user_ip = $request->ip();
+        $user_ip = $this->getUserIp();
         $agent = new Agent();
 
         $user_platform = $agent->platform();
@@ -218,7 +218,7 @@ class mainController extends Controller
 
     public function shipping(Request $request)
     {
-        $user_ip = $request->ip();
+        $user_ip = $this->getUserIp();
         $agent = new Agent();
 
         $user_platform = $agent->platform();
@@ -238,7 +238,7 @@ class mainController extends Controller
         $tags = Tag::all();
         $template = templateSetting::all();
 
-        return view('blog', compact( 'sizes', 'posts', 'tags','template'));
+        return view('blog', compact('sizes', 'posts', 'tags', 'template'));
     }
 
     public function showPost($blog_id, $blog_title)
@@ -257,10 +257,11 @@ class mainController extends Controller
 
     }
 
-    public function promoDetail($product_id , $product_name){
+    public function promoDetail($product_id, $product_name)
+    {
         $product = Product::find($product_id);
-        if(!$product){
-            return redirect('/')   ;
+        if (!$product) {
+            return redirect('/');
         }
         return view('promotional-detail', compact('product'));
     }
@@ -270,9 +271,9 @@ class mainController extends Controller
 
         $post = blog::find($blog_id);
         if ($post != null) {
-            $post_title=$post->title;
+            $post_title = $post->title;
 
-            return redirect('/blog/'.$blog_id.'/'.str_replace(' ','-',$post_title));
+            return redirect('/blog/' . $blog_id . '/' . str_replace(' ', '-', $post_title));
         } else {
             return abort('404');
         }
@@ -304,43 +305,43 @@ class mainController extends Controller
     public function aboutUS()
     {
         $template = templateSetting::all();
-        return view('about-us',compact('template'));
+        return view('about-us', compact('template'));
     }
 
     public function contactUS()
     {
         $template = templateSetting::all();
-        $instas = InstagramPost::orderBy('id' , 'desc')->limit(21)->get();
+        $instas = InstagramPost::orderBy('id', 'desc')->limit(21)->get();
 
-        return view('contact-us',compact('template','instas'));
+        return view('contact-us', compact('template', 'instas'));
     }
 
     public function giftPack()
     {
-        if (isset($_GET['ref'])){
-            $ref=$_GET['ref'];
+        if (isset($_GET['ref'])) {
+            $ref = $_GET['ref'];
             $ip = $this->getUserIP();
-            $agent=new Agent();
-            $robot=$agent->isRobot();
+            $agent = new Agent();
+            $robot = $agent->isRobot();
             $today = date('Y-m-d', strtotime(Carbon::now()));
-            $checkref=logHomeUsers::where('date',$today)->where('ip',$ip)->where('button_name',$ref)->count();
-            if($checkref==0 && $robot==0){
-                $addref=new logHomeUsers();
-                $addref->button_name=$ref;
-                $addref->ip=$ip;
-                $addref->date=$today;
+            $checkref = logHomeUsers::where('date', $today)->where('ip', $ip)->where('button_name', $ref)->count();
+            if ($checkref == 0 && $robot == 0) {
+                $addref = new logHomeUsers();
+                $addref->button_name = $ref;
+                $addref->ip = $ip;
+                $addref->date = $today;
                 $addref->save();
-                $checkref=countHome::where('date',$today)->where('ref',$ref)->count();
-                if ($checkref==0){
-                    $addref=new countHome();
-                    $addref->ref=$ref;
-                    $addref->count=1;
-                    $addref->date=$today;
+                $checkref = countHome::where('date', $today)->where('ref', $ref)->count();
+                if ($checkref == 0) {
+                    $addref = new countHome();
+                    $addref->ref = $ref;
+                    $addref->count = 1;
+                    $addref->date = $today;
                     $addref->save();
-                }else{
-                    $addref=countHome::where('date',$today)->where('ref',$ref)->value('id');
-                    $addref=countHome::findOrFail($addref);
-                    $addref->count=$addref->count+1;
+                } else {
+                    $addref = countHome::where('date', $today)->where('ref', $ref)->value('id');
+                    $addref = countHome::findOrFail($addref);
+                    $addref->count = $addref->count + 1;
                     $addref->save();
                 }
             }
@@ -348,47 +349,47 @@ class mainController extends Controller
         }
         $template = templateSetting::all();
         $products = Product::orderBy('id', 'desc')->paginate(9999);
-        $instas = InstagramPost::orderBy('id' , 'desc')->limit(21)->get();
+        $instas = InstagramPost::orderBy('id', 'desc')->limit(21)->get();
 
-        return view('gift-pack', compact('products','template','instas'));
+        return view('gift-pack', compact('products', 'template', 'instas'));
     }
 
     public function promotionalTowels()
     {
 
-        if (isset($_GET['ref'])){
-            $ref=$_GET['ref'];
+        if (isset($_GET['ref'])) {
+            $ref = $_GET['ref'];
             $ip = $this->getUserIP();
-            $agent=new Agent();
-            $robot=$agent->isRobot();
+            $agent = new Agent();
+            $robot = $agent->isRobot();
             $today = date('Y-m-d', strtotime(Carbon::now()));
-            $checkref=logHomeUsers::where('date',$today)->where('ip',$ip)->where('button_name',$ref)->count();
-            if($checkref==0 && $robot==0){
-                $addref=new logHomeUsers();
-                $addref->button_name=$ref;
-                $addref->ip=$ip;
-                $addref->date=$today;
+            $checkref = logHomeUsers::where('date', $today)->where('ip', $ip)->where('button_name', $ref)->count();
+            if ($checkref == 0 && $robot == 0) {
+                $addref = new logHomeUsers();
+                $addref->button_name = $ref;
+                $addref->ip = $ip;
+                $addref->date = $today;
                 $addref->save();
-                $checkref=countHome::where('date',$today)->where('ref',$ref)->count();
-                if ($checkref==0){
-                    $addref=new countHome();
-                    $addref->ref=$ref;
-                    $addref->count=1;
-                    $addref->date=$today;
+                $checkref = countHome::where('date', $today)->where('ref', $ref)->count();
+                if ($checkref == 0) {
+                    $addref = new countHome();
+                    $addref->ref = $ref;
+                    $addref->count = 1;
+                    $addref->date = $today;
                     $addref->save();
-                }else{
-                    $addref=countHome::where('date',$today)->where('ref',$ref)->value('id');
-                    $addref=countHome::findOrFail($addref);
-                    $addref->count=$addref->count+1;
+                } else {
+                    $addref = countHome::where('date', $today)->where('ref', $ref)->value('id');
+                    $addref = countHome::findOrFail($addref);
+                    $addref->count = $addref->count + 1;
                     $addref->save();
                 }
             }
 
         }
         $products = Product::orderBy('id', 'desc')->get();
-        $instas = InstagramPost::orderBy('id' , 'desc')->limit(21)->get();
+        $instas = InstagramPost::orderBy('id', 'desc')->limit(21)->get();
 
-        return view('promotional-towels', compact('products','instas'));
+        return view('promotional-towels', compact('products', 'instas'));
 
     }
 
@@ -647,7 +648,7 @@ class mainController extends Controller
     public function createInvoice(Request $request)
     {
         $isHack = 0;
-        $user_ip = $request->ip();
+        $user_ip = $this->getUserIp();
         $agent = new Agent();
         $user_platform = $agent->platform();
         $user_browser = $agent->browser();
@@ -933,8 +934,8 @@ class mainController extends Controller
         try {
             $sender = "100065995";
 //            09147845149
-            $receptor=['09123973847'];
-            $receptor = ['09125332797','09123973847','09029252323','09116969391','09125864908','09167062701','09100033977','09183122553','09113963351','09173120267','09382205039','09149107838','09103839100','09125003658','09122718242','09143043260','09331021397','09155127513','09149277889','09144179324','09121331044','09124757467','09197232770','09197142538','09010610552','09123224910','09390951093','09121988748','09216021576','09144114969','09149932340','09143036192','09177615156','09122360007','09126140575','09122179156','09123888241','09366478773','09385097560','09125097560','09111310895','09121459246','09381838784','09122728960','09383871681','09194614046','09142409400','09133513471','09039868737','09309559972','09393761522','09352612615','09121715442','09108352859','09391331044','09359730104','09146586589','09013502178','09147845149','09148882025','09307473703','09029252323'];
+            $receptor = ['09123973847'];
+            $receptor = ['09125332797', '09123973847', '09029252323', '09116969391', '09125864908', '09167062701', '09100033977', '09183122553', '09113963351', '09173120267', '09382205039', '09149107838', '09103839100', '09125003658', '09122718242', '09143043260', '09331021397', '09155127513', '09149277889', '09144179324', '09121331044', '09124757467', '09197232770', '09197142538', '09010610552', '09123224910', '09390951093', '09121988748', '09216021576', '09144114969', '09149932340', '09143036192', '09177615156', '09122360007', '09126140575', '09122179156', '09123888241', '09366478773', '09385097560', '09125097560', '09111310895', '09121459246', '09381838784', '09122728960', '09383871681', '09194614046', '09142409400', '09133513471', '09039868737', '09309559972', '09393761522', '09352612615', '09121715442', '09108352859', '09391331044', '09359730104', '09146586589', '09013502178', '09147845149', '09148882025', '09307473703', '09029252323'];
             $message = "درود \n فصل ها را ورق زدیم تا به بهار برسیم.چه زییاست دمیدن شکوفه ها وزیباتر از آن روییدن گل لبخندبرلبهایتان.امیدوارم بهار زندگیتان سبز وخرم، چراغ دلتان روشن،خانه تان آبادان و نغمه سعادت بر زبانتان جاری باد. سال نو مبارک \nحوله ارس \nhttps://arastowel.com";
             $api = new \Kavenegar\KavenegarApi("614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56");
             $api->Send($sender, $receptor, $message);
@@ -973,15 +974,15 @@ class mainController extends Controller
     public function sendContactUs(Request $request)
     {
 
-        $flag=1;
+        $flag = 1;
 
-        if(strpos($request->message,'http')!==false){
-            $flag=0;
+        if (strpos($request->message, 'http') !== false) {
+            $flag = 0;
         }
-        if(substr( $request->phone_number, 0, 2 ) !== "09"){
-            $flag=0;
+        if (substr($request->phone_number, 0, 2) !== "09") {
+            $flag = 0;
         }
-        if ($flag===1) {
+        if ($flag === 1) {
             $data = array('text' => '
                 <p style="text-align: center">پیام از طرف</p>
                 <p style="text-align: center">' . $request->name . '</p>
@@ -1000,19 +1001,16 @@ class mainController extends Controller
 //                ('دریافت پیام تماس با ما- حوله ارس');
 //                $message->from('reciever@arastowel.com', 'حوله ارس');
 //            });
-            if($request->lang=='en'){
+            if ($request->lang == 'en') {
                 return redirect('/en/contact-us');
-            }
-            else {
+            } else {
                 return redirect('/contact-us');
             }
-        }
-        elseif($flag===0){
-            if($request->lang=='en') {
+        } elseif ($flag === 0) {
+            if ($request->lang == 'en') {
                 return redirect('/en');
 
-            }
-            else{
+            } else {
                 return redirect('/');
 
             }

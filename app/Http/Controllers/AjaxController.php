@@ -141,7 +141,7 @@ class AjaxController extends Controller
     public function deleteFromCart(Request $request)
     {
         if (isset($request->pre_order_id)) {
-            $user_ip = $request->ip();
+            $user_ip = $this->getUserIP();
             $agent = new Agent();
 
             $user_platform = $agent->platform();
