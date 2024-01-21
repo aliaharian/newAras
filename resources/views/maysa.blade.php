@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://statics.arastowel.com/maysa/css/animate.min.css">
     <!-- Custom styles for this template -->
     <link href="https://statics.arastowel.com/maysa/css/main.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://statics.arastowel.com/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="loader">

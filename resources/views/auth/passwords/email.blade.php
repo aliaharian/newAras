@@ -9,13 +9,13 @@
     <title>فراموشی کلمه عبور</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://statics.arastowel.com/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://statics.arastowel.com/css/material-design.css">
 
     <!-- Main css -->
     <link rel="stylesheet" href="/css/login.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://statics.arastowel.com/css/font-awesome.min.css" rel="stylesheet" />
 
 </head>
 <body>

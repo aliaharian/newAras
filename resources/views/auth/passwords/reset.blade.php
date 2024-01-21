@@ -10,7 +10,7 @@
     <title>فراموشی کلمه عبور</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://statics.arastowel.com/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://statics.arastowel.com/css/material-design.css">
 

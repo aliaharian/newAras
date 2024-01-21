@@ -6,7 +6,7 @@
 	<meta name="description" content="Riddle - Portfolio Template">
 	<meta name="keywords" content="portfolio, riddle, onepage, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Favicon -->   
+	<!-- Favicon -->
 	<link href="https://statics.arastowel.com/images/anargollogo.jpg" rel="shortcut icon"/>
 
 	<!-- Google Fonts -->
@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="https://statics.arastowel.com/anargol/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="https://statics.arastowel.com/anargol/css/magnific-popup.css"/>
 	<link rel="stylesheet" href="https://statics.arastowel.com/anargol/css/style.css"/>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="https://statics.arastowel.com/css/font-awesome.min.css" rel="stylesheet" />
 
 
 	<!--[if lt IE 9]>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--  
+    <!--
     Document Title
     =============================================
     -->
@@ -19,20 +19,20 @@
         }
       }
       </style>
-    <!--  
+    <!--
     Favicons
     =============================================
     -->
       <link rel="icon" href="https://statics.arastowel.com/images/rozafooter.jpg">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://statics.arastowel.com/css/font-awesome.min.css">
     <meta name="msapplication-TileColor" content="#ffffff">
 
     <meta name="theme-color" content="#ffffff">
-    <!--  
+    <!--
     Stylesheets
     =============================================
-    
+
     -->
     <!-- Default stylesheets-->
     <link href="https://statics.arastowel.com/roza/css/bootstrap.min.css" rel="stylesheet">
@@ -374,7 +374,7 @@
         <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
       </div>
     </main>
-    <!--  
+    <!--
     JavaScripts
     =============================================
     -->
