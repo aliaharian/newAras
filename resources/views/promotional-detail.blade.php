@@ -149,7 +149,7 @@
                                 </h1>
                                 <p class="text-center" style="color:#4187c7;font-size:14px;margin-top:5px;margin-bottom:60px">{{$product->persian_date}}</p>
 
-                      
+
 
 <p>
                                 <!-- ////////// -->
@@ -157,14 +157,14 @@
 </p>
 
                             </div>
-                   
+
                             <div class="flex-m flex-w p-t-20">
                                 <span class="s-text20 p-r-20">
 
                                 </span>
 
                                 <div class="wrap-tags flex-w">
-                             
+
                                 </div>
                             </div>
                         </div>
@@ -183,7 +183,6 @@
 
     @include('includes.footerLinks')
 
-    <script type="text/javascript" async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b7534a4159fc61f"></script>
 
     <script type="application/ld+json">
         {

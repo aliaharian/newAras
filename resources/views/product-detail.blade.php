@@ -819,7 +819,6 @@
 
 </script>
 
-<script type="text/javascript" async
-        src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b7534a4159fc61f"></script>
+
 </body>
 </html>
