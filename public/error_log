@@ -1,0 +1,241 @@
+[05-Dec-2018 19:46:27 Asia/Tehran] PHP Fatal error:  Uncaught ErrorException: file_put_contents(/Applications/XAMPP/xamppfiles/htdocs/rozatowel/storage/framework/views/7c7fac268928f8ee09967a6bb86534e205687c72.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/home/arastowe/...', 122)
+#1 /home/arastowe/secure/vendor/pragmarx/tracker/src/Support/Exceptions/Handler.php(58): call_user_func(Array, 2, 'file_put_conten...', '/home/arastowe/...', 122)
+#2 [internal function]: PragmaRX\Tracker\Support\Exceptions\Handler->handleError(2, 'file_put_conten...', '/home/arastowe/...', 122, Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(122): file_put_contents('/Applications/X...', '<?php $__env->s...', 0)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(122) in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php on line 122
+[05-Dec-2018 19:47:16 Asia/Tehran] PHP Fatal error:  Uncaught ErrorException: file_put_contents(/Applications/XAMPP/xamppfiles/htdocs/rozatowel/storage/framework/views/7c7fac268928f8ee09967a6bb86534e205687c72.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/home/arastowe/...', 122)
+#1 /home/arastowe/secure/vendor/pragmarx/tracker/src/Support/Exceptions/Handler.php(58): call_user_func(Array, 2, 'file_put_conten...', '/home/arastowe/...', 122)
+#2 [internal function]: PragmaRX\Tracker\Support\Exceptions\Handler->handleError(2, 'file_put_conten...', '/home/arastowe/...', 122, Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(122): file_put_contents('/Applications/X...', '<?php $__env->s...', 0)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(122) in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php on line 122
+[05-Dec-2018 22:40:18 Asia/Tehran] PHP Fatal error:  Out of memory (allocated 150990848) (tried to allocate 132132864 bytes) in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 801
+[05-Dec-2018 22:41:33 Asia/Tehran] PHP Fatal error:  Out of memory (allocated 150990848) (tried to allocate 132132864 bytes) in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 792
+[05-Dec-2018 22:54:52 Asia/Tehran] PHP Fatal error:  Out of memory (allocated 144093184) (tried to allocate 125202984 bytes) in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php on line 50
+[09-Dec-2018 11:28:47 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:28:47 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:28:47 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:28:50 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:28:50 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:28:50 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:43 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:43 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:43 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:44 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:44 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:44 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:44 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:44 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:44 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:45 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:45 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:45 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:53 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:53 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:53 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:54 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:54 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:54 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:54 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:54 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:30:54 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:10 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:10 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:10 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:28 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:28 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:28 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:29 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:29 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:31:29 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:32:36 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:32:36 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:32:36 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:52 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:52 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:52 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:54 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:54 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:54 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:55 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:55 Asia/Tehran] PHP Warning:  require(/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php): failed to open stream: No such file or directory in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[09-Dec-2018 11:34:55 Asia/Tehran] PHP Fatal error:  require(): Failed opening required '/home/arastowe/secure/vendor/composer/../zendframework/zend-diactoros/src/functions/create_uploaded_file.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/arastowe/secure/vendor/composer/autoload_real.php on line 66
+[10-Dec-2018 21:55:50 Asia/Tehran] PHP Parse error:  syntax error, unexpected T_CLASS, expecting T_STRING or T_VARIABLE or '$' in /home/arastowe/public_html/index.php on line 52
+[10-Dec-2018 21:56:12 Asia/Tehran] PHP Parse error:  syntax error, unexpected T_CLASS, expecting T_STRING or T_VARIABLE or '$' in /home/arastowe/public_html/index.php on line 52
+[10-Dec-2018 21:56:53 Asia/Tehran] PHP Parse error:  syntax error, unexpected T_CLASS, expecting T_STRING or T_VARIABLE or '$' in /home/arastowe/public_html/index.php on line 52
+[14-Dec-2018 15:53:42 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:45 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:45 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:48 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:49 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:50 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:50 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:51 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:51 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:51 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:53:51 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:54:21 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:54:22 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:54:22 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:54:22 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:55:07 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:57:19 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[14-Dec-2018 15:57:51 Asia/Tehran] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php:779
+Stack trace:
+#0 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(779): ReflectionClass->__construct('view')
+#1 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(658): Illuminate\Container\Container->build('view')
+#2 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(609): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(735): Illuminate\Container\Container->make('view', Array)
+#4 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php(1222): Illuminate\Foundation\Application->make('view')
+#5 /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(161): Illuminate\Container\Container->offsetGet('view in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 779
+[03-Jan-2019 20:22:03 Asia/Tehran] PHP Parse error:  syntax error, unexpected '=' in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[08-Jan-2019 11:20:32 Asia/Tehran] PHP Parse error:  syntax error, unexpected '=' in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[12-Oct-2019 11:18:54 Asia/Tehran] PHP Fatal error:  Out of memory (allocated 178257920) (tried to allocate 36864 bytes) in /home/arastowe/secure/vendor/studio-42/elfinder/php/elFinderVolumeDriver.class.php on line 5867
+[05-Nov-2019 12:17:44 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[11-Nov-2019 09:45:28 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[12-Nov-2019 17:44:32 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[24-Nov-2019 16:36:15 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[06-Dec-2019 17:43:05 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[26-Dec-2019 13:17:52 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[26-Dec-2019 13:18:58 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[26-Dec-2019 13:20:57 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[26-Dec-2019 14:26:33 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[26-Dec-2019 16:13:44 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[26-Dec-2019 17:21:29 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[27-Dec-2019 23:09:02 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[27-Dec-2019 23:10:55 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[28-Dec-2019 12:51:40 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[28-Dec-2019 18:40:17 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php on line 432
+[28-Dec-2019 22:56:42 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[29-Dec-2019 19:43:04 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[29-Dec-2019 19:43:55 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[01-Jan-2020 19:31:25 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[04-Jan-2020 14:23:56 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[05-Jan-2020 20:27:12 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[06-Jan-2020 15:40:27 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[06-Jan-2020 16:34:47 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[07-Jan-2020 12:58:48 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[08-Feb-2020 21:56:11 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308
+[08-Feb-2020 21:57:36 Asia/Tehran] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/arastowe/secure/storage/framework/views/71981e92e4035fecb41ca1c585bddedb747fd8c9.php on line 308

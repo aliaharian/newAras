@@ -1,0 +1,77 @@
+@font-face {
+    font-family: droid;
+    src: url('../fonts/droid/droidreqular.TTF');
+}
+
+@font-face {
+    font-family: droidbold;
+    src: url('../fonts/droid/droidbold.TTF');
+}
+
+
+*,h1,h2,h3,h4,h5,h6,p,a{
+    font-family: droid,FontAwesome!important;
+}
+
+p,.c-footer__seo p, .c-footer__seo h2,.c-footer__seo a{
+    font-size: 16px;
+}
+.c-footer__seo h1{
+    font-size: 17px;
+}
+
+.main_menu>li>a{
+    font-size: 17px;
+}
+
+.logo2 img {
+    max-height: 50px;
+}
+.logo-mobile img {
+    max-height: 45px;
+}
+.logo img {
+    max-height: 45px;
+}
+.slideText {
+    font-size: 32px!important;
+}
+.m-text1 {
+    font-size: 18px;
+}
+.m-text2{
+    font-size: 14px;
+}
+
+
+.s-text3{
+    font-size: 17px;
+}
+.s-text1{
+    font-size: 16px;
+}
+
+
+
+.s-text12{
+    font-size: 18px;
+}
+
+.s-text7{
+    font-size: 16px;
+}
+.l-text2 {
+    font-family: droidbold!important;
+    font-size: 52px;
+    color: #fff;
+    line-height: 1.2;
+}
+.m-text3{
+    font-size: 15px;
+}
+.catText {
+    font-family: droid;
+    font-size: 16px;
+    color: #000;
+    line-height: 1.8;
+}

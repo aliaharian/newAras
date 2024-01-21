@@ -1,0 +1,22 @@
+
+@font-face {
+    font-family: 'iranSans';
+    src:url('/fonts/iranSans/eot/IRANSansWeb.eot');
+    src:url('/fonts/iranSans/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/iranSans/woff/IRANSansWeb.woff') format('woff'),
+    url('/fonts/iranSans/ttf/IRANSansWeb.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto';
+    src:url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'yotpo';
+    src:url('/fonts/yotpo-widget-font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
