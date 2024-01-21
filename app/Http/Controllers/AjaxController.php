@@ -34,6 +34,28 @@ class AjaxController extends Controller
         return view('ajax.addToCart');
     }
 
+    function getUserIP()
+    {
+        // Get real visitor IP behind CloudFlare network
+        if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+            $_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        }
+        $client = @$_SERVER['HTTP_CLIENT_IP'];
+        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+        $remote = $_SERVER['REMOTE_ADDR'];
+
+        if (filter_var($client, FILTER_VALIDATE_IP)) {
+            $ip = $client;
+        } elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
+            $ip = $forward;
+        } else {
+            $ip = $remote;
+        }
+
+        return $ip;
+    }
+
     public function addToCart(Request $request)
     {
         if (isset($request->size)) {
@@ -41,7 +63,8 @@ class AjaxController extends Controller
             $selectedColor = $request->color;
             $product_id = $request->product_id;
             $qty = $request->qty;
-            $user_ip = $request->ip();
+//            $user_ip = $request->ip();
+            $user_ip = $this->getUserIP();
             $agent = new Agent();
 
             $user_platform = $agent->platform();
@@ -110,28 +133,26 @@ class AjaxController extends Controller
             $pre_order = Pre_order::where('user_ip', $user_ip)->where('user_platform', $user_platform)->where('user_browser', $user_browser)->get();
             //return $pre_order;
             return view('ajax.addToCart', compact('pre_order'));
-        }
-        else{
+        } else {
             return abort('403');
         }
     }
 
     public function deleteFromCart(Request $request)
     {
-        if (isset($request->pre_order_id)){
-        $user_ip = $request->ip();
-        $agent = new Agent();
+        if (isset($request->pre_order_id)) {
+            $user_ip = $request->ip();
+            $agent = new Agent();
 
-        $user_platform = $agent->platform();
-        $user_browser = $agent->browser();
-        Pre_order::find($request->pre_order_id)->delete();
-        $pre_order = Pre_order::where('user_ip', $user_ip)->where('user_platform', $user_platform)->where('user_browser', $user_browser)->get();
-        //return $pre_order;
-        return view('ajax.addToCart', compact('pre_order'));
-            }
-            else{
+            $user_platform = $agent->platform();
+            $user_browser = $agent->browser();
+            Pre_order::find($request->pre_order_id)->delete();
+            $pre_order = Pre_order::where('user_ip', $user_ip)->where('user_platform', $user_platform)->where('user_browser', $user_browser)->get();
+            //return $pre_order;
+            return view('ajax.addToCart', compact('pre_order'));
+        } else {
             return abort('403');
-            }
+        }
     }
 
     public function selectCity(Request $request)
@@ -140,8 +161,7 @@ class AjaxController extends Controller
             $selectedCountry = $request->selectedCountry;
             $cities = city::where('province_id', 8)->where('county_id', $selectedCountry)->paginate(999999999);
             return view('ajax.selectCity', compact('cities'));
-        }
-        else{
+        } else {
             return abort('403');
         }
     }
@@ -155,8 +175,7 @@ class AjaxController extends Controller
                 $newsletter->save();
             }
             return '200';
-        }
-        else{
+        } else {
             return abort('403');
         }
     }
@@ -171,36 +190,35 @@ class AjaxController extends Controller
                 $favorite->save();
             }
             return '200';
-        }
-        else{
+        } else {
             return abort('403');
         }
     }
 
     public function checkCampaign(Request $request)
     {
-        if ($request->type=='email') {
-            $campaign = Campaign::where('campaign_name',$request->campaignName)->where('email', $request->variable)->count();
-            if ($campaign==0){
+        if ($request->type == 'email') {
+            $campaign = Campaign::where('campaign_name', $request->campaignName)->where('email', $request->variable)->count();
+            if ($campaign == 0) {
                 $digits = 4;
-                $email_code=rand(pow(10, $digits-1), pow(10, $digits)-1);
-                $camp=new Campaign();
-                $camp->email=$request->variable;
-                $camp->campaign_name=$request->campaignName;
-                $camp->email_code=$email_code;
+                $email_code = rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+                $camp = new Campaign();
+                $camp->email = $request->variable;
+                $camp->campaign_name = $request->campaignName;
+                $camp->email_code = $email_code;
                 $camp->save();
 
 
-                $email=$request->variable;
+                $email = $request->variable;
                 $data = array('text' => '
                 <p style="text-align: center">با تشکر از شرکت شما در جشنواره</p>
                 <p style="text-align: center"> کد تایید: '
-                                    .$email_code.'
+                    . $email_code . '
 
                 </p>
                 ',
-                    'title'=>'کد تاییدیه شرکت در جشنواره حوله ارس',
-                    'subtitle'=>'در صورتی که مورد رخ داده بر خلاف چیزی است که شما انتظار دارید، از طریق شماره تماس های موجود در بخش تما با ما به ما اطلاع دهید. با تشکر');
+                    'title' => 'کد تاییدیه شرکت در جشنواره حوله ارس',
+                    'subtitle' => 'در صورتی که مورد رخ داده بر خلاف چیزی است که شما انتظار دارید، از طریق شماره تماس های موجود در بخش تما با ما به ما اطلاع دهید. با تشکر');
 //                Mail::send('blank-mail', $data, function($message) use($email) {
 //                    $message->to($email)->subject
 //                    ('کد تایید شرکت در جشنواره - حوله ارس');
@@ -208,42 +226,37 @@ class AjaxController extends Controller
 //                });
 
                 return 'true';
-            }
-            else if ($campaign!=0){
+            } else if ($campaign != 0) {
                 return 'false';
             }
-        }
-        else if ($request->type=='phone') {
-            $campaign = Campaign::where('campaign_name',$request->campaignName)->where('phone', $request->variable)->count();
-            if ($campaign==0){
+        } else if ($request->type == 'phone') {
+            $campaign = Campaign::where('campaign_name', $request->campaignName)->where('phone', $request->variable)->count();
+            if ($campaign == 0) {
                 $digits = 4;
-                $email_code=rand(pow(10, $digits-1), pow(10, $digits)-1);
-                $camp=new Campaign();
-                $camp->phone=$request->variable;
-                $camp->campaign_name=$request->campaignName;
-                $camp->phone_code=$email_code;
+                $email_code = rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+                $camp = new Campaign();
+                $camp->phone = $request->variable;
+                $camp->campaign_name = $request->campaignName;
+                $camp->phone_code = $email_code;
                 $camp->save();
-                $pm='حوله ارس. کد تایید: '.$email_code;
-                try{
+                $pm = 'حوله ارس. کد تایید: ' . $email_code;
+                try {
                     $sender = "100065995";
                     $receptor = "$request->variable";
                     $message = "$pm";
                     $api = new \Kavenegar\KavenegarApi("614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56");
-                    $api->Send($sender,$receptor,$message);
-                }
-                catch(\Kavenegar\Exceptions\ApiException $e){
+                    $api->Send($sender, $receptor, $message);
+                } catch (\Kavenegar\Exceptions\ApiException $e) {
                     // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
                     echo $e->errorMessage();
-                }
-                catch(\Kavenegar\Exceptions\HttpException $e){
+                } catch (\Kavenegar\Exceptions\HttpException $e) {
                     // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
                     echo $e->errorMessage();
                 }
 
 
                 return 'true';
-            }
-            else if ($campaign!=0){
+            } else if ($campaign != 0) {
                 return 'false';
             }
 
@@ -254,27 +267,24 @@ class AjaxController extends Controller
     public function checkCampaignCode(Request $request)
     {
         if ($request->type == 'email') {
-            $campaign = Campaign::where('campaign_name',$request->campaignName)->where('email', $request->variable);
-            if ($request->code==$campaign->value('email_code')){
-                $camp=Campaign::find($campaign->value('id'));
-                $camp->email_verify=date('d-m-Y H:i:s');
+            $campaign = Campaign::where('campaign_name', $request->campaignName)->where('email', $request->variable);
+            if ($request->code == $campaign->value('email_code')) {
+                $camp = Campaign::find($campaign->value('id'));
+                $camp->email_verify = date('d-m-Y H:i:s');
                 $camp->save();
                 return 'true';
-            }
-            else{
+            } else {
                 return 'false';
             }
 
-        }
-        else if ($request->type == 'phone') {
-            $campaign = Campaign::where('campaign_name',$request->campaignName)->where('phone', $request->variable);
-            if ($request->code==$campaign->value('phone_code')){
-                $camp=Campaign::find($campaign->value('id'));
-                $camp->phone_verify=date('d-m-Y H:i:s');
+        } else if ($request->type == 'phone') {
+            $campaign = Campaign::where('campaign_name', $request->campaignName)->where('phone', $request->variable);
+            if ($request->code == $campaign->value('phone_code')) {
+                $camp = Campaign::find($campaign->value('id'));
+                $camp->phone_verify = date('d-m-Y H:i:s');
                 $camp->save();
                 return 'true';
-            }
-            else{
+            } else {
                 return 'false';
             }
         }
@@ -283,24 +293,22 @@ class AjaxController extends Controller
     public function sendCampaignGift(Request $request)
     {
         if ($request->type == 'email') {
-            $campaign = Campaign::where('campaign_name',$request->campaignName)->where('email', $request->variable);
-            $camp=Campaign::find($campaign->value('id'));
-            $camp->gift=$request->gift;
+            $campaign = Campaign::where('campaign_name', $request->campaignName)->where('email', $request->variable);
+            $camp = Campaign::find($campaign->value('id'));
+            $camp->gift = $request->gift;
             $camp->save();
-            if ($request->gift=='SPECIAL'){
-                $giftText='پک حوله دستی ارس';
+            if ($request->gift == 'SPECIAL') {
+                $giftText = 'پک حوله دستی ارس';
+            } else if ($request->gift == 'DOUBLE') {
+                $giftText = 'پک حوله دوتایی ارس';
+            } else {
+                $giftText = 'کد تخفیف ' . $request->gift . ' خرید از فروشگاه اینترنتی ارس';
             }
-            else if ($request->gift=='DOUBLE'){
-                $giftText='پک حوله دوتایی ارس';
-            }
-            else{
-                $giftText='کد تخفیف '.$request->gift.' خرید از فروشگاه اینترنتی ارس';
-            }
-            $email=$request->variable;
+            $email = $request->variable;
             $data = array('text' => '
                 <p style="text-align: center">با تشکر از شرکت شما در جشنواره</p>
                 <p style="text-align: center"> جایزه شما: '
-                .$giftText.'
+                . $giftText . '
                 </p>
                 <p>
                 جهت آموزش چگونگی استفاده از کد تخفیف یا چگونگی ارسال هدایای شما، از طریق همین ایمیل با شما در ارتباط خواهیم بود.
@@ -309,8 +317,8 @@ class AjaxController extends Controller
 منتظر ما باشید
 </p>
                 ',
-                'title'=>'دریافت جایزه شرکت در جشنواره حوله ارس',
-                'subtitle'=>'در صورتی که مورد رخ داده بر خلاف چیزی است که شما انتظار دارید، از طریق شماره تماس های موجود در بخش تما با ما به ما اطلاع دهید. با تشکر');
+                'title' => 'دریافت جایزه شرکت در جشنواره حوله ارس',
+                'subtitle' => 'در صورتی که مورد رخ داده بر خلاف چیزی است که شما انتظار دارید، از طریق شماره تماس های موجود در بخش تما با ما به ما اطلاع دهید. با تشکر');
 //            Mail::send('blank-mail', $data, function($message) use($email) {
 //                $message->to($email)->subject
 //                ('دریافت جایزه شرکت در جشنواره حوله ارس- حوله ارس');
@@ -320,39 +328,33 @@ class AjaxController extends Controller
         }
 
 
-
         if ($request->type == 'phone') {
-            $campaign = Campaign::where('campaign_name',$request->campaignName)->where('phone', $request->variable);
-            $camp=Campaign::find($campaign->value('id'));
-            $camp->gift=$request->gift;
+            $campaign = Campaign::where('campaign_name', $request->campaignName)->where('phone', $request->variable);
+            $camp = Campaign::find($campaign->value('id'));
+            $camp->gift = $request->gift;
             $camp->save();
-            if ($request->gift=='SPECIAL'){
-                $giftText='پک حوله دستی ارس';
+            if ($request->gift == 'SPECIAL') {
+                $giftText = 'پک حوله دستی ارس';
+            } else if ($request->gift == 'DOUBLE') {
+                $giftText = 'پک حوله دوتایی ارس';
+            } else {
+                $giftText = 'کد تخفیف ' . $request->gift . ' خرید از فروشگاه اینترنتی ارس';
             }
-            else if ($request->gift=='DOUBLE'){
-                $giftText='پک حوله دوتایی ارس';
-            }
-            else{
-                $giftText='کد تخفیف '.$request->gift.' خرید از فروشگاه اینترنتی ارس';
-            }
-            $pm='با تشکر از شما برای شرکت در جشنواره حوله ارس . هدیه شما: '.$giftText.'. جهت استفاده از هدیه ی خود، در سایت حوله ارس به نشانی www.arastowel.com ثبت نام کنید و سپس نام ، نام خانوادگی و ایمیل خود را به سامانه پیامکی 10000100088088 ارسال کنید تا نسبت به ارسال یا فعال سازی هدیه شما اقدام شود. با تشکر.';
+            $pm = 'با تشکر از شما برای شرکت در جشنواره حوله ارس . هدیه شما: ' . $giftText . '. جهت استفاده از هدیه ی خود، در سایت حوله ارس به نشانی www.arastowel.com ثبت نام کنید و سپس نام ، نام خانوادگی و ایمیل خود را به سامانه پیامکی 10000100088088 ارسال کنید تا نسبت به ارسال یا فعال سازی هدیه شما اقدام شود. با تشکر.';
 
-            try{
+            try {
                 $sender = "100065995";
                 $receptor = "$request->variable";
                 $message = "$pm";
                 $api = new \Kavenegar\KavenegarApi("614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56");
-                $api->Send($sender,$receptor,$message);
-            }
-            catch(\Kavenegar\Exceptions\ApiException $e){
+                $api->Send($sender, $receptor, $message);
+            } catch (\Kavenegar\Exceptions\ApiException $e) {
                 // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
                 echo $e->errorMessage();
-            }
-            catch(\Kavenegar\Exceptions\HttpException $e){
+            } catch (\Kavenegar\Exceptions\HttpException $e) {
                 // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
                 echo $e->errorMessage();
             }
-
 
 
         }
