@@ -201,7 +201,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo">مشاهده بیشتر</a>
+                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
@@ -220,7 +220,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo">مشاهده بیشتر</a>
+                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
@@ -239,7 +239,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo">مشاهده بیشتر</a>
+                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
@@ -312,7 +312,7 @@
                                     @endphp
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
-                                    <a href="#">مشاهده بیشتر</a>
+                                    <a href="#" class="homepageMoreLink">مشاهده بیشتر</a>
                                 </a>
                             </div>
                         @endif
@@ -335,7 +335,7 @@
                                     @endphp
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
-                                    <a href="#">مشاهده بیشتر</a>
+                                    <a href="#" class="homepageMoreLink">مشاهده بیشتر</a>
 
                                 </a>
                             </div>
@@ -360,7 +360,7 @@
                                     @endphp
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
-                                    <a href="#">مشاهده بیشتر</a>
+                                    <a href="#" class="homepageMoreLink">مشاهده بیشتر</a>
 
                                 </a>
                             </div>
@@ -430,7 +430,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo">مشاهده بیشتر</a>
+                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
                             </div>
                         @endif
 
@@ -449,7 +449,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo">مشاهده بیشتر</a>
+                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
@@ -470,7 +470,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo">مشاهده بیشتر</a>
+                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
