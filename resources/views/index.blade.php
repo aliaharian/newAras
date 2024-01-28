@@ -298,9 +298,10 @@
 
                     @foreach($template as $temp)
                         @if($temp->place=='gift1')
-                            <a title="حوله هدیه"
-                               href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
-                                <div class="singleGrid">
+
+                            <div class="singleGrid">
+                                <a title="حوله هدیه"
+                                   href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
                                     <img
                                         {{--                                    data-toggle="modal" data-target="#img_popup"--}}
                                         {{--                                     onclick="modal('{{$temp->image}}')"--}}
@@ -312,18 +313,18 @@
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
                                     <a href="#">مشاهده بیشتر</a>
-
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         @endif
 
                     @endforeach
 
                     @foreach($template as $temp)
                         @if($temp->place=='gift2')
-                            <a title="حوله هدیه"
-                               href="/product/245/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%7C-MR-&-MRS-%7C--%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
-                                <div class="singleGrid">
+
+                            <div class="singleGrid">
+                                <a title="حوله هدیه"
+                                   href="/product/245/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%7C-MR-&-MRS-%7C--%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
 
                                     <img data-toggle="modal" data-target="#img_popup"
                                          onclick="modal('{{$temp->image}}')"
@@ -336,18 +337,18 @@
                                     <p>{{$names[1]}}</p>
                                     <a href="#">مشاهده بیشتر</a>
 
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         @endif
 
                     @endforeach
 
                     @foreach($template as $temp)
                         @if($temp->place=='gift3')
-                            <a title="حوله هدیه"
-                               href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
 
-                                <div class="singleGrid">
+                            <div class="singleGrid">
+                                <a title="حوله هدیه"
+                                   href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
 
                                     <img
                                         {{--                                        data-toggle="modal" data-target="#img_popup"--}}
@@ -361,8 +362,8 @@
                                     <p>{{$names[1]}}</p>
                                     <a href="#">مشاهده بیشتر</a>
 
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         @endif
 
                     @endforeach
@@ -677,6 +678,8 @@
     }
   ]
 }
+
+
 
 
 
