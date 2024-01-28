@@ -45,9 +45,9 @@ class orders
 //            ->where('user_platform', $user_platform)
             ->where('user_browser', $user_browser)->get();
 
-        if ($pre_order->count() == 0) {
-            return redirect('/product?ip=' . $user_ip . '&platform=' . $user_platform . '&browser=' . $user_browser);
-        }
+//        if ($pre_order->count() == 0) {
+//            return redirect('/product?ip=' . $user_ip . '&platform=' . $user_platform . '&browser=' . $user_browser);
+//        }
 
         return $next($request);
     }
