@@ -582,7 +582,7 @@
                     <img title="{{$post->title}}" alt="{{$post->title}}" src="{{$post->image}}"/>
                     <h3>{{$post->title}}</h3>
                     <a href="/blog/{{$post->id}}/{{str_replace(' ','-',$post->title)}}"
-                       title="مشاهده مقاله {{$post->title}}">مشاهده بیشتر</a>
+                       title="مشاهده مقاله {{$post->title}}" class="homepageMoreLink">مشاهده بیشتر</a>
                 </div>
 
 

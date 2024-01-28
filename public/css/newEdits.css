@@ -356,6 +356,7 @@ a.share-link:hover {
     font-size: 10px !important;
     text-align: center;
     display: inline-block;
+    width: max-content !important;
     border-bottom: 1px solid #14334c;
 }
 
