@@ -59,8 +59,8 @@
                         @if($product->published==1)
                             @php($correct=1)
                             @if($correct==1)
-                                <a href="{{route('shop.product',['product_id' => $product->id , 'product_name'=>str_replace(' ','-',$product->name)])}}">
-                                    <div class="singleGrid" style="margin-bottom: 30px">
+                                <div class="singleGrid" style="margin-bottom: 30px">
+                                    <a href="{{route('shop.product',['product_id' => $product->id , 'product_name'=>str_replace(' ','-',$product->name)])}}">
 
                                         <img
                                             src="<?=Croppa::url($product->image, 590, 590); ?>"
@@ -125,11 +125,10 @@
                                                 ناموجود
                                             @endif
                                         </p>
-                                        <a href="{{route('shop.product',['product_id' => $product->id , 'product_name'=>str_replace(' ','-',$product->name)])}}">خرید
+                                        <a class="homepageMoreLink" href="{{route('shop.product',['product_id' => $product->id , 'product_name'=>str_replace(' ','-',$product->name)])}}">خرید
                                             محصول</a>
-
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                                 {{--                                <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">--}}
                                 {{--                                    <!-- Block2 -->--}}
                                 {{--                                    <div class="block2">--}}
