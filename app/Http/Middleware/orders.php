@@ -41,7 +41,9 @@ class orders
         $agent = new \Jenssegers\Agent\Agent();
         $user_platform = $agent->platform();
         $user_browser = $agent->browser();
-        $pre_order = \App\Pre_order::where('user_ip', $user_ip)->where('user_platform', $user_platform)->where('user_browser', $user_browser)->get();
+        $pre_order = \App\Pre_order::where('user_ip', $user_ip)
+//            ->where('user_platform', $user_platform)
+            ->where('user_browser', $user_browser)->get();
 
         if ($pre_order->count() == 0) {
             return redirect('/product?ip=' . $user_ip . '&platform=' . $user_platform . '&browser=' . $user_browser);
