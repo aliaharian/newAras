@@ -341,7 +341,7 @@
             </div>
             <div class=" respon5 w100res" style="text-align: right;width: calc(51% - 45px);">
                 <h4 class="product-detail-name m-text16 p-b-13"
-                    style="margin-top:60px;text-align: center;font-size: 25px;">
+                    style="margin-top:60px;text-align: center;font-size: 25px;direction:rtl;">
                     {{$product->name}}
                 </h4>
                 <div class="p-b-5 text-center">
@@ -495,9 +495,9 @@
 						ناموجود
 				</span>
                         @endif
-                            <span style="margin:0 10px">•</span>
+                        <span style="margin:0 10px">•</span>
 
-                            <span>
+                        <span>
                             افزودن به سبد خرید
                         </span>
                     </button>
@@ -807,6 +807,7 @@
     }
 
 }
+
 
 
 
