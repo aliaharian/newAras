@@ -3,7 +3,12 @@
 
         <div class="footerMenus">
             <div>
-                <img src="/images/footer/footerLogo.svg" style="max-width:100px"/>
+                <img src="/images/footer/footerLogo.svg" style="max-width:100px;margin-bottom: 8px;"/>
+                <a referrerpolicy='origin' target='_blank'
+                   href='https://trustseal.enamad.ir/?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'><img
+                        referrerpolicy='origin'
+                        src='https://trustseal.enamad.ir/logo.aspx?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'
+                        alt='' style='cursor:pointer' Code='e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'></a>
             </div>
             <div class="respon4 ">
                 <h4 class="s-text12 m-b-18" style="direction: rtl;text-align: right;font-weight:bold;">
@@ -83,24 +88,24 @@
                 <ul style="direction: rtl;text-align: right;">
                     <li class="p-b-5">
                         <a title="مراحل خرید اینترنتی" href="{{route('shopping-steps')}}" class="s-text7">
-                                مراحل خرید اینترنتی
+                            مراحل خرید اینترنتی
                         </a>
                     </li>
 
                     <li class="p-b-5">
                         <a title="بازگشت کالا" href="{{route('product-return')}}" class="s-text7">
-                                بازگشت کالا
+                            بازگشت کالا
                         </a>
                     </li>
 
                     <li class="p-b-5">
                         <a title="چگونگی هزینه ارسال" href="{{route('freeshipping')}}" class="s-text7">
-                                چگونگی هزینه ی ارسال
+                            چگونگی هزینه ی ارسال
                         </a>
                     </li>
                     <li class="p-b-5">
                         <a title="پیگیری خرید" href="/profile/order-tracking" class="s-text7">
-                                پیگیری خرید
+                            پیگیری خرید
                         </a>
                     </li>
                 </ul>
@@ -118,7 +123,7 @@
                     <div class="s-text7 w-size27" itemscope itemtype="https://schema.org/Organization"
                          style="direction: rtl;font-size: 16px;">
                         <p style="color: #14334c;margin-bottom:2px" itemprop="telephone fa-2x"><i class="fa fa-phone"
-                                                                                                   style="margin-left:5px;"></i>
+                                                                                                  style="margin-left:5px;"></i>
                             ۰۲۱-۸۸۹۳۲۷۶۸ &nbsp;<br/>
                             <i class="fa fa-mobile fa-2x" style="margin-left:5px;"></i>&zwnj;&nbsp;۰۹۱۲-۱۳۳۱۰۴۴</p>
 
