@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +22,7 @@
 
 
     <!-- Sing in  Form -->
-    <section class="sign-in" >
+    <section class="sign-in">
         <div class="container">
             <div class="signin-content">
                 <div class="signin-image">
@@ -31,7 +30,8 @@
                     <a href="{{route('index')}}" class="signup-image-link">بازگشت به صفحه اصلی</a>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="signup-image-link">خروج از حساب کاربری</a>
+                                                     document.getElementById('logout-form').submit();"
+                       class="signup-image-link">خروج از حساب کاربری</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -39,24 +39,28 @@
                 <div class="signin-form" style="    margin-top: 16px;">
                     <h2 class="form-title text-md-center" style="    font-size: 24px;
     width: 240px;
-    height: 40px;">لطفا ایمیل خود را تایید کنید</h2>
+    height: 40px;">لطفا شماره موبایل خود را تایید کنید</h2>
                     @if (session('resent'))
                         <div class="alert alert-success" style="direction: rtl" role="alert">
                             {{ __('لینک جدید به آدرس ایمیل شما ارسال شد') }}
                         </div>
                     @endif
-                    <p style="text-align: right">یک لینک تاییدیه برای ایمیل شما ارسال شد، لطفا از طریق آن ایمیل خود را تایید کنید</p>
-                    <p style="direction: rtl;text-align: right;">این ایمیل ممکن است در فولدر spam شما باشد</p>
-                    <p style="direction: rtl;text-align: right;">در صورتی که ایمیلی دریافت نکردید روی دکمه زیر کلیک کنید</p>
+                    <p style="text-align: right">یک کد تاییدیه برای موبایل شما ارسال شد،</p>
+                    <p style="direction: rtl;text-align: right;">لطفا کد تاییدیه را در قیمت زیر وارد کنید</p>
+                    {{--                    <p style="direction: rtl;text-align: right;">در صورتی که ایمیلی دریافت نکردید روی دکمه زیر کلیک--}}
+                    {{--                        کنید</p>--}}
+                    <form action="{{ route('confirmSms') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="code"><i class="fa fa-code"></i></label>
+                            <input type="number" name="code" maxlength="4" max="9999" required id="code"
+                                   placeholder="کد تاییدیه"/>
+                        </div>
 
                         <div class="form-group form-button">
-                            <button type="submit" name="signin" id="signin" style="padding: 0!important;" class="form-submit"><a href="{{ route('verification.resend') }}" style="line-height: 34px;
-    z-index: 999999;
-    color: #fff;
-    display: block;
-    width: 200px;
-    height: 33px;"> ارسال مجدد لینک تاییدیه</a></button>
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="تایید"/>
                         </div>
+                    </form>
                     {{--<div class="social-login">--}}
                     {{--<span class="social-label">یا از این طریق وارد شوید: </span>--}}
                     {{--<ul class="socials">--}}

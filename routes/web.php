@@ -251,6 +251,7 @@ Route::get('send-campaign-gift','AjaxController@sendCampaignGift')->name('send-c
 //Auth routes
 Auth::routes(['verify' => true]);
 
+Route::post('confirm-sms','Auth\VerificationController@confirmSms')->name('confirmSms');
 
 
 

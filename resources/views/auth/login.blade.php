@@ -61,8 +61,8 @@
                                     </div>
                             @endif
                         <div class="form-group">
-                            <label for="email" ><i class="fa fa-user material-icons-name"></i></label>
-                            <input type="text" name="email"  id="email" placeholder="ایمیل" value="{{ old('email') }}" required autofocus/>
+                            <label for="mobile" ><i class="fa fa-phone material-icons-name"></i></label>
+                            <input type="number" name="mobile"  id="mobile" placeholder="موبایل" required autofocus/>
                         </div>
 
 
@@ -82,7 +82,7 @@
                         </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signin" id="signin" class="form-submit" value="ورود"/>
-                            <a href="/auth/google" style="background-color: #fd2c27;" id="signin2" class="form-submit"> ورود با گوگل <i class="fa fa-google"> </i></a>
+{{--                            <a href="/auth/google" style="background-color: #fd2c27;" id="signin2" class="form-submit"> ورود با گوگل <i class="fa fa-google"> </i></a>--}}
                         </div>
                     </form>
                     {{--<div class="social-login">--}}
