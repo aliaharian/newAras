@@ -928,7 +928,7 @@ class mainController extends Controller
                     ?>
 
                     <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET" id="error_token">
-                        <input name="error_message" type="text" hidden required="required" value="<?php echo $error_message; ?>">
+                        <input name="respMsg" type="text" hidden required="required" value="<?php echo $error_message; ?>">
                     </form>
 
                     <script type="text/javascript">

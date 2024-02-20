@@ -382,7 +382,7 @@ class ProfileController extends Controller
 
     public function payFromZarrin(Request $request, $invoice_number)
     {
-        dd($request->all());
+//        dd($request->all());
 //        "respmsg" => "تراکنش توسط کاربر لغو شد."
 //  "respcode" => "-1"
 //  "terminalid" => "98610186"
@@ -429,8 +429,11 @@ class ProfileController extends Controller
 
         $invoice->save();
         if ($error_message) {
-            return redirect('/profile/order/' . $invoice_number . '?error_message=' . $error_message);
-        } else {
+            return redirect('/profile/order/' . $invoice_number . '?respMsg=' . $error_message);
+        } else if($respmsg){
+            return redirect('/profile/order/' . $invoice_number . '?respMsg=' . $respmsg);
+
+        }else {
             return redirect('/profile/order/' . $invoice_number);
         }
     }
