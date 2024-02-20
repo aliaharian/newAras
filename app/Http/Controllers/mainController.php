@@ -9,6 +9,7 @@ use App\logHomeUsers;
 use App\size;
 use App\templateSetting;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 use Mail;
 use App\InstagramPost;
 use App\address;
@@ -884,7 +885,7 @@ class mainController extends Controller
             }
             if ($request->bank_id == 'zarinpal') {
 
-                $dataQuery = 'Amount=' . $zarinpay . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186';
+                $dataQuery = 'Amount=' . $zarinpay . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186'. '&Payload=' . $invoice_number ;
                 $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
                 $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
                 $decode_TokenArray = json_decode($TokenArray);
@@ -911,7 +912,7 @@ class mainController extends Controller
                         <input name="token" type="hidden" required="required" value="<?php echo $AccessToken; ?>">
 
                         //select between GET = 1 or POST = 0
-                        <input name="getMethod" type="hidden" required="required" value="1">
+                        <input name="getMethod" type="hidden" required="required" value="0">
 
                         <!-- <input type="submit"/> -->
 
@@ -926,8 +927,9 @@ class mainController extends Controller
                     $error_message = "  دریافت توکن با خطا مواجه شد !!! "
                     ?>
 
-                    <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET" id="error_token">
-                        <input name="error_message" type="hidden" required="required" value="<?php echo $error_message; ?>">
+                    <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="POST" id="error_token">
+                        <input type="hidden" name="_token" id="csrf-token" value="<?php echo Session::token() ?>" />
+                        <input name="error_message" type="text" hidden required="required" value="<?php echo $error_message; ?>">
                     </form>
 
                     <script type="text/javascript">

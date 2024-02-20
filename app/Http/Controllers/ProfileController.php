@@ -394,6 +394,7 @@ class ProfileController extends Controller
 
     public function payFromZarrin(Request $request , $invoice_number)
     {
+        dd($request->all());
         $Authority=$request->Authority;
         $Status=$request->Status;
         $invoice_id=invoice::where('invoice_number',$invoice_number)->value('id');
