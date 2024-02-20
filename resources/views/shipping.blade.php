@@ -109,8 +109,8 @@
                                                         <span class="c-ui-radio__check"></span>
                                                         </span>
                                                             <span class="c-checkout-paymethod__source-title"
-                                                                  style="text-align: right">زرین پال</span>
-                                                            <img src="https://statics.arastowel.com/images/zarinpal.png">
+                                                                  style="text-align: right">درگاه سپهر</span>
+                                                            <img src="https://www.sizpay.ir/images/blog/2473/%D8%B3%D9%BE%D9%87%D8%B1.1.webp">
                                                         </label>
                                                     </div>
                                                 </div>
