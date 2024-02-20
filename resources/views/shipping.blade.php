@@ -252,7 +252,7 @@
                                                                 <span>{{number_format($off_total_price)}} </span> </span><span
                                                             class="hidden"> + </span>
                                                     @else
-                                                        <span>{{number_format($off_total_price+8000)}} </span> </span><span
+                                                        <span>{{number_format($off_total_price+0)}} </span> </span><span
                                                         class="hidden"> + </span>
 
                                                 @endif
@@ -261,7 +261,7 @@
                                                     @if($off_total_price>=500000)
                                                         <span>{{number_format($off_total_price*(100-$gift->value('percent'))/100)}} </span> </span>
                                                     @else
-                                                        <span>{{number_format(($off_total_price*(100-$gift->value('percent'))/100)+8000)}} </span> </span>
+                                                        <span>{{number_format(($off_total_price*(100-$gift->value('percent'))/100)+0)}} </span> </span>
 
 
                                                         @endif
