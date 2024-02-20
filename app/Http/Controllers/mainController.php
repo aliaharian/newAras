@@ -884,28 +884,26 @@ class mainController extends Controller
             }
             if ($request->bank_id == 'zarinpal') {
 
-                $data = array('text' => $text);
+                $dataQuery = 'Amount=' . $zarinpay . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186';
+                $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
+                $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
+                $decode_TokenArray = json_decode($TokenArray);
 
-//                Mail::send('invoice-mail', $data, function ($message) {
-//                    $message->to(Auth::user()->email, Auth::user()->name . ' ' . Auth::user()->last_name)->subject
-//                    ('اطلاعات سفارش - حوله ارس');
-//                    $message->from('invoice@arastowel.com', 'حوله ارس');
+                dd($decode_TokenArray);
+
+//                $results = Zarinpal::request(
+//                    route('pay-from-zarrin', [$invoice_number]),
+//                    $zarinpay,
+//                    'پرداخت فاکتور ' . $invoice_number,
+//                    Auth::user()->email
 //
-//                });
+//                );
+//
+//                Zarinpal::redirect(); // redirect user to zarinpal
+//
+//// after that verify transaction by that $results['Authority']
+//                Zarinpal::verify('OK', 1000, $results['Authority']);
 
-
-                $results = Zarinpal::request(
-                    route('pay-from-zarrin', [$invoice_number]),
-                    $zarinpay,
-                    'پرداخت فاکتور ' . $invoice_number,
-                    Auth::user()->email
-
-                );
-// save $results['Authority'] for verifying step
-                Zarinpal::redirect(); // redirect user to zarinpal
-
-// after that verify transaction by that $results['Authority']
-                Zarinpal::verify('OK', 1000, $results['Authority']);
 
             } else {
 
@@ -1015,6 +1013,19 @@ class mainController extends Controller
 
             }
         }
+
+    }
+
+    public function makeHttpChargeRequest($_Method, $_Data, $_Address){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $_Address);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $_Method);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $_Data);
+        $result = curl_exec($curl);
+        curl_close($curl);
+        return $result;
 
     }
 }
