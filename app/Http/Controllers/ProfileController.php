@@ -382,7 +382,7 @@ class ProfileController extends Controller
 
     public function payFromZarrin(Request $request, $invoice_number)
     {
-//        dd($request->all());
+        dd($request->all());
 //        "respmsg" => "تراکنش توسط کاربر لغو شد."
 //  "respcode" => "-1"
 //  "terminalid" => "98610186"
