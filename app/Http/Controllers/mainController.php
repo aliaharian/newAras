@@ -912,7 +912,7 @@ class mainController extends Controller
                         <input name="token" type="hidden" required="required" value="<?php echo $AccessToken; ?>">
 
                         //select between GET = 1 or POST = 0
-                        <input name="getMethod" type="hidden" required="required" value="0">
+                        <input name="getMethod" type="hidden" required="required" value="1">
 
                         <!-- <input type="submit"/> -->
 
@@ -927,8 +927,7 @@ class mainController extends Controller
                     $error_message = "  دریافت توکن با خطا مواجه شد !!! "
                     ?>
 
-                    <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="POST" id="error_token">
-                        <input type="hidden" name="_token" id="csrf-token" value="<?php echo Session::token() ?>" />
+                    <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET" id="error_token">
                         <input name="error_message" type="text" hidden required="required" value="<?php echo $error_message; ?>">
                     </form>
 
