@@ -22,56 +22,54 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $invoice_id=invoice::where('user_id',Auth::user()->id)->value('id');
-        if($invoice_id!=null) {
-            $invoices = invoice::where('user_id',Auth::user()->id)->orderBy('id', 'desc')->get();
-        }else{
-            $invoices=null;
+        $invoice_id = invoice::where('user_id', Auth::user()->id)->value('id');
+        if ($invoice_id != null) {
+            $invoices = invoice::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        } else {
+            $invoices = null;
         }
-        $additional_information=Additional_information::where(['user_id'=>\Illuminate\Support\Facades\Auth::user()->id]);
-        $agent=new Agent();
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.index',compact('additional_information','invoices'));
-        }
-        else{
-            return view('profile.index',compact('additional_information','invoices'));
+        $additional_information = Additional_information::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id]);
+        $agent = new Agent();
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.index', compact('additional_information', 'invoices'));
+        } else {
+            return view('profile.index', compact('additional_information', 'invoices'));
         }
 
     }
+
     public function orders()
     {
-        $invoice_id=invoice::where('user_id',Auth::user()->id)->value('id');
-        if($invoice_id!=null) {
-            $invoices = invoice::where('user_id',Auth::user()->id)->orderBy('id', 'desc')->get();
-        }else{
-            $invoices=null;
+        $invoice_id = invoice::where('user_id', Auth::user()->id)->value('id');
+        if ($invoice_id != null) {
+            $invoices = invoice::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        } else {
+            $invoices = null;
         }
-        $agent=new Agent();
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.orders',compact('invoices'));
-        }
-        else{
-            return view('profile.orders',compact('invoices'));
+        $agent = new Agent();
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.orders', compact('invoices'));
+        } else {
+            return view('profile.orders', compact('invoices'));
         }
 
     }
 
     public function favorites()
     {
-        $favorites=favorite::where('user_id',Auth::user()->id)->orderBy('id', 'desc')->get();
-        $agent=new Agent();
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.favorites',compact('favorites'));
-        }
-        else{
-            return view('profile.favorites',compact('favorites'));
+        $favorites = favorite::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $agent = new Agent();
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.favorites', compact('favorites'));
+        } else {
+            return view('profile.favorites', compact('favorites'));
         }
 
     }
 
     public function destroyFavorites($product)
     {
-        $favoriteId=favorite::where('user_id',Auth::user()->id)->where('product_id',$product)->value('id');
+        $favoriteId = favorite::where('user_id', Auth::user()->id)->where('product_id', $product)->value('id');
         favorite::find($favoriteId)->delete();
         return redirect('/profile/favorites');
 
@@ -79,13 +77,12 @@ class ProfileController extends Controller
 
     public function giftcards()
     {
-        $gifts=gift_card::where('user_id',Auth::user()->id)->where('used',0)->get();
-        $agent=new Agent();
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.giftcards',compact('gifts'));
-        }
-        else{
-            return view('profile.giftcards',compact('gifts'));
+        $gifts = gift_card::where('user_id', Auth::user()->id)->where('used', 0)->get();
+        $agent = new Agent();
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.giftcards', compact('gifts'));
+        } else {
+            return view('profile.giftcards', compact('gifts'));
         }
 
     }
@@ -97,40 +94,38 @@ class ProfileController extends Controller
 
     public function sendOrderTrack(Request $request)
     {
-        $invoice_id=invoice::where('tracking_code',$request->order)->value('id');
-        $invoice=invoice::find($invoice_id);
-        $invoice_line_items=invoice_line_item::where('invoice_id',$invoice_id)->get();
-        $agent=new Agent();
+        $invoice_id = invoice::where('tracking_code', $request->order)->value('id');
+        $invoice = invoice::find($invoice_id);
+        $invoice_line_items = invoice_line_item::where('invoice_id', $invoice_id)->get();
+        $agent = new Agent();
 
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.order-detail',compact('invoice','invoice_line_items'));
-        }
-        else{
-            return view('profile.order-detail',compact('invoice','invoice_line_items'));
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.order-detail', compact('invoice', 'invoice_line_items'));
+        } else {
+            return view('profile.order-detail', compact('invoice', 'invoice_line_items'));
         }
 
     }
+
     public function addresses()
     {
-        $agent=new Agent();
-        $addresses=address::where('user_id',Auth::user()->id)->paginate(99999);
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.addresses',compact('addresses'));
-        }
-        else{
-            return view('profile.addresses',compact('addresses'));
+        $agent = new Agent();
+        $addresses = address::where('user_id', Auth::user()->id)->paginate(99999);
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.addresses', compact('addresses'));
+        } else {
+            return view('profile.addresses', compact('addresses'));
         }
     }
 
     public function personalInfo()
     {
-        $additional_information=Additional_information::where(['user_id'=>\Illuminate\Support\Facades\Auth::user()->id]);
-        $agent=new Agent();
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.personal-info',compact('additional_information'));
-        }
-        else{
-            return view('profile.personal-info',compact('additional_information'));
+        $additional_information = Additional_information::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id]);
+        $agent = new Agent();
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.personal-info', compact('additional_information'));
+        } else {
+            return view('profile.personal-info', compact('additional_information'));
         }
 
     }
@@ -146,86 +141,82 @@ class ProfileController extends Controller
 
         ],
             [
-                'national_code.required'=>'وارد کردن کد ملی الزامی است',
-                'national_code.min'=>'کد ملی وارد شده صحیح نیست',
+                'national_code.required' => 'وارد کردن کد ملی الزامی است',
+                'national_code.min' => 'کد ملی وارد شده صحیح نیست',
 
-                'card_number.required'=>'وارد کردن شماره کارت الزامی است',
-                'card_number.min'=>'شماره کارت وارد شده صحیح نیست',
+                'card_number.required' => 'وارد کردن شماره کارت الزامی است',
+                'card_number.min' => 'شماره کارت وارد شده صحیح نیست',
 
-                'phone_number.required'=>'وارد کردن شماره موبایل الزامی است',
-                'phone_number.min'=>'شماره موبایل وارد شده صحیح نیست',
+                'phone_number.required' => 'وارد کردن شماره موبایل الزامی است',
+                'phone_number.min' => 'شماره موبایل وارد شده صحیح نیست',
 
-                'name.required'=>'وارد کردن نام الزامی است',
-                'name.persian_alpha'=>'نام را به فارسی وارد کنید',
+                'name.required' => 'وارد کردن نام الزامی است',
+                'name.persian_alpha' => 'نام را به فارسی وارد کنید',
 
 
-                'last_name.required'=>'وارد کردن نام خانوادگی الزامی است',
-                'last_name.persian_alpha'=>'نام خانوادگی را به فارسی وارد کنید',
+                'last_name.required' => 'وارد کردن نام خانوادگی الزامی است',
+                'last_name.persian_alpha' => 'نام خانوادگی را به فارسی وارد کنید',
 
             ]
         );
 
 
-        if (Additional_information::where('user_id',Auth::user()->id)->count()==0){
-            $add_info=new Additional_information();
-            $add_info->user_id=Auth::user()->id;
-            $add_info->national_number=$request->national_code;
-            $add_info->phone_number=$request->phone_number;
-            $add_info->card_number=str_replace(' ','',$request->card_number);
-            if (isset($request->newsletter)){
-                $add_info->newsletter=1;
-            }
-            else{
-                $add_info->newsletter=0;
+        if (Additional_information::where('user_id', Auth::user()->id)->count() == 0) {
+            $add_info = new Additional_information();
+            $add_info->user_id = Auth::user()->id;
+            $add_info->national_number = $request->national_code;
+            $add_info->phone_number = $request->phone_number;
+            $add_info->card_number = str_replace(' ', '', $request->card_number);
+            if (isset($request->newsletter)) {
+                $add_info->newsletter = 1;
+            } else {
+                $add_info->newsletter = 0;
             }
             $add_info->save();
-        }else{
-            $add_info_id=Additional_information::where('user_id',Auth::user()->id)->value('id');
-            $add_info=Additional_information::find($add_info_id);
-            $add_info->national_number=$request->national_code;
-            $add_info->phone_number=$request->phone_number;
-            $add_info->card_number=str_replace(' ','',$request->card_number);
-            if (isset($request->newsletter)){
-                $add_info->newsletter=1;
-            }
-            else{
-                $add_info->newsletter=0;
+        } else {
+            $add_info_id = Additional_information::where('user_id', Auth::user()->id)->value('id');
+            $add_info = Additional_information::find($add_info_id);
+            $add_info->national_number = $request->national_code;
+            $add_info->phone_number = $request->phone_number;
+            $add_info->card_number = str_replace(' ', '', $request->card_number);
+            if (isset($request->newsletter)) {
+                $add_info->newsletter = 1;
+            } else {
+                $add_info->newsletter = 0;
             }
             $add_info->save();
         }
 
-        $info=User::find(Auth::user()->id);
-        $info->name=$request->name;
-        $info->last_name=$request->last_name;
+        $info = User::find(Auth::user()->id);
+        $info->name = $request->name;
+        $info->last_name = $request->last_name;
         $info->save();
         return redirect('profile');
     }
 
     public function additionalInfo()
     {
-        $additional_information=Additional_information::where(['user_id'=>\Illuminate\Support\Facades\Auth::user()->id]);
-        $agent=new Agent();
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.additional-info',compact('additional_information'));
-        }
-        else{
-            return view('profile.additional-info',compact('additional_information'));
+        $additional_information = Additional_information::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id]);
+        $agent = new Agent();
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.additional-info', compact('additional_information'));
+        } else {
+            return view('profile.additional-info', compact('additional_information'));
         }
 
     }
 
     public function orderDetail($invoice_number)
     {
-        $invoice_id=invoice::where('invoice_number',$invoice_number)->value('id');
-        $invoice=invoice::find($invoice_id);
-        $invoice_line_items=invoice_line_item::where('invoice_id',$invoice_id)->get();
-        $agent=new Agent();
+        $invoice_id = invoice::where('invoice_number', $invoice_number)->value('id');
+        $invoice = invoice::find($invoice_id);
+        $invoice_line_items = invoice_line_item::where('invoice_id', $invoice_id)->get();
+        $agent = new Agent();
 
-        if ($agent->isMobile() || $agent->isTablet()){
-            return view('profile.mobile.order-detail',compact('invoice','invoice_line_items'));
-        }
-        else{
-            return view('profile.order-detail',compact('invoice','invoice_line_items'));
+        if ($agent->isMobile() || $agent->isTablet()) {
+            return view('profile.mobile.order-detail', compact('invoice', 'invoice_line_items'));
+        } else {
+            return view('profile.order-detail', compact('invoice', 'invoice_line_items'));
         }
 
     }
@@ -237,8 +228,8 @@ class ProfileController extends Controller
 
     public function addAddress()
     {
-        $countries=country::where('province_id',8)->paginate(9999999999);
-        return view('profile.addresses.create',compact('countries'));
+        $countries = country::where('province_id', 8)->paginate(9999999999);
+        return view('profile.addresses.create', compact('countries'));
     }
 
     public function changepass(Request $request)
@@ -247,30 +238,29 @@ class ProfileController extends Controller
             'oldPassword' => 'required|string',
             'newPassword' => 'required|string|min:6|confirmed',
         ],
-        [
-            'oldPassword.required'=>'ورود کلمه عبور فعلی الزامی است',
-            'newPassword.required'=>'ورود کلمه عبور جدید الزامی است',
-            'newPassword.confirmed'=>' کلمه عبور جدید با تکرار آن تطابق ندارد ',
-            'newPassword.min'=>' کلمه عبور جدید باید حداقل ۶ حرف باشد ',
-        ]
+            [
+                'oldPassword.required' => 'ورود کلمه عبور فعلی الزامی است',
+                'newPassword.required' => 'ورود کلمه عبور جدید الزامی است',
+                'newPassword.confirmed' => ' کلمه عبور جدید با تکرار آن تطابق ندارد ',
+                'newPassword.min' => ' کلمه عبور جدید باید حداقل ۶ حرف باشد ',
+            ]
 
         );
-        $user=User::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
         if (password_verify($request->oldPassword, $user->password)) {
-            $pm='کلمه عبور با موفقیت تغییر یافت';
-            $user->password=Hash::make($request->newPassword);
+            $pm = 'کلمه عبور با موفقیت تغییر یافت';
+            $user->password = Hash::make($request->newPassword);
             $user->save();
-            return view('profile.reset-pass',compact('pm'));
-        }
-        else{
-            $pm='کلمه عبور فعلی نادرست است';
+            return view('profile.reset-pass', compact('pm'));
+        } else {
+            $pm = 'کلمه عبور فعلی نادرست است';
 
-            return view('profile.reset-pass',compact('pm'));
+            return view('profile.reset-pass', compact('pm'));
         }
 
     }
 
-    public function storeAddress(Request $request , $callback)
+    public function storeAddress(Request $request, $callback)
     {
         $validatedData = $request->validate([
             'full_name' => 'required|persian_alpha',
@@ -282,67 +272,65 @@ class ProfileController extends Controller
 
         ],
             [
-                'country.required'=>'وارد کردن شهرستان و شهر الزامی است',
+                'country.required' => 'وارد کردن شهرستان و شهر الزامی است',
 
-                'city.required'=>'وارد کردن شهرستان و شهر الزامی است',
+                'city.required' => 'وارد کردن شهرستان و شهر الزامی است',
 
-                'address.required'=>'وارد کردن آدرس الزامی است',
+                'address.required' => 'وارد کردن آدرس الزامی است',
 
-                'postal_code.required'=>'وارد کردن کد پستی الزامی است',
+                'postal_code.required' => 'وارد کردن کد پستی الزامی است',
 
-                'full_name.required'=>'وارد کردن نام الزامی است',
+                'full_name.required' => 'وارد کردن نام الزامی است',
 
-                'mobile.required'=>'وارد کردن شماره موبایل الزامی است',
+                'mobile.required' => 'وارد کردن شماره موبایل الزامی است',
             ]
         );
 
-        $addresscount=address::where('user_id',Auth::user()->id)->count();
-        if ($addresscount==0){
-            $address=new address();
-            $address->user_id=Auth::user()->id;
-            $address->name=$request->full_name;
-            $address->province_id=8;
-            $address->country_id=$request->country;
-            $address->city_id=$request->city;
-            $address->address=$request->address;
-            $address->postal_code=$request->postal_code;
-            $address->phone_number=$request->mobile;
+        $addresscount = address::where('user_id', Auth::user()->id)->count();
+        if ($addresscount == 0) {
+            $address = new address();
+            $address->user_id = Auth::user()->id;
+            $address->name = $request->full_name;
+            $address->province_id = 8;
+            $address->country_id = $request->country;
+            $address->city_id = $request->city;
+            $address->address = $request->address;
+            $address->postal_code = $request->postal_code;
+            $address->phone_number = $request->mobile;
+            $address->save();
+        } else {
+            $addressid = address::where('user_id', Auth::user()->id)->value('id');
+            $address = address::find($addressid);
+
+            $address->user_id = Auth::user()->id;
+            $address->name = $request->full_name;
+            $address->province_id = 8;
+            $address->country_id = $request->country;
+            $address->city_id = $request->city;
+            $address->address = $request->address;
+            $address->postal_code = $request->postal_code;
+            $address->phone_number = $request->mobile;
             $address->save();
         }
-        else{
-            $addressid=address::where('user_id',Auth::user()->id)->value('id');
-            $address=address::find($addressid);
 
-            $address->user_id=Auth::user()->id;
-            $address->name=$request->full_name;
-            $address->province_id=8;
-            $address->country_id=$request->country;
-            $address->city_id=$request->city;
-            $address->address=$request->address;
-            $address->postal_code=$request->postal_code;
-            $address->phone_number=$request->mobile;
-            $address->save();
-        }
-
-        if ($callback=='shipping'){
+        if ($callback == 'shipping') {
             //return $pre_order;
             return redirect('/shipping');
-        }
-        else{
-           return redirect('/profile/addresses');
+        } else {
+            return redirect('/profile/addresses');
         }
 
     }
 
     public function editAddress()
     {
-        $addresses=address::where('user_id',Auth::user()->id)->paginate(1);
-        $countries=country::where('province_id',8)->paginate(9999999999);
-        return view('profile.addresses.edit',compact('countries','addresses'));
+        $addresses = address::where('user_id', Auth::user()->id)->paginate(1);
+        $countries = country::where('province_id', 8)->paginate(9999999999);
+        return view('profile.addresses.edit', compact('countries', 'addresses'));
 
     }
 
-    public function updateAddress(Request $request )
+    public function updateAddress(Request $request)
     {
         $validatedData = $request->validate([
             'full_name' => 'required|persian_alpha',
@@ -354,30 +342,30 @@ class ProfileController extends Controller
 
         ],
             [
-                'country.required'=>'وارد کردن شهرستان و شهر الزامی است',
+                'country.required' => 'وارد کردن شهرستان و شهر الزامی است',
 
-                'city.required'=>'وارد کردن شهرستان و شهر الزامی است',
+                'city.required' => 'وارد کردن شهرستان و شهر الزامی است',
 
-                'address.required'=>'وارد کردن آدرس الزامی است',
+                'address.required' => 'وارد کردن آدرس الزامی است',
 
-                'postal_code.required'=>'وارد کردن کد پستی الزامی است',
+                'postal_code.required' => 'وارد کردن کد پستی الزامی است',
 
-                'full_name.required'=>'وارد کردن نام الزامی است',
+                'full_name.required' => 'وارد کردن نام الزامی است',
 
-                'mobile.required'=>'وارد کردن شماره موبایل الزامی است',
+                'mobile.required' => 'وارد کردن شماره موبایل الزامی است',
             ]
         );
-        $addresssave=address::where('user_id',Auth::user()->id)->value('id');
-        $address=address::find($addresssave);
+        $addresssave = address::where('user_id', Auth::user()->id)->value('id');
+        $address = address::find($addresssave);
 
-        $address->user_id=Auth::user()->id;
-        $address->name=$request->full_name;
-        $address->province_id=8;
-        $address->country_id=$request->country;
-        $address->city_id=$request->city;
-        $address->address=$request->address;
-        $address->postal_code=$request->postal_code;
-        $address->phone_number=$request->mobile;
+        $address->user_id = Auth::user()->id;
+        $address->name = $request->full_name;
+        $address->province_id = 8;
+        $address->country_id = $request->country;
+        $address->city_id = $request->city;
+        $address->address = $request->address;
+        $address->postal_code = $request->postal_code;
+        $address->phone_number = $request->mobile;
         $address->save();
 
         return redirect('/profile/addresses');
@@ -386,32 +374,65 @@ class ProfileController extends Controller
 
     public function destroyAddress()
     {
-        $addresssave=address::where('user_id',Auth::user()->id)->value('id');
+        $addresssave = address::where('user_id', Auth::user()->id)->value('id');
         address::find($addresssave)->delete();
         return redirect('/profile/addresses');
 
     }
 
-    public function payFromZarrin(Request $request , $invoice_number)
+    public function payFromZarrin(Request $request, $invoice_number)
     {
-        dd($request->all());
-        $Authority=$request->Authority;
-        $Status=$request->Status;
-        $invoice_id=invoice::where('invoice_number',$invoice_number)->value('id');
-        $invoice=invoice::find($invoice_id);
-        $invoice->transaction_number=$Authority;
+//        dd($request->all());
+//        "respmsg" => "تراکنش توسط کاربر لغو شد."
+//  "respcode" => "-1"
+//  "terminalid" => "98610186"
+//  "invoiceid" => "27039570"
+//  "amount" => "207000"
+//  "payload" => "27039570"
+        $respcode = $request->respcode;
+        $digitalreceipt = $request->digitalreceipt;
+        $terminalid = $request->terminalid;
+        $respmsg = $request->respmsg;
+        $tracenumber = $request->tracenumber; //شماره تراکنش
+        $amount = $request->amount;
 
-        if ($Status=='OK'){
-            $invoice->payed=1;
+        $rrn = $request->rrn;//شماره پیگیری
+        if ($respcode == 0) {
+
+            $AdviceAddress = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/Advice";
+
+            $dataQuery = 'digitalreceipt=' . $digitalreceipt . '&Tid=' . $terminalid;
+
+            $mainController = new mainController();
+            $AdviceArray = $mainController->makeHttpChargeRequest('POST', $dataQuery, $AdviceAddress);
+            $decode_AdviceArray = json_decode($AdviceArray);
+
+            //var_dump($decode_TokenArray);
+
+            $Status = $decode_AdviceArray->Status;
+            $ReturnId = $decode_AdviceArray->ReturnId;
+            $Message = $decode_AdviceArray->Message;
         }
-        else if ($Status=='NOK'){
-            $invoice->payed=0;
+
+
+        $invoice_id = invoice::where('invoice_number', $invoice_number)->value('id');
+        $invoice = invoice::find($invoice_id);
+        $invoice->transaction_number = $tracenumber;
+        $error_message = $request->error_message;
+
+        if ($respcode == 0 && $Status == "Ok" && $ReturnId == $amount) {
+            $invoice->payed = 1;
+            $invoice->transaction_token = $rrn;
+        } else {
+            $invoice->payed = 0;
         }
 
         $invoice->save();
-        return redirect('/profile/order/' . $invoice_number);
-
-
+        if ($error_message) {
+            return redirect('/profile/order/' . $invoice_number . '?error_message=' . $error_message);
+        } else {
+            return redirect('/profile/order/' . $invoice_number);
+        }
     }
 
 
