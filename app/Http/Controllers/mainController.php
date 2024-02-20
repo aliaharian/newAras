@@ -710,12 +710,12 @@ class mainController extends Controller
             }
 
             $gift = gift_card::where('user_id', Auth::user()->id)->where('used', 0)->where('in_pre', 1)->where('user_ip', $user_ip)->where('user_browser', $user_browser)->where('user_platform', $user_platform);
+            $post_price = 0;
 
             if ($gift->count() == 0) {
                 if ($off_total_price <= 500000) {
-
-                    $invoice->post_price = 8000;
-                    $invoice->transaction_amount = $off_total_price + 8000;
+                    $invoice->post_price = $post_price;
+                    $invoice->transaction_amount = $off_total_price + $post_price;
 
                 } else {
                     $invoice->post_price = 0;
@@ -724,8 +724,8 @@ class mainController extends Controller
             } else {
                 if ($off_total_price <= 500000) {
 
-                    $invoice->post_price = 8000;
-                    $invoice->transaction_amount = 8000 + ($off_total_price * (100 - $gift->value('percent')) / 100);
+                    $invoice->post_price = $post_price;
+                    $invoice->transaction_amount = $post_price + ($off_total_price * (100 - $gift->value('percent')) / 100);
 
                 } else {
                     $invoice->post_price = 0;
@@ -763,7 +763,7 @@ class mainController extends Controller
             if ($gift->count() == 0) {
                 if ($off_total_price <= 500000) {
 
-                    $zarinpay = $off_total_price + 8000;
+                    $zarinpay = $off_total_price + $post_price;
 
                 } else {
                     $zarinpay = $off_total_price;
@@ -771,7 +771,7 @@ class mainController extends Controller
             } else {
                 if ($off_total_price <= 500000) {
 
-                    $zarinpay = 8000 + $off_total_price * (100 - $gift->value('percent')) / 100;
+                    $zarinpay = $post_price + $off_total_price * (100 - $gift->value('percent')) / 100;
 
                 } else {
                     $zarinpay = $off_total_price * (100 - $gift->value('percent')) / 100;
