@@ -885,7 +885,7 @@ class mainController extends Controller
             }
             if ($request->bank_id == 'zarinpal') {
 
-                $dataQuery = 'Amount=' . $zarinpay . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186'. '&Payload=' . $invoice_number ;
+                $dataQuery = 'Amount=' . $zarinpay*10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186'. '&Payload=' . $invoice_number ;
                 $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
                 $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
                 $decode_TokenArray = json_decode($TokenArray);
