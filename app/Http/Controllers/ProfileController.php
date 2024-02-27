@@ -431,7 +431,7 @@ class ProfileController extends Controller
             //send sms to admin
             $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
             $client = new \GuzzleHttp\Client();
-            $receptor = "09127942759";
+            $receptor = "09121331044,09127942759";
             $text = "سفارش جدید";
             $newLine = "\n";
             $text .= $newLine;
@@ -462,8 +462,8 @@ class ProfileController extends Controller
                     'message' => $text,
                 ]
             ]);
-            $statusCode = $response->getStatusCode();
-            $content = $response->getBody();
+//            $statusCode = $response->getStatusCode();
+//            $content = $response->getBody();
         } else {
             $invoice->payed = 0;
         }
