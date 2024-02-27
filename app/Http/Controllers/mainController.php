@@ -1129,57 +1129,56 @@ class mainController extends Controller
     {
         //Something to write to txt log
         $log = "User: " . $_SERVER['REMOTE_ADDR'] . ' - ' . date("F j, Y, g:i a") . PHP_EOL .
-            "Attempt: " . ($request->clientnumber) . PHP_EOL .
-            "User: " . print_r($_REQUEST, TRUE)
+            "Requester: " . ($request->message) . PHP_EOL .
+            "Keyword: " . ($request->keyword) . PHP_EOL .
+            "Total keywords: " . print_r($_REQUEST, TRUE)
             . PHP_EOL .
             "-------------------------" . PHP_EOL;
 //Save string to log, use FILE_APPEND to append.
         file_put_contents(storage_path('log_' . date("j.n.Y") . '.log'), $log, FILE_APPEND);
 
-        if ($request->keyword && $request->clientnumber) {
+        if ($request->message && $request->keyword) {
             $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
             $client = new \GuzzleHttp\Client();
-            $receptor = $request->clientnumber;
-//            $text = "سفارش جدید";
-            $newLine = "\n";
-//            $text .= $newLine;
-//            $text .= "شماره فاکتور: ";
-//            $text .= $invoice->id;
-//            $text .= $newLine;
-//            foreach ($pre_order as $order) {
-//                $text .= "* ";
-//                $text .= Product::find($order->product_id)->name;
-//                if ($order->color_id != 0) {
-//                    $text .= " " . Color::find($order->color_id)->name;
-//                }
-//                if ($order->size_id != 0) {
-//                    $text .= " (" . size::find($order->size_id)->name.")";
-//                }
-//                $text .= " " . $order->qty . " عدد";
-//                $text .= $newLine;
-//            }
-//                $text .= "مبلغ کل فاکتور: ";
-//                $text .= number_format(invoice::find($invoice_id)->transaction_amount);
-//                $text .= $newLine;
-//                $text.= "شماره تماس مشتری: ";
-//                $text.=$userInfo->phone_number;
-//                $text .= $newLine;
-//                $text .="برای اطلاعات بیشتر شماره فاکتور بفرستید";
-//                $text .= $newLine;
-            $text = $request->keyword;
-            $text .= $newLine;
-            $text .= "لغو ۱۱";
+            $receptor = $request->message;
+            $factorId = str_replace("aras", "", $request->keyword);
+            $invoice = invoice::find($factorId);
+            if ($invoice) {
+                $newLine = "\n";
+                $text = "شماره فاکتور: ";
+                $text .= $invoice->id;
+                $text .= $newLine;
+                $text .= "نام خریدار: ";
+                $text .= $invoice->full_name;
+                $text .= $newLine;
+                $text .= "تلفن: ";
+                $text .= $invoice->phone_number;
+                $text .= $newLine;
+                $text .= "آدرس: ";
+                $text .= $invoice->address;
+                $text .= $newLine;
+                $text .= "مبلغ کل: ";
+                $text .= number_format($invoice->transaction_amount);
+                $text .= $newLine;
+                $text .= "شماره تراکنش: ";
+                $text .= $invoice->transaction_number;
+                $text .= $newLine;
+                $text .= "شماره پیگیری بانک: ";
+                $text .= number_format($invoice->transaction_token);
+                $text .= $newLine;
+                $text .= "لغو ۱۱";
 
-            $response = $client->request('GET', $endpoint, [
-                'query' => [
-                    'receptor' => $receptor,
-                    'message' => $text,
-                ]
-            ]);
-            $statusCode = $response->getStatusCode();
-            $content = $response->getBody();
-            if ($statusCode == 200) {
-                return "ok";
+                $response = $client->request('GET', $endpoint, [
+                    'query' => [
+                        'receptor' => $receptor,
+                        'message' => $text,
+                    ]
+                ]);
+                $statusCode = $response->getStatusCode();
+                $content = $response->getBody();
+                if ($statusCode == 200) {
+                    return "ok";
+                }
             }
         }
 
