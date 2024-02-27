@@ -1130,7 +1130,8 @@ class mainController extends Controller
         //Something to write to txt log
         $log = "User: " . $_SERVER['REMOTE_ADDR'] . ' - ' . date("F j, Y, g:i a") . PHP_EOL .
             "Attempt: " . ($request->clientnumber) . PHP_EOL .
-            "User: " . $request->keyword . PHP_EOL .
+            "User: " . print_r($_REQUEST, TRUE)
+            . PHP_EOL .
             "-------------------------" . PHP_EOL;
 //Save string to log, use FILE_APPEND to append.
         file_put_contents(storage_path('log_' . date("j.n.Y") . '.log'), $log, FILE_APPEND);
