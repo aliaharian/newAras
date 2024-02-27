@@ -1159,12 +1159,13 @@ class mainController extends Controller
                 $text .= $newLine;
                 $text .= "مبلغ کل: ";
                 $text .= number_format($invoice->transaction_amount);
+                $text .= "تومان";
                 $text .= $newLine;
                 $text .= "شماره تراکنش: ";
                 $text .= $invoice->transaction_number;
                 $text .= $newLine;
                 $text .= "شماره پیگیری بانک: ";
-                $text .= number_format($invoice->transaction_token);
+                $text .= $invoice->transaction_token;
                 $text .= $newLine;
                 $text .= "لغو ۱۱";
 
