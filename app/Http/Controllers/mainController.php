@@ -1173,6 +1173,13 @@ class mainController extends Controller
                 return "ok";
             }
         }
+        //Something to write to txt log
+        $log  = "User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
+            "Attempt: ".($request->clientnumber).PHP_EOL.
+            "User: ".$request->keyword.PHP_EOL.
+            "-------------------------".PHP_EOL;
+//Save string to log, use FILE_APPEND to append.
+        file_put_contents('./log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
         return "NOK";
     }
 }
