@@ -1127,6 +1127,14 @@ class mainController extends Controller
 
     public function smsFactor(Request $request)
     {
+        //Something to write to txt log
+        $log = "User: " . $_SERVER['REMOTE_ADDR'] . ' - ' . date("F j, Y, g:i a") . PHP_EOL .
+            "Attempt: " . ($request->clientnumber) . PHP_EOL .
+            "User: " . $request->keyword . PHP_EOL .
+            "-------------------------" . PHP_EOL;
+//Save string to log, use FILE_APPEND to append.
+        file_put_contents(storage_path('log_' . date("j.n.Y") . '.log'), $log, FILE_APPEND);
+
         if ($request->keyword && $request->clientnumber) {
             $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
             $client = new \GuzzleHttp\Client();
@@ -1173,13 +1181,7 @@ class mainController extends Controller
                 return "ok";
             }
         }
-        //Something to write to txt log
-        $log  = "User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
-            "Attempt: ".($request->clientnumber).PHP_EOL.
-            "User: ".$request->keyword.PHP_EOL.
-            "-------------------------".PHP_EOL;
-//Save string to log, use FILE_APPEND to append.
-        file_put_contents(storage_path('log_'.date("j.n.Y").'.log'), $log, FILE_APPEND);
+
         return "NOK";
     }
 }
