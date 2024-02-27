@@ -943,76 +943,11 @@ class mainController extends Controller
                 }
 
 
-//                $results = Zarinpal::request(
-//                    route('pay-from-zarrin', [$invoice_number]),
-//                    $zarinpay,
-//                    'پرداخت فاکتور ' . $invoice_number,
-//                    Auth::user()->email
-//
-//                );
-//
-//                Zarinpal::redirect(); // redirect user to zarinpal
-//
-//// after that verify transaction by that $results['Authority']
-//                Zarinpal::verify('OK', 1000, $results['Authority']);
+
 
 
             } else {
-
-                $data = array('text' => $text);
-
-//                Mail::send('invoice-mail', $data, function ($message) {
-//                    $message->to(Auth::user()->email, Auth::user()->name . ' ' . Auth::user()->last_name)->cc('ha.nasirzadeh@gmail.com')->subject
-//                    ('اطلاعات سفارش - حوله ارس');
-//                    $message->from('invoice@arastowel.com', 'حوله ارس');
-//
-//                });
-
-                $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
-                $client = new \GuzzleHttp\Client();
-                $receptor = "09127942759";
-                $text = "سفارش جدید";
-                $newLine = "\n";
-                $text .= $newLine;
-                $text .= "شماره فاکتور: ";
-                $text .= $invoice->id;
-                $text .= $newLine;
-                foreach ($pre_order as $order) {
-                    $text .= "* ";
-                    $text .= Product::find($order->product_id)->name;
-                    if ($order->color_id != 0) {
-                        $text .= " " . Color::find($order->color_id)->name;
-                    }
-                    if ($order->size_id != 0) {
-                        $text .= " (" . size::find($order->size_id)->name . ")";
-                    }
-                    $text .= " " . $order->qty . " عدد";
-                    $text .= $newLine;
-                }
-//                $text .= "مبلغ کل فاکتور: ";
-//                $text .= number_format(invoice::find($invoice_id)->transaction_amount);
-//                $text .= $newLine;
-//                $text.= "شماره تماس مشتری: ";
-//                $text.=$userInfo->phone_number;
-//                $text .= $newLine;
-//                $text .="برای اطلاعات بیشتر شماره فاکتور بفرستید";
-//                $text .= $newLine;
-                $text .= "لغو ۱۱";
-
-                $response = $client->request('GET', $endpoint, [
-                    'query' => [
-                        'receptor' => $receptor,
-                        'message' => $text,
-                    ]
-                ]);
-                $statusCode = $response->getStatusCode();
-                $content = $response->getBody();
-                if ($statusCode == 200) {
                     return redirect('/profile/order/' . $invoice_number);
-
-                } else {
-                    return redirect('/profile/order/' . $invoice_number);
-                }
             }
         } else {
             foreach ($pre_order as $order) {

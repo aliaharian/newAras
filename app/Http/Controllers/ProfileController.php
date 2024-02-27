@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Additional;
 use App\Additional_information;
 use App\address;
+use App\Color;
 use App\country;
 use App\favorite;
 use App\gift_card;
 use App\invoice;
 use App\invoice_line_item;
 use App\Pre_order;
+use App\Product;
+use App\size;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -423,6 +426,44 @@ class ProfileController extends Controller
         if ($respcode == 0 && $Status == "Ok" && $ReturnId == $amount) {
             $invoice->payed = 1;
             $invoice->transaction_token = $rrn;
+
+            ////////////////////////
+            //send sms to admin
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
+            $client = new \GuzzleHttp\Client();
+            $receptor = "09127942759";
+            $text = "سفارش جدید";
+            $newLine = "\n";
+            $text .= $newLine;
+            $text .= "شماره فاکتور: ";
+            $text .= $invoice->id;
+            $text .= $newLine;
+            $orders = invoice_line_item::where("invoice_id", $invoice->id)->get();
+            foreach ($orders as $order) {
+                $text .= "* ";
+                $text .= Product::find($order->product_id)->name;
+                if ($order->color_id != 0) {
+                    $text .= " " . Color::find($order->color_id)->name;
+                }
+                if ($order->size_id != 0) {
+                    $text .= " (" . size::find($order->size_id)->name . ")";
+                }
+                $text .= " " . $order->qty . " عدد";
+                $text .= $newLine;
+            }
+            $text .= "اطلاعات کامل: ";
+            $text .= "aras" . $invoice->id;
+            $text .= $newLine;
+            $text .= "لغو ۱۱";
+
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'message' => $text,
+                ]
+            ]);
+            $statusCode = $response->getStatusCode();
+            $content = $response->getBody();
         } else {
             $invoice->payed = 0;
         }
@@ -430,10 +471,10 @@ class ProfileController extends Controller
         $invoice->save();
         if ($error_message) {
             return redirect('/profile/order/' . $invoice_number . '?respMsg=' . $error_message);
-        } else if($respmsg){
+        } else if ($respmsg) {
             return redirect('/profile/order/' . $invoice_number . '?respMsg=' . $respmsg);
 
-        }else {
+        } else {
             return redirect('/profile/order/' . $invoice_number);
         }
     }
