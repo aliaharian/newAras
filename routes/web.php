@@ -457,6 +457,7 @@ Route::get('zarrin','ZarrinController@pay');
 Route::get('show-colors',function (){
     return view('all-colors');
 });
+Route::get('checkFactor',"mainController@smsFactor");
 
 Route::get('kave','mainController@kave');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Additional_information;
 use App\Color;
 use App\countHome;
 use App\gift_card;
@@ -674,6 +675,7 @@ class mainController extends Controller
             }
             $invoice->invoice_number = $invoice_number;
             $invoice->user_id = Auth::user()->id;
+            $userInfo = Additional_information::where("user_id", Auth::user()->id)->first();
             $invoice->pay_method = $request->bank_id;
             $number = mt_rand(10000000, 99999999);
             while (invoice::where('tracking_code', $number)->count() != 0) {
@@ -885,7 +887,7 @@ class mainController extends Controller
             }
             if ($request->bank_id == 'zarinpal') {
 
-                $dataQuery = 'Amount=' . $zarinpay*10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186'. '&Payload=' . $invoice_number ;
+                $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186' . '&Payload=' . $invoice_number;
                 $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
                 $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
                 $decode_TokenArray = json_decode($TokenArray);
@@ -922,13 +924,15 @@ class mainController extends Controller
                         document.getElementById('ipg').submit(); // SUBMIT FORM
                     </script>
                     <?php
-                }else {
+                } else {
 
                     $error_message = "  دریافت توکن با خطا مواجه شد !!! "
                     ?>
 
-                    <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET" id="error_token">
-                        <input name="respMsg" type="text" hidden required="required" value="<?php echo $error_message; ?>">
+                    <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET"
+                          id="error_token">
+                        <input name="respMsg" type="text" hidden required="required"
+                               value="<?php echo $error_message; ?>">
                     </form>
 
                     <script type="text/javascript">
@@ -964,8 +968,51 @@ class mainController extends Controller
 //
 //                });
 
+                $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
+                $client = new \GuzzleHttp\Client();
+                $receptor = "09127942759";
+                $text = "سفارش جدید";
+                $newLine = "\n";
+                $text .= $newLine;
+                $text .= "شماره فاکتور: ";
+                $text .= $invoice->id;
+                $text .= $newLine;
+                foreach ($pre_order as $order) {
+                    $text .= "* ";
+                    $text .= Product::find($order->product_id)->name;
+                    if ($order->color_id != 0) {
+                        $text .= " " . Color::find($order->color_id)->name;
+                    }
+                    if ($order->size_id != 0) {
+                        $text .= " (" . size::find($order->size_id)->name . ")";
+                    }
+                    $text .= " " . $order->qty . " عدد";
+                    $text .= $newLine;
+                }
+//                $text .= "مبلغ کل فاکتور: ";
+//                $text .= number_format(invoice::find($invoice_id)->transaction_amount);
+//                $text .= $newLine;
+//                $text.= "شماره تماس مشتری: ";
+//                $text.=$userInfo->phone_number;
+//                $text .= $newLine;
+//                $text .="برای اطلاعات بیشتر شماره فاکتور بفرستید";
+//                $text .= $newLine;
+                $text .= "لغو ۱۱";
 
-                return redirect('/profile/order/' . $invoice_number);
+                $response = $client->request('GET', $endpoint, [
+                    'query' => [
+                        'receptor' => $receptor,
+                        'message' => $text,
+                    ]
+                ]);
+                $statusCode = $response->getStatusCode();
+                $content = $response->getBody();
+                if ($statusCode == 200) {
+                    return redirect('/profile/order/' . $invoice_number);
+
+                } else {
+                    return redirect('/profile/order/' . $invoice_number);
+                }
             }
         } else {
             foreach ($pre_order as $order) {
@@ -1076,6 +1123,57 @@ class mainController extends Controller
         curl_close($curl);
         return $result;
 
+    }
+
+    public function smsFactor(Request $request)
+    {
+        if ($request->keyword && $request->clientnumber) {
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
+            $client = new \GuzzleHttp\Client();
+            $receptor = $request->clientnumber;
+//            $text = "سفارش جدید";
+            $newLine = "\n";
+//            $text .= $newLine;
+//            $text .= "شماره فاکتور: ";
+//            $text .= $invoice->id;
+//            $text .= $newLine;
+//            foreach ($pre_order as $order) {
+//                $text .= "* ";
+//                $text .= Product::find($order->product_id)->name;
+//                if ($order->color_id != 0) {
+//                    $text .= " " . Color::find($order->color_id)->name;
+//                }
+//                if ($order->size_id != 0) {
+//                    $text .= " (" . size::find($order->size_id)->name.")";
+//                }
+//                $text .= " " . $order->qty . " عدد";
+//                $text .= $newLine;
+//            }
+//                $text .= "مبلغ کل فاکتور: ";
+//                $text .= number_format(invoice::find($invoice_id)->transaction_amount);
+//                $text .= $newLine;
+//                $text.= "شماره تماس مشتری: ";
+//                $text.=$userInfo->phone_number;
+//                $text .= $newLine;
+//                $text .="برای اطلاعات بیشتر شماره فاکتور بفرستید";
+//                $text .= $newLine;
+            $text = $request->keyword;
+            $text .= $newLine;
+            $text .= "لغو ۱۱";
+
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'message' => $text,
+                ]
+            ]);
+            $statusCode = $response->getStatusCode();
+            $content = $response->getBody();
+            if ($statusCode == 200) {
+                return "ok";
+            }
+        }
+        return "NOK";
     }
 }
 
