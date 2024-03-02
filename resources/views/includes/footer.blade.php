@@ -2,13 +2,9 @@
     <div class="flex-w footerContainer">
 
         <div class="footerMenus">
-            <div>
+            <div id="logosFooter">
                 <img src="/images/footer/footerLogo.svg" style="max-width:100px;margin-bottom: 8px;"/>
-                <a referrerpolicy='origin' target='_blank'
-                   href='https://trustseal.enamad.ir/?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'><img
-                        referrerpolicy='origin'
-                        src='https://trustseal.enamad.ir/logo.aspx?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'
-                        alt='' style='cursor:pointer' Code='e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'></a>
+
             </div>
             <div class="respon4 ">
                 <h4 class="s-text12 m-b-18" style="direction: rtl;text-align: right;font-weight:bold;">
@@ -160,4 +156,5 @@
 
 
     </div>
+
 </footer>
