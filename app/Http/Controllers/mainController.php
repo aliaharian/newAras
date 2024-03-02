@@ -1104,10 +1104,12 @@ class mainController extends Controller
                 $text .= $newLine;
                 $text .= "لغو ۱۱";
 
+                $sender = $request->sender;
                 $response = $client->request('GET', $endpoint, [
                     'query' => [
                         'receptor' => $receptor,
                         'message' => $text,
+                        'sender'=> $sender
                     ]
                 ]);
                 $statusCode = $response->getStatusCode();
