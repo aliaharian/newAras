@@ -127,9 +127,12 @@
 
     });
 
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
         $(function () {
-            $("#logosFooter").append(`<a referrerpolicy='origin' target='_blank'
+            let flag = true;
+            document.addEventListener("scroll", () => {
+                if (window.scrollY > 1000 && flag) {
+                    $("#logosFooter").append(`<a referrerpolicy='origin' target='_blank'
                    href='https://trustseal.enamad.ir/?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'><img
                         referrerpolicy='origin'
                         src='https://trustseal.enamad.ir/logo.aspx?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'
@@ -138,6 +141,10 @@
                      onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=366613&p=xlaogvkagvkagvkarfthxlao", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")'
                      alt='logo-samandehi'
                      src='https://logo.samandehi.ir/logo.aspx?id=366613&p=qftiwlbqwlbqwlbqnbpdqfti'/>`);
+                    flag = false;
+
+                }
+            })
         });
     });
 </script>
