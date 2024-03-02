@@ -11,7 +11,7 @@
 
 @else
     <div class="t-left s-text8 p-t-15" style="font-family: Montserrat-Regular!important;font-size: 12px;padding:15px 60px;background: #14334c;color:#fff;display:flex;">
-        ©2022 Arastowel
+        ©2024 Arastowel
         <div class="pull-left" style="position: relative;top:-3px;margin-left:36px;">
             <!--<a  title="موسسه نصیرزاده" href="https://nasirzadeh.com"   target="_blank" class="fs-18 color1 p-l-20 nsfooter" style="bottom: -33px;left: 66px;position: absolute;display: block; width: 30px;height: 30px;background-position: center;background-size: contain;background-repeat: no-repeat;padding-left: 45px;padding-bottom: 15px;"></a>-->
             <a  title="موسسه نصیرزاده" href="https://nasirzadeh.com" target="_blank" style="font-family: roboto !important;font-weight:500!important;left: 60px;width:232px;font-size: 8px!important;line-height:30px!important;padding-top: 3px;color:#96a6b3 !important">Designed by S.nasirzadeh /Developed By A.Aharian</a>
