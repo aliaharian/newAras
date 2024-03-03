@@ -66,8 +66,9 @@ class invoiceController extends Controller
 //            ]
 //        ]);
 
+        dd(strlen($request->arrival_date));
+
         if (strlen($request->arrival_date) > 1 ) {
-            dd(strlen($request->arrival_date));
 //            $client = new \GuzzleHttp\Client();
 //            $receptor = $invoice->phone_number;
 //            $token = $invoice->tracking_code;
