@@ -465,6 +465,23 @@ class ProfileController extends Controller
                     'sender' => "10000100088088"
                 ]
             ]);
+
+            //send to customer:
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+            $client = new \GuzzleHttp\Client();
+            $receptor = $invoice->phone_number;
+            $token = $invoice->tracking_code;
+            $token2 = number_format($invoice->transaction_amount)."تومان";
+            $template = "confirmBuy";
+
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'token2' => $token2,
+                    'template' => $template,
+                ]
+            ]);
 //            $statusCode = $response->getStatusCode();
 //            $content = $response->getBody();
         } else {
