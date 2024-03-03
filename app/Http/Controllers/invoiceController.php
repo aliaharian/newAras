@@ -57,32 +57,29 @@ class invoiceController extends Controller
         $token2 = str_replace(" ", "_", $request->toggle_option);
         $template = "changeState";
 
-//        $response = $client->request('GET', $endpoint, [
-//            'query' => [
-//                'receptor' => $receptor,
-//                'token' => $token,
-//                'token2' => $token2,
-//                'template' => $template,
-//            ]
-//        ]);
-
-        dd(strlen($request->arrival_date));
+        $response = $client->request('GET', $endpoint, [
+            'query' => [
+                'receptor' => $receptor,
+                'token' => $token,
+                'token2' => $token2,
+                'template' => $template,
+            ]
+        ]);
 
         if (strlen($request->arrival_date) > 1 ) {
-//            $client = new \GuzzleHttp\Client();
-//            $receptor = $invoice->phone_number;
-//            $token = $invoice->tracking_code;
-//            $token2 = str_replace(" ", "_", $request->arrival_date);
-//            $template = "sendTime";
-//
-//            $response = $client->request('GET', $endpoint, [
-//                'query' => [
-//                    'receptor' => $receptor,
-//                    'token' => $token,
-//                    'token2' => $token2,
-//                    'template' => $template,
-//                ]
-//            ]);
+            $receptor = $invoice->phone_number;
+            $token = $invoice->tracking_code;
+            $token2 = str_replace(" ", "_", $request->arrival_date);
+            $template = "sendTime";
+
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'token2' => $token2,
+                    'template' => $template,
+                ]
+            ]);
         }
 
 
