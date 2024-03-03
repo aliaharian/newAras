@@ -221,7 +221,7 @@
                 </div>
               </div>
               <div class="c-table-draught__row">
-                <div class="c-table-draught__col">نحوه ارسال سفارش: تحویل توسط حوله ارس (ارسال رایگان سفارش‌های بالاتر از ۵۰۰ هزار تومان)</div>
+                <div class="c-table-draught__col">نحوه ارسال سفارش: تحویل توسط حوله ارس (ارسال رایگان سفارش‌های بالاتر از ۲ میلیون تومان)</div>
                 <div class="c-table-draught__col">هزینه ارسال
                   : {{number_format($invoice->post_price)}} تومان
                 </div>

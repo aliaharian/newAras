@@ -117,7 +117,7 @@
                                 </div>
                                 <div class="c-profile-info__row">
                                     <div class="c-profile-info__label">نحوه ارسال سفارش</div>
-                                    <div class="c-profile-info__value">تحویل توسط حوله ارس (ارسال رایگان سفارش‌های بالاتر از ۵۰۰ هزار تومان)
+                                    <div class="c-profile-info__value">تحویل توسط حوله ارس (ارسال رایگان سفارش‌های بالاتر از ۲ میلیون تومان)
                                     </div>
                                 </div>
                                 <div class="c-profile-info__row">
