@@ -66,7 +66,7 @@ class invoiceController extends Controller
             ]
         ]);
 
-        if ($request->arrival_date !== "") {
+        if (strlen($request->arrival_date) > 1 ) {
             $client = new \GuzzleHttp\Client();
             $receptor = $invoice->phone_number;
             $token = $invoice->tracking_code;
