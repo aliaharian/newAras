@@ -17,35 +17,35 @@ class invoiceController extends Controller
      */
     public function index()
     {
-        $invoices=invoice::orderBy('id','DESC')->simplePaginate(10);
-        return view('admin.invoices.index',compact('invoices'));
+        $invoices = invoice::orderBy('id', 'DESC')->simplePaginate(10);
+        return view('admin.invoices.index', compact('invoices'));
     }
 
 
     public function show($id)
     {
-        $invoice=invoice::find($id);
-        $invoice_line_items=invoice_line_item::where('invoice_id',$id)->get();
-        return view('admin.invoices.show',compact('invoice','invoice_line_items'));
+        $invoice = invoice::find($id);
+        $invoice_line_items = invoice_line_item::where('invoice_id', $id)->get();
+        return view('admin.invoices.show', compact('invoice', 'invoice_line_items'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $invoice=invoice::find($id);
-        $invoice->status=$request->toggle_option;
-        $invoice->arrival_date=$request->arrival_date;
+        $invoice = invoice::find($id);
+        $invoice->status = $request->toggle_option;
+        $invoice->arrival_date = $request->arrival_date;
         $invoice->save();
 
 
-        $user_email=User::find(invoice::find($id)->user_id)->email;
-        $user_name=User::find(invoice::find($id)->user_id)->name.' '.User::find(invoice::find($id)->user_id)->last_name;
+        $user_email = User::find(invoice::find($id)->user_id)->email;
+        $user_name = User::find(invoice::find($id)->user_id)->name . ' ' . User::find(invoice::find($id)->user_id)->last_name;
 
 
         //send sms to customer
@@ -54,7 +54,7 @@ class invoiceController extends Controller
         $client = new \GuzzleHttp\Client();
         $receptor = $invoice->phone_number;
         $token = $invoice->tracking_code;
-        $token2 = $request->toggle_option;
+        $token2 = str_replace(" ", "_", $request->toggle_option);
         $template = "changeState";
 
         $response = $client->request('GET', $endpoint, [
@@ -66,11 +66,11 @@ class invoiceController extends Controller
             ]
         ]);
 
-        if($request->arrival_date !==""){
+        if ($request->arrival_date !== "") {
             $client = new \GuzzleHttp\Client();
             $receptor = $invoice->phone_number;
             $token = $invoice->tracking_code;
-            $token2 = $request->arrival_date;
+            $token2 = str_replace(" ", "_", $request->arrival_date);
             $template = "sendTime";
 
             $response = $client->request('GET', $endpoint, [
@@ -87,25 +87,25 @@ class invoiceController extends Controller
         $data = array('text' => '
 <p style="text-align: center">با تشکر از حسن انتخاب شما</p>
 <p style="text-align: center">وضعیت سفارش شما به کد '
-            .invoice::find($id)->invoice_number.'
+            . invoice::find($id)->invoice_number . '
 و کد پیگیری
-'.invoice::find($id)->tracking_code.'
+' . invoice::find($id)->tracking_code . '
 به حالت
 <b style="color: red;font-weight: 800">
-'.$request->toggle_option.'
+' . $request->toggle_option . '
 </b>
 تغییر یافت
 </p>
 <p style="text-align: center">
 تاریخ و زمان تحویل مرسوله به شما:
 <b style="color: red;font-weight: 800">
-'.$request->arrival_date.'
+' . $request->arrival_date . '
 </b>
 </p>
 
 ',
-            'title'=>'وضعیت سفارش شما تغییر یافت',
-            'subtitle'=>'در صورتی که مورد رخ داده بر خلاف چیزی است که با شما همانگ شده، از طریق شماره تماس های موجود در بخش تما با ما به ما اطلاع دهید. با تشکر');
+            'title' => 'وضعیت سفارش شما تغییر یافت',
+            'subtitle' => 'در صورتی که مورد رخ داده بر خلاف چیزی است که با شما همانگ شده، از طریق شماره تماس های موجود در بخش تما با ما به ما اطلاع دهید. با تشکر');
 //        Mail::send('blank-mail', $data, function($message) use($user_email,$user_name) {
 //            $message->to($user_email, $user_name)->subject
 //            ('تغییر وضعیت سفارش محصول از فروشگاه اینترنتی حوله ارس');
@@ -118,7 +118,7 @@ class invoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -130,8 +130,8 @@ class invoiceController extends Controller
 
     public function type($type)
     {
-            $invoices = invoice::where('status', 'LIKE', $type)->simplePaginate(10);
-            return view('admin.invoices.index', compact('invoices'));
+        $invoices = invoice::where('status', 'LIKE', $type)->simplePaginate(10);
+        return view('admin.invoices.index', compact('invoices'));
 
     }
 }
