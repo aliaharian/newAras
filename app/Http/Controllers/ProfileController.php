@@ -473,7 +473,7 @@ class ProfileController extends Controller
             $receptor = "09121331044";
             $token = $invoice->id;
             $token2 = number_format($invoice->transaction_amount);
-            $token3 = "https://arastowel.com/profile/show-order?order=" + $invoice->tracking_code;
+            $token3 = "https://arastowel.com/profile/show-order?order=" . $invoice->tracking_code;
             $template = "newOrderAdmin";
 
             $response = $client->request('GET', $endpoint, [
