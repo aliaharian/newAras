@@ -123,9 +123,11 @@
                             ۰۲۱-۸۸۹۳۲۷۶۸ &nbsp;<br/>
                             <i class="fa fa-mobile fa-2x" style="margin-left:5px;"></i>&zwnj;&nbsp;۰۹۱۲-۱۳۳۱۰۴۴</p>
 
-                        <p style="color: #14334c"><i class="fa fa-envelope-o" style="margin-left:5px;"></i><a
+                        <p style="color: #14334c;margin-bottom: 0"><i class="fa fa-envelope-o" style="margin-left:5px;"></i><a
                                 itemprop="email" title="ایمیل حوله ارس" href="mailto:info@arastowel.com"
                                 style="color: #14334c"> info[at]arastowel[dot]com </a></p>
+                        <p style="color: #ccc"><i class="fa fa-envelope-o"></i><a hreflang="en-us" itemprop="email" title="Aras towel email" href="mailto:admin@arastowel.com" style="color: #ccc"> admin[at]arastowel[dot]com </a></p>
+
 
 
                     </div>

@@ -10,6 +10,7 @@
                         <i class="fa fa-mobile fa-2x"></i> +98 912 725 5962&zwnj;&nbsp;</p>
 
                     <p style="color: #ccc"><i class="fa fa-envelope-o"></i><a hreflang="en-us" itemprop="email" title="Aras towel email" href="mailto:info@arastowel.com" style="color: #ccc"> info[at]arastowel[dot]com </a></p>
+                    <p style="color: #ccc"><i class="fa fa-envelope-o"></i><a hreflang="en-us" itemprop="email" title="Aras towel email" href="mailto:admin@arastowel.com" style="color: #ccc"> admin[at]arastowel[dot]com </a></p>
 
 
                 </div>
