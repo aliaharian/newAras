@@ -47,6 +47,43 @@ class invoiceController extends Controller
         $user_email=User::find(invoice::find($id)->user_id)->email;
         $user_name=User::find(invoice::find($id)->user_id)->name.' '.User::find(invoice::find($id)->user_id)->last_name;
 
+
+        //send sms to customer
+
+        $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+        $client = new \GuzzleHttp\Client();
+        $receptor = $invoice->phone_number;
+        $token = $invoice->tracking_code;
+        $token2 = $request->toggle_option;
+        $template = "changeState";
+
+        $response = $client->request('GET', $endpoint, [
+            'query' => [
+                'receptor' => $receptor,
+                'token' => $token,
+                'token2' => $token2,
+                'template' => $template,
+            ]
+        ]);
+
+        if($request->arrival_date !==""){
+            $client = new \GuzzleHttp\Client();
+            $receptor = $invoice->phone_number;
+            $token = $invoice->tracking_code;
+            $token2 = $request->arrival_date;
+            $template = "sendTime";
+
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'token2' => $token2,
+                    'template' => $template,
+                ]
+            ]);
+        }
+
+
         $data = array('text' => '
 <p style="text-align: center">با تشکر از حسن انتخاب شما</p>
 <p style="text-align: center">وضعیت سفارش شما به کد '

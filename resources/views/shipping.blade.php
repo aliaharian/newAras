@@ -91,16 +91,16 @@
                                                     <div class="c-checkout-paymethod__providers">
                                                         <div class="c-checkout-paymethod__providers-arrow"></div>
 
-                                                        <label class="">
-                                                <span class="c-ui-radio" data-event="change_online_bank">
-                                                    <input type="radio" name="bank_id" value="cash">
-                                                    <span class="c-ui-radio__check"></span>
-                                                </span>
-                                                            <span class="c-checkout-paymethod__source-title"
-                                                                  style="text-align: right;font-size: 13px;">پرداخت هنگام تحویل کالا</span>
-                                                            <img data-src="https://statics.arastowel.com/images/e-pay.png"
-                                                                 src="https://statics.arastowel.com/images/e-pay.png">
-                                                        </label>
+{{--                                                        <label class="">--}}
+{{--                                                <span class="c-ui-radio" data-event="change_online_bank">--}}
+{{--                                                    <input type="radio" name="bank_id" value="cash">--}}
+{{--                                                    <span class="c-ui-radio__check"></span>--}}
+{{--                                                </span>--}}
+{{--                                                            <span class="c-checkout-paymethod__source-title"--}}
+{{--                                                                  style="text-align: right;font-size: 13px;">پرداخت هنگام تحویل کالا</span>--}}
+{{--                                                            <img data-src="https://statics.arastowel.com/images/e-pay.png"--}}
+{{--                                                                 src="https://statics.arastowel.com/images/e-pay.png">--}}
+{{--                                                        </label>--}}
 
 
                                                         <label data-snt-event="dkPaymentPageClick">
