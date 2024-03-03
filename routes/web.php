@@ -89,6 +89,7 @@ Route::post('send-promotional-form','mainController@sendPromotionalForm')->name(
 Route::group(['middleware' => ['auth', 'verified','address','orders']], function() {
     Route::get('shipping','mainController@shipping')->name('shipping');
     Route::post('/invoice/create','mainController@createInvoice')->name('add-invoice');
+    Route::post('/order/pay','mainController@payFromGateway')->name('pay-from-gateway');
 });
 Route::group(['middleware' => ['orders']], function() {
     Route::get('cart','mainController@cart')->name('cart');

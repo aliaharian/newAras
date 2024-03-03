@@ -74,10 +74,20 @@
                                     <span>مبلغ قابل پرداخت:</span>
                                     @if($invoice->payed==0)
                                         {{number_format($invoice->transaction_amount)}}  تومان
-                                    @else
-                                        0
+                                <form method="post" action="{{route('pay-from-gateway')}}">
+                                    @csrf
+                                    <input type="text" name="invoice_number" hidden style="display: none;opacity: 0"
+                                           value="{{$invoice->invoice_number}}" readonly/>
+                                    <button
+                                        type="submit"
+                                        style="background-color:#4187c7;padding:4px 8px; border-radius: 8px;margin-right: 12px; color: #fff">
+                                        پرداخت از طریق در گاه بانکی
+                                    </button>
+                                </form>
+                                @else
+                                    0
                                     @endif
-                                </p>
+                                    </p>
                             </div>
                             <div class="c-profile-order-address__col">
                                 <p>
@@ -264,7 +274,7 @@
 @include('includes.footerLinks')
 @if(@$_GET['respMsg'])
     <script>
-        jQuery(function($) {
+        jQuery(function ($) {
 
             swal("{{$_GET['respMsg']}}");
 
