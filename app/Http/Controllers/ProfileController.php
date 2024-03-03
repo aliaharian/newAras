@@ -466,12 +466,33 @@ class ProfileController extends Controller
                 ]
             ]);
 
+
+            //send lookup admin
+
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+            $receptor = "09121331044";
+            $token = $invoice->id;
+            $token2 = number_format($invoice->transaction_amount);
+            $token3 = "https://arastowel.com/profile/show-order?order=" + $invoice->tracking_code;
+            $template = "newOrderAdmin";
+
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'token2' => $token2,
+                    'token3' => $token3,
+                    'template' => $template,
+                ]
+            ]);
+
+
             //send to customer:
             $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
             $client = new \GuzzleHttp\Client();
             $receptor = $invoice->phone_number;
             $token = $invoice->tracking_code;
-            $token2 = number_format($invoice->transaction_amount)."تومان";
+            $token2 = number_format($invoice->transaction_amount) . "تومان";
             $template = "confirmBuy";
 
             $response = $client->request('GET', $endpoint, [
