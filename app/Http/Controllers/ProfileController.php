@@ -427,84 +427,91 @@ class ProfileController extends Controller
             $invoice->payed = 1;
             $invoice->transaction_token = $rrn;
 
-            ////////////////////////
-            //send sms to admin
-            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
-            $client = new \GuzzleHttp\Client();
-            $receptor = "09127257962,09127942759";
-            $text = "سفارش جدید";
-            $newLine = "\n";
-            $text .= $newLine;
-            $text .= "شماره فاکتور: ";
-            $text .= $invoice->id;
-            $text .= $newLine;
-            $orders = invoice_line_item::where("invoice_id", $invoice->id)->get();
-            foreach ($orders as $order) {
-                $text .= "* ";
-                $text .= Product::find($order->product_id)->name;
-                if ($order->color_id != 0) {
-                    $text .= " " . Color::find($order->color_id)->name;
-                }
-                if ($order->size_id != 0) {
-                    $text .= " (" . size::find($order->size_id)->name . ")";
-                }
-                $text .= " " . $order->qty . " عدد";
+            try {
+                ////////////////////////
+                //send sms to admin
+                $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
+                $client = new \GuzzleHttp\Client();
+                $receptor = "09127257962,09127942759";
+                $text = "سفارش جدید";
+                $newLine = "\n";
                 $text .= $newLine;
+                $text .= "شماره فاکتور: ";
+                $text .= $invoice->id;
+                $text .= $newLine;
+                $orders = invoice_line_item::where("invoice_id", $invoice->id)->get();
+                foreach ($orders as $order) {
+                    $text .= "* ";
+                    $text .= Product::find($order->product_id)->name;
+                    if ($order->color_id != 0) {
+                        $text .= " " . Color::find($order->color_id)->name;
+                    }
+                    if ($order->size_id != 0) {
+                        $text .= " (" . size::find($order->size_id)->name . ")";
+                    }
+                    $text .= " " . $order->qty . " عدد";
+                    $text .= $newLine;
+                }
+                $text .= "اطلاعات کامل: ";
+                $text .= "aras" . $invoice->id;
+                $text .= "به 10000100088088";
+
+                $text .= $newLine;
+                $text .= "لغو ۱۱";
+
+                $response = $client->request('GET', $endpoint, [
+                    'query' => [
+                        'receptor' => $receptor,
+                        'message' => $text,
+                        'sender' => "10000100088088"
+                    ]
+                ]);
+            } catch (\Exception $e) {
             }
-            $text .= "اطلاعات کامل: ";
-            $text .= "aras" . $invoice->id;
-            $text .= "به 10000100088088";
-
-            $text .= $newLine;
-            $text .= "لغو ۱۱";
-
-            $response = $client->request('GET', $endpoint, [
-                'query' => [
-                    'receptor' => $receptor,
-                    'message' => $text,
-                    'sender' => "10000100088088"
-                ]
-            ]);
 
 
             //send lookup admin
+            try {
+                $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+                $receptor = "09121331044";
+                $token = $invoice->id;
+                $token2 = number_format($invoice->transaction_amount);
+                $token3 = "https://arastowel.com/profile/show-order?order=" . $invoice->tracking_code;
+                $template = "newOrderAdmin";
 
-            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
-            $receptor = "09121331044";
-            $token = $invoice->id;
-            $token2 = number_format($invoice->transaction_amount);
-            $token3 = "https://arastowel.com/profile/show-order?order=" . $invoice->tracking_code;
-            $template = "newOrderAdmin";
-
-            $response = $client->request('GET', $endpoint, [
-                'query' => [
-                    'receptor' => $receptor,
-                    'token' => $token,
-                    'token2' => $token2,
-                    'token3' => $token3,
-                    'template' => $template,
-                ]
-            ]);
-
+                $response = $client->request('GET', $endpoint, [
+                    'query' => [
+                        'receptor' => $receptor,
+                        'token' => $token,
+                        'token2' => $token2,
+                        'token3' => $token3,
+                        'template' => $template,
+                    ]
+                ]);
+            } catch (\Exception $e) {
+            }
 
             //send to customer:
-            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
-            $client = new \GuzzleHttp\Client();
-            $receptor = $invoice->phone_number;
-            $token = $invoice->tracking_code;
-            $token2 = number_format($invoice->transaction_amount) . "تومان";
-            $template = "confirmBuy";
+            try {
+                $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+                $client = new \GuzzleHttp\Client();
+                $receptor = $invoice->phone_number;
+                $token = $invoice->tracking_code;
+                $token2 = number_format($invoice->transaction_amount) . "تومان";
+                $template = "confirmBuy";
 
-            $response = $client->request('GET', $endpoint, [
-                'query' => [
-                    'receptor' => $receptor,
-                    'token' => $token,
-                    'token2' => $token2,
-                    'template' => $template,
-                ]
-            ]);
+                $response = $client->request('GET', $endpoint, [
+                    'query' => [
+                        'receptor' => $receptor,
+                        'token' => $token,
+                        'token2' => $token2,
+                        'template' => $template,
+                    ]
+                ]);
 //            $statusCode = $response->getStatusCode();
 //            $content = $response->getBody();
+            } catch (\Exception $e) {
+            }
         } else {
             $invoice->payed = 0;
         }

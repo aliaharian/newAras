@@ -14,15 +14,19 @@ class usersController extends Controller
      */
     public function index()
     {
-        $users=User::orderBy('id','DESC')->paginate(999999999999);
-        return view('admin.users.index',compact('users'));
+        $users = User::orderBy('id', 'DESC')->get();
+        foreach ($users as $user) {
+            $user->additionalInformation;
+        }
+//        return response()->json($users);
+        return view('admin.users.index', compact('users'));
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

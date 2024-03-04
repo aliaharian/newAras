@@ -64,73 +64,77 @@ class RegisterController extends Controller
     {
         $attach = null;
         $percent = 0;
-        if($request->promo){
-            if($request->promo == "newYear1403"){
-                $attach="جشنواره تخفیف نوروز ۱۴۰۳";
+        if ($request->promo) {
+            if ($request->promo == "newYear1403") {
+                $attach = "جشنواره تخفیف نوروز ۱۴۰۳";
                 $percent = 10;
             }
-            if($request->promo == "newYear1403Pro"){
-                $attach="جشنواره تخفیف ویژه نوروز ۱۴۰۳";
+            if ($request->promo == "newYear1403Pro") {
+                $attach = "جشنواره تخفیف ویژه نوروز ۱۴۰۳";
                 $percent = 25;
             }
         }
-        return view("auth.register",compact("attach","percent"));
+        return view("auth.register", compact("attach", "percent"));
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
      * @param array $data
-     * @return \App\User
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function create(array $data)
     {
-        //generate rand 4 digits
-        $code = rand(pow(10, 4 - 1), pow(10, 4) - 1);
+        try {
+            //generate rand 4 digits
+            $code = rand(pow(10, 4 - 1), pow(10, 4) - 1);
 
-        //send sms
+            //send sms
 
-        $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
-        $client = new \GuzzleHttp\Client();
-        $receptor = $data["mobile"];
-        $token = $code;
-        $template = "verify";
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+            $client = new \GuzzleHttp\Client();
+            $receptor = $data["mobile"];
+            $token = $code;
+            $template = "verify";
 
-        $response = $client->request('GET', $endpoint, [
-            'query' => [
-                'receptor' => $receptor,
-                'token' => $token,
-                'template' => $template,
-            ]
-        ]);
-        $statusCode = $response->getStatusCode();
-        $content = $response->getBody();
-        if ($statusCode == 200) {
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'template' => $template,
+                ]
+            ]);
+            $statusCode = $response->getStatusCode();
+            $content = $response->getBody();
+            if ($statusCode == 200) {
 
-            $user = User::create([
-                'name' => $data['name'],
-                'last_name' => $data['last_name'],
+                $user = User::create([
+                    'name' => $data['name'],
+                    'last_name' => $data['last_name'],
 //            'email' => $data['email'],
-                'google_id' => $code,
-                'password' => Hash::make($data['password']),
-            ]);
-            $additional = Additional_information::create([
-                "user_id" => $user->id,
-                "phone_number" => $data["mobile"]
-            ]);
-            if(@$data["percent"]){
-                //submit gift code
-                $giftController = new giftController();
-                $req = new Request([
-                    'user_id'=>$user->id,
-                    'percent'=>$data["percent"]
+                    'google_id' => $code,
+                    'password' => Hash::make($data['password']),
                 ]);
-                $giftController->store($req);
-            }
+                $additional = Additional_information::create([
+                    "user_id" => $user->id,
+                    "phone_number" => $data["mobile"]
+                ]);
+                if (@$data["percent"]) {
+                    //submit gift code
+                    $giftController = new giftController();
+                    $req = new Request([
+                        'user_id' => $user->id,
+                        'percent' => $data["percent"]
+                    ]);
+                    $giftController->store($req);
+                }
 
-            return $user;
+                return $user;
+            }
+            return back();
+        } catch (\Exception $e) {
+            return back();
         }
-        return back();
 
 
     }

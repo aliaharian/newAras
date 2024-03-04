@@ -25,8 +25,8 @@ class giftController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -34,73 +34,56 @@ class giftController extends Controller
             'percent' => 'required|digits_between:1,2|numeric',
         ]);
 
-                $seed = str_split('abcdefghijklmnopqrstuvwxyz'
-            .'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-            .'0123456789'); // and any other characters
+        $seed = str_split('abcdefghijklmnopqrstuvwxyz'
+            . 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            . '0123456789'); // and any other characters
         shuffle($seed); // probably optional since array_is randomized; this may be redundant
         $rand = '';
         foreach (array_rand($seed, 5) as $k) $rand .= $seed[$k];
 
-        $gift=new gift_card();
-        $gift->code=$rand;
-        $gift->user_id=$request->user_id;
-        $gift->percent=$request->percent;
+        $gift = new gift_card();
+        $gift->code = $rand;
+        $gift->user_id = $request->user_id;
+        $gift->percent = $request->percent;
         $gift->save();
 
-        $user_email=User::find($request->user_id)->email;
-        $user = User::find($request->user_id);
-        $mobile = Additional_information::where("user_id",$request->user_id)->first()->phone_number;
-        $user_name=User::find($request->user_id)->name.' '.User::find($request->user_id)->last_name;
+        try {
+            $mobile = Additional_information::where("user_id", $request->user_id)->first()->phone_number;
+            $user_name = User::find($request->user_id)->name . ' ' . User::find($request->user_id)->last_name;
 
-        $data = array('text' => '<h1 style="text-align:center;"> تخفیف
- ' .$request->percent.'
-  درصدی
-</h1>
-<h1 style="text-align:center;">:کد تخفیف
-<br>
- '.$rand.'
-</h1>
-',
-            'title'=>'تبریک! از طرف حوله ارس یک کارت تخفیف به شما تعلق گرفت',
-            'subtitle'=>'برای استفاده از کارت هدیه می توانید به سایت حوله ارس که در انتهای ایمیل موجود است مراجعه کنید و خرید خود را آغاز کنید ');
-//        Mail::send('blank-mail', $data, function($message) use($user_email,$user_name) {
-//            $message->to($user_email, $user_name)->subject
-//            ('کارت هدیه خرید از حوله ارس!');
-//            $message->from('gift@arastowel.com','حوله ارس');
-//        });
+            //send sms
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+            $client = new \GuzzleHttp\Client();
+            $receptor = $mobile;
+            $token = str_replace(" ", "_", $user_name);
+            $token2 = $request->percent;
+            $token3 = $rand;
+            $template = "discountCode";
 
-        //send sms
-        $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
-        $client = new \GuzzleHttp\Client();
-        $receptor = $mobile;
-        $token = str_replace(" ","_",$user_name);
-        $token2 = $request->percent;
-        $token3 = $rand;
-        $template = "discountCode";
-
-        $response = $client->request('GET', $endpoint, [
-            'query' => [
-                'receptor' => $receptor,
-                'token' => $token,
-                'token2' => $token2,
-                'token3' => $token3,
-                'template' => $template,
-            ]
-        ]);
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'token2' => $token2,
+                    'token3' => $token3,
+                    'template' => $template,
+                ]
+            ]);
+        } catch (\Exception $e) {
+        }
         return redirect('/aras-admin/gifts');
     }
-
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $gift=gift_card::find($id)->delete();
+        $gift = gift_card::find($id)->delete();
         return redirect('/aras-admin/gifts');
 
     }

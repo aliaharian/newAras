@@ -49,24 +49,26 @@ class invoiceController extends Controller
 
 
         //send sms to customer
+        try {
+            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
+            $client = new \GuzzleHttp\Client();
+            $receptor = $invoice->phone_number;
+            $token = $invoice->tracking_code;
+            $token2 = str_replace(" ", "_", $request->toggle_option);
+            $template = "changeState";
 
-        $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/verify/lookup.json';
-        $client = new \GuzzleHttp\Client();
-        $receptor = $invoice->phone_number;
-        $token = $invoice->tracking_code;
-        $token2 = str_replace(" ", "_", $request->toggle_option);
-        $template = "changeState";
+            $response = $client->request('GET', $endpoint, [
+                'query' => [
+                    'receptor' => $receptor,
+                    'token' => $token,
+                    'token2' => $token2,
+                    'template' => $template,
+                ]
+            ]);
+        } catch (\Exception $e) {
+        }
 
-        $response = $client->request('GET', $endpoint, [
-            'query' => [
-                'receptor' => $receptor,
-                'token' => $token,
-                'token2' => $token2,
-                'template' => $template,
-            ]
-        ]);
-
-        if (strlen($request->arrival_date) > 1 ) {
+        if (strlen($request->arrival_date) > 1) {
             $receptor = $invoice->phone_number;
             $token = $invoice->tracking_code;
             $token2 = str_replace(" ", "_", $request->arrival_date);

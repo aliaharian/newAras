@@ -944,13 +944,8 @@ class mainController extends Controller
                 }
 
 
-
-
-
-            }
-
-            else {
-                    return redirect('/profile/order/' . $invoice_number);
+            } else {
+                return redirect('/profile/order/' . $invoice_number);
             }
         } else {
             foreach ($pre_order as $order) {
@@ -1074,54 +1069,57 @@ class mainController extends Controller
 //Save string to log, use FILE_APPEND to append.
         file_put_contents(storage_path('log_' . date("j.n.Y") . '.log'), $log, FILE_APPEND);
 
-        if ($request->message && $request->keyword) {
-            $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
-            $client = new \GuzzleHttp\Client();
-            $receptor = $request->message;
-            $factorId = str_replace("aras", "", $request->keyword);
-            $invoice = invoice::find($factorId);
-            if ($invoice) {
-                $newLine = "\n";
-                $text = "شماره فاکتور: ";
-                $text .= $invoice->id;
-                $text .= $newLine;
-                $text .= "نام خریدار: ";
-                $text .= $invoice->full_name;
-                $text .= $newLine;
-                $text .= "تلفن: ";
-                $text .= $invoice->phone_number;
-                $text .= $newLine;
-                $text .= "آدرس: ";
-                $text .= $invoice->address;
-                $text .= $newLine;
-                $text .= "مبلغ کل: ";
-                $text .= number_format($invoice->transaction_amount);
-                $text .= "تومان";
-                $text .= $newLine;
-                $text .= "شماره تراکنش: ";
-                $text .= $invoice->transaction_number;
-                $text .= $newLine;
-                $text .= "شماره پیگیری بانک: ";
-                $text .= $invoice->transaction_token;
-                $text .= $newLine;
-                $text .= "لغو ۱۱";
+        try {
+            if ($request->message && $request->keyword) {
+                $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
+                $client = new \GuzzleHttp\Client();
+                $receptor = $request->message;
+                $factorId = str_replace("aras", "", $request->keyword);
+                $invoice = invoice::find($factorId);
+                if ($invoice) {
+                    $newLine = "\n";
+                    $text = "شماره فاکتور: ";
+                    $text .= $invoice->id;
+                    $text .= $newLine;
+                    $text .= "نام خریدار: ";
+                    $text .= $invoice->full_name;
+                    $text .= $newLine;
+                    $text .= "تلفن: ";
+                    $text .= $invoice->phone_number;
+                    $text .= $newLine;
+                    $text .= "آدرس: ";
+                    $text .= $invoice->address;
+                    $text .= $newLine;
+                    $text .= "مبلغ کل: ";
+                    $text .= number_format($invoice->transaction_amount);
+                    $text .= "تومان";
+                    $text .= $newLine;
+                    $text .= "شماره تراکنش: ";
+                    $text .= $invoice->transaction_number;
+                    $text .= $newLine;
+                    $text .= "شماره پیگیری بانک: ";
+                    $text .= $invoice->transaction_token;
+                    $text .= $newLine;
+                    $text .= "لغو ۱۱";
 
-                $sender = $request->sender;
-                $response = $client->request('GET', $endpoint, [
-                    'query' => [
-                        'receptor' => $receptor,
-                        'message' => $text,
-                        'sender'=> $sender
-                    ]
-                ]);
-                $statusCode = $response->getStatusCode();
-                $content = $response->getBody();
-                if ($statusCode == 200) {
-                    return "ok";
+                    $sender = $request->sender;
+                    $response = $client->request('GET', $endpoint, [
+                        'query' => [
+                            'receptor' => $receptor,
+                            'message' => $text,
+                            'sender' => $sender
+                        ]
+                    ]);
+                    $statusCode = $response->getStatusCode();
+                    $content = $response->getBody();
+                    if ($statusCode == 200) {
+                        return "ok";
+                    }
                 }
             }
+        } catch (\Exception $e) {
+            return $e;
         }
-
         return "NOK";
     }
 
@@ -1130,60 +1128,60 @@ class mainController extends Controller
         $invoice = invoice::where('invoice_number', $request->invoice_number)->first();
         $zarinpay = $invoice->transaction_amount;
         $invoice_number = $request->invoice_number;
-            $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186' . '&Payload=' . $invoice_number;
-            $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
-            $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
-            $decode_TokenArray = json_decode($TokenArray);
+        $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186' . '&Payload=' . $invoice_number;
+        $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
+        $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
+        $decode_TokenArray = json_decode($TokenArray);
 
 //                dd($decode_TokenArray);
-            $Status = $decode_TokenArray->Status;
-            $AccessToken = $decode_TokenArray->Accesstoken;
+        $Status = $decode_TokenArray->Status;
+        $AccessToken = $decode_TokenArray->Accesstoken;
 
 
-            if (!empty($AccessToken) && $Status == 0) {
-                $AddressIpgPay = "https://sepehr.shaparak.ir:8080/pay";
+        if (!empty($AccessToken) && $Status == 0) {
+            $AddressIpgPay = "https://sepehr.shaparak.ir:8080/pay";
 
-                ?>
+            ?>
 
 
-                <?php
-                sleep(10);
-                ?>
+            <?php
+            sleep(10);
+            ?>
 
-                <form action="<?php echo $AddressIpgPay; ?>" method="POST" id="ipg">
-                    <input name="TerminalID" type="hidden" required="required"
-                           value="98610186">
+            <form action="<?php echo $AddressIpgPay; ?>" method="POST" id="ipg">
+                <input name="TerminalID" type="hidden" required="required"
+                       value="98610186">
 
-                    <input name="token" type="hidden" required="required" value="<?php echo $AccessToken; ?>">
+                <input name="token" type="hidden" required="required" value="<?php echo $AccessToken; ?>">
 
-                    //select between GET = 1 or POST = 0
-                    <input name="getMethod" type="hidden" required="required" value="1">
+                //select between GET = 1 or POST = 0
+                <input name="getMethod" type="hidden" required="required" value="1">
 
-                    <!-- <input type="submit"/> -->
+                <!-- <input type="submit"/> -->
 
-                </form>
+            </form>
 
-                <script type="text/javascript">
-                    document.getElementById('ipg').submit(); // SUBMIT FORM
-                </script>
-                <?php
-            } else {
+            <script type="text/javascript">
+                document.getElementById('ipg').submit(); // SUBMIT FORM
+            </script>
+            <?php
+        } else {
 
-                $error_message = "  دریافت توکن با خطا مواجه شد !!! "
-                ?>
+            $error_message = "  دریافت توکن با خطا مواجه شد !!! "
+            ?>
 
-                <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET"
-                      id="error_token">
-                    <input name="respMsg" type="text" hidden required="required"
-                           value="<?php echo $error_message; ?>">
-                </form>
+            <form action="<?php echo route('pay-from-zarrin', [$invoice_number]); ?>" method="GET"
+                  id="error_token">
+                <input name="respMsg" type="text" hidden required="required"
+                       value="<?php echo $error_message; ?>">
+            </form>
 
-                <script type="text/javascript">
-                    document.getElementById('error_token').submit(); // SUBMIT FORM
-                </script>
-                <?php
+            <script type="text/javascript">
+                document.getElementById('error_token').submit(); // SUBMIT FORM
+            </script>
+            <?php
 
-            }
+        }
     }
 }
 

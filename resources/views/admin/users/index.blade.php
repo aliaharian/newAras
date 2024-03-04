@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> کاربران | حوله رزا</title>
+  <title> کاربران | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 
@@ -85,7 +85,7 @@
                   <tr>
                     <th class="mailbox-star">کد کاربر</th>
                     <th class="mailbox-star">نام و نام خانوادگی</th>
-                    <th class="mailbox-name">ایمیل</th>
+                    <th class="mailbox-name">موبایل/ایمیل</th>
                     <th class="mailbox-subject">وضعیت</th>
                     <th class="mailbox-subject">حذف</th>
                   </tr>
@@ -96,7 +96,7 @@
                   <tr>
                     <td class="mailbox-star">{{$user->id}}</td>
                     <td class="mailbox-star"><a> {{$user->name}} {{$user->last_name}}</a></td>
-                    <td class="mailbox-name">{{$user->email}}</td>
+                    <td class="mailbox-name">{{$user->additionalInformation?$user->additionalInformation->phone_number:$user->email}}</td>
                     <td class="mailbox-subject">@if($user->email_verified_at==null) غیر فعال @else فعال @endif </td>
                     <td class="mailbox-subject">
                       <form action="{{route('users.destroy',['user'=>$user->id])}}" method="post">

@@ -42,4 +42,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new MailResetPasswordToken($token));
     }
 
+    public function additionalInformation()
+    {
+     return $this->hasOne(Additional_information::class,"user_id","id");
+    }
+
 }
