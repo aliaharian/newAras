@@ -38,11 +38,21 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                    <h2 class="form-title text-sm-center" style="    font-size: 24px;
+                    <div
+                        style="display: flex;flex-direction: column;width:100%;align-items: center;justify-content: center">
+                        <h2 class="form-title text-sm-center" style="margin-bottom: 4px;    font-size: 24px;
     width: 200px;
     height: 40px;">ثبت نام در حوله ارس</h2>
-                    <form method="POST" action="register" class="register-form" id="register-form">
+                        @if($attach)
+                            <h2 style="font-size: 16px;font-weight: bold;color: #6dabe4">{{$attach}}</h2>
+                        @endif
+                    </div>
+
+                    <form method="POST" action="/register" class="register-form" id="register-form">
                         @csrf
+                        @if($percent>0)
+                            <input type="text" name="percent" hidden style="display: none" value="{{ $percent }}"/>
+                        @endif
 
                         @if ($errors->has('name'))
                             <div class=" alert alert-danger text-center" style="direction: rtl" role="alert">
@@ -50,9 +60,9 @@
                             </div>
                         @endif
 
-                        @if ($errors->has('email'))
+                        @if ($errors->has('mobile'))
                             <div class=" alert alert-danger text-center" style="direction: rtl" role="alert">
-                                {{ $errors->first('email') }}
+                                {{ $errors->first('mobile') }}
                             </div>
                         @endif
                         @if ($errors->has('password'))
@@ -89,8 +99,8 @@
 
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit" value="ثبت نام"/>
-{{--                            <a href="/auth/google" style="background-color: #fd2c27;" id="signin2" class="form-submit">--}}
-{{--                                ثبت نام با گوگل <i class="fa fa-google"> </i></a>--}}
+                            {{--                            <a href="/auth/google" style="background-color: #fd2c27;" id="signin2" class="form-submit">--}}
+                            {{--                                ثبت نام با گوگل <i class="fa fa-google"> </i></a>--}}
                         </div>
                         {{--     app('captcha')->render(); --}}
 

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name=”robots” content=”noindex,nofollow”>
 
-    <title>فراموشی کلمه عبور</title>
+    <title>تایید شماره موبایل</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="https://statics.arastowel.com/css/bootstrap.min.css">

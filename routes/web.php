@@ -95,7 +95,6 @@ Route::group(['middleware' => ['orders']], function() {
     Route::get('cart','mainController@cart')->name('cart');
     Route::post('add-gift','mainController@addGift')->name('add-gift');
     Route::put('delete-gift','mainController@deleteGift')->name('delete-gift');
-
 });
 
 
@@ -253,6 +252,8 @@ Route::get('send-campaign-gift','AjaxController@sendCampaignGift')->name('send-c
 //Auth routes
 Auth::routes(['verify' => true]);
 
+Route::get('/register','Auth\RegisterController@index')->name('registerPromo');
+Route::get('/register/{promo}','Auth\RegisterController@index')->name('registerPromo');
 Route::post('confirm-sms','Auth\VerificationController@confirmSms')->name('confirmSms');
 
 

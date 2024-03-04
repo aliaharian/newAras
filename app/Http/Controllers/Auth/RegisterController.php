@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Additional_information;
+use App\Http\Controllers\giftController;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,7 +56,21 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:255|persian_alpha',
             'mobile' => 'required|iran_mobile|unique:additional_informations,phone_number',
             'password' => 'required|string|min:6|confirmed',
+            'percent' => 'string|nullable'
         ]);
+    }
+
+    public function index(Request $request)
+    {
+        $attach = null;
+        $percent = 0;
+        if($request->promo){
+            if($request->promo == "newYear1402"){
+                $attach="جشنواره تخفیف نوروز ۱۴۰۲";
+                $percent = 10;
+            }
+        }
+        return view("auth.register",compact("attach","percent"));
     }
 
     /**
@@ -98,6 +114,15 @@ class RegisterController extends Controller
                 "user_id" => $user->id,
                 "phone_number" => $data["mobile"]
             ]);
+            if(@$data["percent"]){
+                //submit gift code
+                $giftController = new giftController();
+                $req = new Request([
+                    'user_id'=>$user->id,
+                    'percent'=>$data["percent"]
+                ]);
+                $giftController->store($req);
+            }
 
             return $user;
         }
