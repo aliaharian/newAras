@@ -252,7 +252,7 @@ Route::get('send-campaign-gift','AjaxController@sendCampaignGift')->name('send-c
 //Auth routes
 Auth::routes(['verify' => true]);
 
-Route::get('/register','Auth\RegisterController@index')->name('registerPromo');
+Route::get('/register','Auth\RegisterController@index')->name('register');
 Route::get('/register/{promo}','Auth\RegisterController@index')->name('registerPromo');
 Route::post('confirm-sms','Auth\VerificationController@confirmSms')->name('confirmSms');
 
