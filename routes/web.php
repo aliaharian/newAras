@@ -462,6 +462,9 @@ Route::get('show-colors',function (){
 
 Route::domain(env('APP_DEV_URL'))->group(function () {
     Route::get('checkFactor', "mainController@smsFactor");
+    Route::any('/{path?}', function(){
+        echo ":)";
+    });
 });
 
 Route::get('kave','mainController@kave');
