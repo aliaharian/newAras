@@ -1061,8 +1061,8 @@ class mainController extends Controller
     {
         //Something to write to txt log
         $log = "User: " . $_SERVER['REMOTE_ADDR'] . ' - ' . date("F j, Y, g:i a") . PHP_EOL .
-            "Requester: " . ($request->message) . PHP_EOL .
-            "Keyword: " . ($request->keyword) . PHP_EOL .
+            "Requester: " . ($request->from) . PHP_EOL .
+            "Keyword: " . ($request->message) . PHP_EOL .
             "Total keywords: " . print_r($_REQUEST, TRUE)
             . PHP_EOL .
             "-------------------------" . PHP_EOL;
@@ -1070,11 +1070,14 @@ class mainController extends Controller
         file_put_contents(storage_path('log_' . date("j.n.Y") . '.log'), $log, FILE_APPEND);
 
         try {
-            if ($request->message && $request->keyword) {
+            $mobile = $request->from;
+            $keyword = $request->message;
+            $sender = $request->to;
+            if ($mobile && $keyword && $sender) {
                 $endpoint = 'https://api.kavenegar.com/v1/614B7A514F4D3067754C4668474E626358616C50356C47467343782B516C6A56/sms/send.json';
                 $client = new \GuzzleHttp\Client();
-                $receptor = $request->message;
-                $factorId = str_replace("aras", "", $request->keyword);
+                $receptor = $mobile;
+                $factorId = str_replace("aras", "", $keyword);
                 $invoice = invoice::find($factorId);
                 if ($invoice) {
                     $newLine = "\n";
@@ -1102,7 +1105,7 @@ class mainController extends Controller
                     $text .= $newLine;
                     $text .= "لغو ۱۱";
 
-                    $sender = $request->sender;
+                    $sender = $sender;
                     $response = $client->request('GET', $endpoint, [
                         'query' => [
                             'receptor' => $receptor,
