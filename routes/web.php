@@ -16,6 +16,17 @@ use \Illuminate\Support\Facades\Redirect;
 //indexable routes
 Route::group(['middleware' => 'viewTracker'], function() {
 
+    Route::domain(env('APP_DEV_URL'))->group(function () {
+        Route::get('checkFactor', "mainController@smsFactor");
+        Route::any('/', function(){
+            echo ":)";
+        });
+        Route::any('/{path?}', function(){
+            echo ":)";
+        });
+    });
+
+
     Route::get('/', 'mainController@index')->name('index');
     Route::get('product', 'mainController@shop')->name('shop');
     Route::get('products/category/{category}', 'mainController@shopCategory')->name('shop.category');
@@ -460,15 +471,7 @@ Route::get('show-colors',function (){
     return view('all-colors');
 });
 
-Route::domain(env('APP_DEV_URL'))->group(function () {
-    Route::get('checkFactor', "mainController@smsFactor");
-    Route::any('/', function(){
-        echo ":)";
-    });
-    Route::any('/{path?}', function(){
-        echo ":)";
-    });
-});
+
 
 Route::get('kave','mainController@kave');
 
