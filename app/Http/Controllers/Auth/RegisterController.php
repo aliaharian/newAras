@@ -69,6 +69,10 @@ class RegisterController extends Controller
                 $attach="جشنواره تخفیف نوروز ۱۴۰۲";
                 $percent = 10;
             }
+            if($request->promo == "newYear1403Pro"){
+                $attach="جشنواره تخفیف ویژه نوروز ۱۴۰۲";
+                $percent = 25;
+            }
         }
         return view("auth.register",compact("attach","percent"));
     }
