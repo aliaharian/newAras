@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> تخفیف ویژه | حوله رزا</title>
+  <title> تخفیف ویژه | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> خبرنامه | حوله رزا</title>
+  <title> خبرنامه | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 

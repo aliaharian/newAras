@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> بلاگ | حوله رزا</title>
+  <title> بلاگ | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 

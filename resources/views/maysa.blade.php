@@ -163,7 +163,7 @@
                             افتخار داریم که ، لذت زیبایی را به شما تقدیم می داریم.
                            <br>
                             بهترین ها را به شما هدیه می کنیم ، شما نیز آن را به بهترین دوستانتان هدیه دهید.
-                            جهت مشاهده انواع<a title="حوله ارس" href="{{route('index')}}">حوله های ارس</a> ، <a title="حوله رزا" href="{{route('roza')}}">رزا</a> ، <a title="حوله مایسا" href="{{route('maysa')}}">مایسا</a> و <a title="حوله انارگل" href="{{route('anargol')}}">انارگل</a> به بخش<a href="{{route('shop')}}">فروشگاه</a>
+                            جهت مشاهده انواع<a title="حوله ارس" href="{{route('index')}}">حوله های ارس</a> ، <a title="حوله ارس" href="{{route('roza')}}">رزا</a> ، <a title="حوله مایسا" href="{{route('maysa')}}">مایسا</a> و <a title="حوله انارگل" href="{{route('anargol')}}">انارگل</a> به بخش<a href="{{route('shop')}}">فروشگاه</a>
                             مراجعه کنید.
                             </span>
                             <span class="c-footer__seo-readmore display-none" id="js-footer-readmore-content">

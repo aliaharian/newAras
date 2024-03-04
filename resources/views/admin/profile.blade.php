@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>پروفایل کاربری | حوله رزا</title>
+  <title>پروفایل کاربری | حوله ارس</title>
   @include('admin.includes.headerLinks')
 
 </head>

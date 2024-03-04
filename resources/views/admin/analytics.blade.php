@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>آنالیز بازدید | حوله رزا</title>
+    <title>آنالیز بازدید | حوله ارس</title>
     @include('admin.includes.headerLinks')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

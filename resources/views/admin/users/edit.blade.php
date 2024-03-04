@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> رنگ ها | حوله رزا</title>
+  <title> رنگ ها | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 

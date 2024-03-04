@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> حوله های خاص | حوله رزا</title>
+  <title> حوله های خاص | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 

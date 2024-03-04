@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>داشبورد ادمین | حوله رزا</title>
+    <title>داشبورد ادمین | حوله ارس</title>
     @include('admin.includes.headerLinks')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

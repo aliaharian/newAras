@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> شرکت کنندگان جشنواره | حوله رزا</title>
+  <title> شرکت کنندگان جشنواره | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 

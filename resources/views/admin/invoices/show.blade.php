@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> سفارشات | حوله رزا</title>
+  <title> سفارشات | حوله ارس</title>
   <link rel="stylesheet" href="{{asset('/css/profile.css')}}" />
 
   @include('admin.includes.headerLinks')

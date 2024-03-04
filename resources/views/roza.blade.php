@@ -66,7 +66,7 @@
       <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse" onclick="menu()"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand"><img alt="حوله رزا" src="https://statics.arastowel.com/roza/images/roza.png" style="width: 78px;"></a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse" onclick="menu()"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand"><img alt="حوله ارس" src="https://statics.arastowel.com/roza/images/roza.png" style="width: 78px;"></a>
           </div>
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">

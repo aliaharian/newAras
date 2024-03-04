@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>افزودن محصول | حوله رزا</title>
+  <title>افزودن محصول | حوله ارس</title>
 
   @include('admin.includes.headerLinks')
 <style>
