@@ -65,7 +65,7 @@ class RegisterController extends Controller
         $attach = null;
         $percent = 0;
         if($request->promo){
-            if($request->promo == "newYear1402"){
+            if($request->promo == "newYear1403"){
                 $attach="جشنواره تخفیف نوروز ۱۴۰۲";
                 $percent = 10;
             }
