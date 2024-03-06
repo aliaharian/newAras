@@ -12,15 +12,13 @@ class ApiProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-         $products= Product::where('published',1)->orderBy('qty','DESC')->orderBy('created_at','DESC')->get()->toArray();
-        return ($products);
-    //   $a=['name'=>'ali','last_name'=>'alavi','age'=>22];
-    //   print_r($a);
+        $products = Product::where('published', 1)->orderBy('qty', 'DESC')->orderBy('created_at', 'DESC')->get()->toArray();
 
+        return response()->json(["products" => $products]);
     }
 
     /**
@@ -36,7 +34,7 @@ class ApiProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +45,7 @@ class ApiProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -59,7 +57,7 @@ class ApiProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +68,8 @@ class ApiProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +80,7 @@ class ApiProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

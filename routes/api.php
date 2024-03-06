@@ -17,11 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('products', 'Api\ApiProductController');
+Route::get('homepage', 'Api\MainController@homepage');
 
 
 Route::post('/testfinger',function(Request $request){
-    
-    
+
+
     // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
     // $aa=$request->body;
     // $txt = $aa.'\n\n\n\n';
