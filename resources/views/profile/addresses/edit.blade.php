@@ -96,6 +96,31 @@
                                                     </div>
                                                    <div class="alert alert-info text-right">ثبت آدرس و سفارش اینترنتی فقط در استان تهران امکان پذیر است.<br>برای ثبت سفارش از استان های دیگر لطفا با شماره تلفن های درج شده در بخش تماس با ما یا پایین سایت تماس بگیرید</div>
                                                     <div class="c-form-checkout__row">
+
+                                                        <div
+                                                            class="c-form-checkout__col c-form-checkout__col--half">
+                                                            <div class="c-form-checkout__title">استان
+                                                                <span
+                                                                    class="c-form-checkout__required--star">*</span>
+                                                            </div>
+
+                                                            <div
+                                                                class="selectric-wrapper selectric-c-ui-select selectric-js-ui-select-search selectric-js-select-state">
+                                                                <div class="selectric-hide-select">
+                                                                    <select required class="provinces"
+                                                                            name="province" id="province"
+                                                                            style="width: 100%!important;text-align-all: right;height: 33px;">
+                                                                        @foreach($provinces as $province)
+                                                                            <option @if($addressid->province_id == $province->id) selected @endif value="{{$province->id}}"
+                                                                                    style="text-align:right;">{{$province->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="c-form-checkout__col c-form-checkout__col--half">
                                                             <div class="c-form-checkout__title">شهرستان
                                                 <span class="c-form-checkout__required--star">*</span>
@@ -104,9 +129,8 @@
                                                             <div class="selectric-wrapper selectric-c-ui-select selectric-js-ui-select-search selectric-js-select-state">
                                                                 <div class="selectric-hide-select">
                                                                     <select required class="countries" name="country" id="country" style="width: 100%!important;text-align-all: right;height: 33px;">
-                                                                        @foreach($countries as $country)
-                                                                            <option @if($country->id==$addressid->country_id) selected  @endif value="{{$country->id}}" style="text-align:right ">{{$country->name}}</option>
-                                                                        @endforeach
+                                                                        <option  selected  value="{{$addressid->country_id}}" style="text-align:right ">{{\App\country::where('id',$addressid->country_id)->value('name')}}</option>
+
                                                                     </select>
                                                                 </div>
 
@@ -183,6 +207,35 @@
     $("#mobile").inputmask({"mask": "09999999999"});
 
     jQuery(document).ready(function () {
+        jQuery('select.provinces').change(function (e) {
+            var selectedProvince = $(this).children("option:selected").val();
+
+            $body = $("body");
+
+            $(document).on({
+                ajaxStart: function () {
+                    $body.addClass("loading");
+                },
+                ajaxStop: function () {
+                    $body.removeClass("loading");
+                }
+            });
+
+            jQuery.ajax({
+
+                    url: "{{ route('selectCountry') }}",
+                    method: 'get',
+                    data: {
+                        selectedProvince: selectedProvince
+
+                    },
+                    success: function (response) {
+                        $('#country').html(response);
+                    }
+                }
+            )
+        });
+
         jQuery('select.countries').change(function (e) {
             var selectedCountry = $(this).children("option:selected").val();
 

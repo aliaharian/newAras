@@ -16,7 +16,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('products', 'Api\ApiProductController');
+Route::group(["prefix"=>"products"],function(){
+    Route::get('', 'Api\ApiProductController@index');
+    Route::get('{id}', 'Api\ApiProductController@show');
+});
+
 Route::get('homepage', 'Api\MainController@homepage');
 
 

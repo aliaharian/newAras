@@ -13,6 +13,7 @@ use App\invoice;
 use App\invoice_line_item;
 use App\Pre_order;
 use App\Product;
+use App\Province;
 use App\size;
 use App\User;
 use Illuminate\Http\Request;
@@ -231,8 +232,9 @@ class ProfileController extends Controller
 
     public function addAddress()
     {
-        $countries = country::where('province_id', 8)->paginate(9999999999);
-        return view('profile.addresses.create', compact('countries'));
+//        $countries = country::where('province_id', 8)->paginate(9999999999);
+        $provinces = Province::all();
+        return view('profile.addresses.create', compact('provinces'));
     }
 
     public function changepass(Request $request)
@@ -267,6 +269,7 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'full_name' => 'required|persian_alpha',
+            'province' => 'required',
             'country' => 'required',
             'city' => 'required',
             'address' => 'required|address',
@@ -275,6 +278,7 @@ class ProfileController extends Controller
 
         ],
             [
+                'province.required' => 'وارد کردن استان و شهر الزامی است',
                 'country.required' => 'وارد کردن شهرستان و شهر الزامی است',
 
                 'city.required' => 'وارد کردن شهرستان و شهر الزامی است',
@@ -294,7 +298,7 @@ class ProfileController extends Controller
             $address = new address();
             $address->user_id = Auth::user()->id;
             $address->name = $request->full_name;
-            $address->province_id = 8;
+            $address->province_id = $request->province;
             $address->country_id = $request->country;
             $address->city_id = $request->city;
             $address->address = $request->address;
@@ -328,8 +332,8 @@ class ProfileController extends Controller
     public function editAddress()
     {
         $addresses = address::where('user_id', Auth::user()->id)->paginate(1);
-        $countries = country::where('province_id', 8)->paginate(9999999999);
-        return view('profile.addresses.edit', compact('countries', 'addresses'));
+        $provinces = Province::all();
+        return view('profile.addresses.edit', compact('provinces', 'addresses'));
 
     }
 
@@ -337,6 +341,7 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'full_name' => 'required|persian_alpha',
+            'province' => 'required',
             'country' => 'required',
             'city' => 'required',
             'address' => 'required|address',
@@ -345,6 +350,7 @@ class ProfileController extends Controller
 
         ],
             [
+                'province.required' => 'وارد کردن استان و شهر الزامی است',
                 'country.required' => 'وارد کردن شهرستان و شهر الزامی است',
 
                 'city.required' => 'وارد کردن شهرستان و شهر الزامی است',
@@ -363,7 +369,7 @@ class ProfileController extends Controller
 
         $address->user_id = Auth::user()->id;
         $address->name = $request->full_name;
-        $address->province_id = 8;
+        $address->province_id = $request->province;
         $address->country_id = $request->country;
         $address->city_id = $request->city;
         $address->address = $request->address;

@@ -56,7 +56,7 @@
                                         <div class="c-profile-address-card__desc">
                                             <h4 class="js-address-full_name">{{$address->name}} {{$address->last_name}}</h4>
                                             <p class="c-checkout-address__text js-user-address">
-                                                استان <span  class="js-address-state">تهران</span>، شهرستان <span  class="js-address-city">{{\App\country::where('id',$address->country_id)->value('name')}}</span>،
+                                                استان <span  class="js-address-state">{{\App\Province::find($address->province_id)->name}}</span>، شهرستان <span  class="js-address-city">{{\App\country::where('id',$address->country_id)->value('name')}}</span>،
                                                 شهر <span  class="js-address-district">{{\App\city::where('id',$address->city_id)->value('name')}}</span>،
                                                 <span class="js-address-address-part">{{$address->address}}</span>
                                             </p>

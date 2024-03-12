@@ -240,6 +240,7 @@ Route::post('loadPrice','AjaxController@loadPrice')->name('loadPrice');
 Route::post('addToCart','AjaxController@addToCart')->name('addToCart');
 Route::post('deleteFromCart','AjaxController@deleteFromCart')->name('deleteFromCart');
 Route::get('addToWishlist','AjaxController@addToWishlist')->name('addToWishlist');
+Route::get('selectCountry','AjaxController@selectCountry')->name('selectCountry');
 Route::get('selectCity','AjaxController@selectCity')->name('selectCity');
 Route::get('newsletter','AjaxController@newsletter')->name('newsletter');
 Route::get('php-file',function (){

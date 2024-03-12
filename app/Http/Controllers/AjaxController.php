@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use App\city;
+use App\country;
 use App\favorite;
 use App\newsletter;
 use App\Pre_order;
@@ -170,11 +171,22 @@ class AjaxController extends Controller
         }
     }
 
+    public function selectCountry(Request $request)
+    {
+        if (isset($request->selectedProvince)) {
+            $selectedProvince = $request->selectedProvince;
+            $cities = country::where('province_id', $selectedProvince)->paginate(999999999);
+            return view('ajax.selectCity', compact('cities'));
+        } else {
+            return abort('403');
+        }
+    }
+
     public function selectCity(Request $request)
     {
         if (isset($request->selectedCountry)) {
             $selectedCountry = $request->selectedCountry;
-            $cities = city::where('province_id', 8)->where('county_id', $selectedCountry)->paginate(999999999);
+            $cities = city::where('county_id', $selectedCountry)->paginate(999999999);
             return view('ajax.selectCity', compact('cities'));
         } else {
             return abort('403');

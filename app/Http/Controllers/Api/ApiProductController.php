@@ -42,15 +42,15 @@ class ApiProductController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
+
+    public function show($id)
     {
-        return new ProductResource($product);
+        $product = Product::find($id);
+        $product->galleries;
+        $product->size;
+        $product->color;
+        $product->categories;
+        return response()->json(["product"=>$product]);
 
     }
 
