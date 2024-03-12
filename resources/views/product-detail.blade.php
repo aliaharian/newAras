@@ -599,6 +599,8 @@
                 method: 'post',
                 beforeSend: function (request) {
                     request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                    request.setRequestHeader("cache-control", "no-cache");
+
                 },
                 data: {
                     size: sizep,
@@ -634,6 +636,8 @@
                     method: 'post',
                     beforeSend: function (request) {
                         request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                        request.setRequestHeader("cache-control", "no-cache");
+
                     },
                     data: {
                         size: size,
@@ -714,6 +718,7 @@
                         method: 'post',
                         beforeSend: function (request) {
                             request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                            request.setRequestHeader("cache-control", "no-cache");
                         },
                         data: data,
                         success: function (response) {
