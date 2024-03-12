@@ -206,9 +206,14 @@
         $('video').trigger('pause');
     });
     jQuery(document).ready(function () {
+
         jQuery.ajax({
-                url: "{{ route('loadCartAsync') }}",
-                method: 'get',
+                url: "{{ route('loadCartAsync') }}?timestamp=" + new Date() * 1000,
+                method: 'post',
+                beforeSend: function (request) {
+                    request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                },
+                processData: false,
                 success: function (response) {
                     $("#cartPlace").html(response)
                 }
