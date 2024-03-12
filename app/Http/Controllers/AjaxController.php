@@ -34,6 +34,20 @@ class AjaxController extends Controller
         return view('ajax.addToCart');
     }
 
+    public function loadCartAsync()
+    {
+        $user_ip = $this->getUserIP();
+        $agent = new Agent();
+
+        $user_platform = $agent->platform();
+        $user_browser = $agent->browser();
+        $pre_order = Pre_order::where('user_ip', $user_ip)->where('user_platform', $user_platform)->where('user_browser', $user_browser)->get();
+        //return $pre_order;
+        return view('cartDetail', compact('pre_order'));
+
+
+    }
+
     function getUserIP()
     {
         // Get real visitor IP behind CloudFlare network
@@ -58,7 +72,8 @@ class AjaxController extends Controller
 
     public function addToCart(Request $request)
     {
-        if (isset($request->size)) {
+        //save if user logged in
+        if (isset($request->size) && isset($request->userId)) {
             $selectedSize = $request->size;
             $selectedColor = $request->color;
             $product_id = $request->product_id;

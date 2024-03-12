@@ -683,17 +683,30 @@
             if (color == 0 || size == 0) {
                 swal("ابتدا رنگ و سایز", "مورد نظر خود را انتخاب کنید", "error");
             } else {
-                jQuery.ajax({
+                //get prev cart
+                let cart = localStorage.getItem("arasCart");
+                if (cart) {
+                    cart = JSON.parse(cart);
+                }
+                const data = {
+                    userId: "{{$user?$user->id:""}}",
+                    size: size,
+                    color: color,
+                    product_id: $('#productId').val(),
+                    qty: $('#num-product').val()
+                };
+                if(cart){
+                    cart = [...cart, data]
+                }else{
+                    cart = [ data]
+                }
 
+                //save to localstorage
+                localStorage.setItem("arasCart", JSON.stringify(cart));
+                jQuery.ajax({
                         url: "{{ route('addToCart') }}",
                         method: 'get',
-                        data: {
-                            size: size,
-                            color: color,
-                            product_id: $('#productId').val(),
-                            qty: $('#num-product').val()
-
-                        },
+                        data: data,
                         success: function (response) {
                             $('.header-wrapicon2 ').html(response);
                             size = 0;
@@ -807,6 +820,7 @@
     }
 
 }
+
 
 
 

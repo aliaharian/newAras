@@ -104,6 +104,7 @@ Route::group(['middleware' => ['auth', 'verified','address','orders']], function
 });
 Route::group(['middleware' => ['orders']], function() {
     Route::get('cart','mainController@cart')->name('cart');
+    Route::get('loadCartAsync','AjaxController@loadCartAsync')->name('loadCartAsync');
     Route::post('add-gift','mainController@addGift')->name('add-gift');
     Route::put('delete-gift','mainController@deleteGift')->name('delete-gift');
 });

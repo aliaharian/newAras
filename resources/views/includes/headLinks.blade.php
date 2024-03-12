@@ -76,7 +76,7 @@
 
 <style>
     .displaynone{display:none}.modal{display:none;position:fixed;z-index:1000;top:0;left:0;height:100%;width:100%;background:rgba(255,255,255,1) 50% 50% no-repeat}body.loading .modal{overflow:hidden;display:block}.newprice{display:inline-block;direction:rtl;color:purple}.line-through{text-decoration:line-through!important;display:inline-block;direction:rtl}
-    figcaption{font-family: 'iranSans';text-align: center;font-size: 15px;} a{ font-family: 'iranSans';}
+    figcaption{font-family: 'iranSans';text-align: center;font-size: 15px;} a, div{ font-family: 'iranSans';}
 
     .select2-dropdown--below{
         z-index: 999999999!important;

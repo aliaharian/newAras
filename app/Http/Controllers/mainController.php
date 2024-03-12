@@ -136,11 +136,12 @@ class mainController extends Controller
     {
 
         $product = Product::find($product_id);
+        $user = Auth::user();
         if ($product != null) {
             $products = Product::where('published', 1)->paginate(99999999999);
             $sizes = product_to_size::all();
             $colors = product_to_color::all();
-            return view('product-detail', compact('product', 'product_title', 'products', 'sizes', 'colors'));
+            return view('product-detail', compact('product', 'product_title', 'products', 'sizes', 'colors', 'user'));
         } else {
             return abort('404');
         }

@@ -18,7 +18,7 @@
 </section>
 
 <!-- Cart -->
-<section class="cart bgwhite p-t-70 p-b-10 " style="direction: rtl;text-align: right;">
+<section class="cart bgwhite p-t-70 p-b-10 " id="cartPlace" style="direction: rtl;text-align: right;">
     <div class="container">
         <!-- Cart item -->
         <div class="container-table-cart pos-relative">
@@ -205,6 +205,18 @@
     $('body').on('hidden.bs.modal', '.modal', function () {
         $('video').trigger('pause');
     });
+    jQuery(document).ready(function () {
+        jQuery.ajax({
+                url: "{{ route('loadCartAsync') }}",
+                method: 'get',
+                success: function (response) {
+                    $("#cartPlace").html(response)
+                }
+            }
+        )
+    });
+
+
 </script>
 </body>
 </html>
