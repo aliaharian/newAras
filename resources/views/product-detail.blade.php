@@ -598,7 +598,7 @@
                 url: "{{ route('loadPrice') }}?timestamp=" + new Date() * 1000,
                 method: 'post',
                 beforeSend: function (request) {
-                    request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                    // request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
                     request.setRequestHeader("cache-control", "no-cache");
 
                 },
@@ -638,7 +638,7 @@
                     url: "{{ route('loadPrice') }}?timestamp=" + new Date() * 1000,
                     method: 'post',
                     beforeSend: function (request) {
-                        request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                        // request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
                         request.setRequestHeader("cache-control", "no-cache");
 
                     },
