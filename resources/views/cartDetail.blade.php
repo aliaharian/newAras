@@ -164,3 +164,10 @@
     @endif
 
 </div>
+<div class="size10 trans-0-4 m-t-10 m-b-10" style="margin: 45px auto">
+    <!-- Button -->
+    <a style="background-color: #ff9600;" title="فروشگاه" href="{{route('shop')}}"
+       class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+        بازگشت به فروشگاه
+    </a>
+</div>
