@@ -225,6 +225,9 @@
                 processData: false,
                 success: function (response) {
                     $("#cartPlace").html(response)
+                },
+                error: function (){
+                    window.location.reload();
                 }
             }
         )
