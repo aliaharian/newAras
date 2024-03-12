@@ -610,6 +610,9 @@
                 success: function (response) {
                     $('#variable_price').html(response);
                     size = 0;
+                },
+                error: function () {
+                    window.location.reload();
                 }
             }
         )
@@ -647,6 +650,9 @@
                     success: function (response) {
                         $('#variable_price').html(response);
                         size = 0;
+                    },
+                    error: function () {
+                        window.location.reload();
                     }
                 }
             )
@@ -742,6 +748,9 @@
                             //     type: "success",
                             //     confirmButtonText: "مشاهده سبد خرید",
                             // })
+                        },
+                        error: function () {
+                            window.location.reload();
                         }
                     }
                 )
@@ -851,6 +860,7 @@
     }
 
 }
+
 
 
 
