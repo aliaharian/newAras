@@ -22,26 +22,42 @@
 <script src="/panel-admin/js/demo.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script>
+    jQuery(document).ready(function () {
+        jQuery('#logout').click(function (e) {
+            e.preventDefault();
+            jQuery.ajax({
+                url: "{{ route('logout') }}",
+                method: 'post',
+                beforeSend: function (request) {
+                    request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                    request.setRequestHeader("cache-control", "no-cache");
+                },
+                success:function (){
+                    window.location.href="/"
+                }
+            });
+        });
+    });
+</script>
+<script>
 
-    CKEDITOR.replace( 'ckeditor', {
+    CKEDITOR.replace('ckeditor', {
         filebrowserBrowseUrl: '/roza-admin/elfinder/ckeditor',
-        contentsLangDirection : 'rtl'
+        contentsLangDirection: 'rtl'
     });
 
 
-
-
-
-    CKEDITOR.replace( 'ckeditorlongdesc', {
+    CKEDITOR.replace('ckeditorlongdesc', {
         filebrowserBrowseUrl: '/roza-admin/elfinder/ckeditor',
-        contentsLangDirection : 'rtl'
+        contentsLangDirection: 'rtl'
 
     });
 
-    CKEDITOR.replace( 'ckeditorinfo', {
+    CKEDITOR.replace('ckeditorinfo', {
         filebrowserBrowseUrl: '/roza-admin/elfinder/ckeditor',
-        contentsLangDirection : 'rtl'
+        contentsLangDirection: 'rtl'
 
     });
+
 
 </script>

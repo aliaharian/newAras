@@ -1,4 +1,4 @@
-@include("includes.getUserIp");
+@include("includes.getUserIp")
 @php
     $user_ip = getUserIP();
              $agent = new \Jenssegers\Agent\Agent();

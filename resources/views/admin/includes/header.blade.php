@@ -55,15 +55,14 @@
                                 <a href="#" class="btn btn-default btn-flat">پروفایل</a>
                             </div>
                             <div class="pull-left">
-                                <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <a class="btn btn-default btn-flat" href="#"
+                                   id="logout">
                                     {{ __('خروج') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+{{--                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--                                    @csrf--}}
+{{--                                </form>--}}
                             </div>
                         </li>
                     </ul>
@@ -74,3 +73,4 @@
         </div>
     </nav>
 </header>
+
