@@ -164,4 +164,20 @@
     @endif
 
 </div>
+<script>
+    @if(count($pre_order)==0)
+    Swal.fire({
+        title: "سبد خرید شما خالی است",
+        text: "برای خرید به فروشگاه مراجعه کنید",
+        icon: 'warning',
+        confirmButtonText: 'مشاهده فروشگاه',
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            window.location.replace('/product');
+        }
+    });
+
+    @endif
+</script>
 
