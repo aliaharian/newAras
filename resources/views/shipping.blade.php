@@ -53,7 +53,7 @@
                                                                     class="js-recipient-post_code">{{$address->postal_code}}</span>
                                                         </div>
                                                         <br>
-                                                        استان <span>تهران</span>
+                                                        استان <span>{{\App\Province::where('id',$address->province_id)->value('name')}}</span>
                                                         ، شهرستان
                                                         <span>{{\App\country::where('id',$address->country_id)->value('name')}}</span>،
                                                         شهر

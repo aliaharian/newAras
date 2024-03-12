@@ -7,6 +7,7 @@ use App\Color;
 use App\countHome;
 use App\gift_card;
 use App\logHomeUsers;
+use App\Province;
 use App\size;
 use App\templateSetting;
 use Illuminate\Support\Facades\Input;
@@ -692,7 +693,7 @@ class mainController extends Controller
             $address = address::find($address_id);
             $invoice->full_name = $address->name . ' ' . $address->last_name;
             $invoice->phone_number = $address->phone_number;
-            $invoice->address = '  تهران- شهرستان ' . country::find($address->country_id)->name . '- شهر' . city::find($address->city_id)->name . '-' . $address->address . ' کد پستی :' . $address->postal_code;
+            $invoice->address =  Province::find($address->province_id)->name.' - شهرستان ' . country::find($address->country_id)->name . '- شهر' . city::find($address->city_id)->name . '-' . $address->address . ' کد پستی :' . $address->postal_code;
 
             ///
             /// /////for address
@@ -782,105 +783,6 @@ class mainController extends Controller
             }
 
 
-            $text = '<table dir="rtl" style="font-size:11px;" width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
-                            <tbody>
-                            <tr>
-                                <td style="width:790px;vertical-align:top;text-align:right;">
-                                    <div style="border:1px solid #3c3c3c;border-radius:5px;margin-left:8px;">
-                                        <table dir="rtl" style="min-height:99px;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
-                                            <tbody>
-                                            <tr>
-                                                <td rowspan="3" class="yiv1390015794buyer" style="width:34px;vertical-align:middle;">
-                                                </td>
-                                                <td style="width:200px;padding-right:10px;"><span style="font-weight:bold;">خریدار : ' . $address->name . ' ' . $address->last_name . '</span></td>
-                                                <td style="width:150px;"><span style="font-weight:bold;">وضعیت پرداخت : </span></td>
-                                                <td style="width:150px;"><span style="font-weight:bold;"></span></td>
-                                                <td style="width:150px;"><span style="font-weight:bold;"></span></td>
-                                            </tr>                                                    <tr>
-                                                <td colspan="4" style="padding-right:10px;"><span style="font-weight:bold;">نشانی : </span>  تهران- شهرستان ' . country::find($address->country_id)->name . '- شهر' . city::find($address->city_id)->name . '-' . $address->address . '</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="min-width:200px;padding-right:10px;"><span style="font-weight:bold;">شماره تماس : </span>' . $address->phone_number . '</td>
-                                                <td colspan="3"><span style="font-weight:bold;">کدپستی : </span>' . $address->postal_code . '</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                                <td style="width:192px;vertical-align:top;text-align:right;">
-                                    <div style="border:1px solid #3c3c3c;border-radius:5px;">
-                                        <table dir="rtl" style="min-height:99px;" width="100%" cellspacing="0" cellpadding="0" align="center">
-                                            <tbody>
-                                            <tr>
-                                                <td style="font-size:11px;min-height:25px;padding:0 15px;font-weight:bold;">تاریخ : </td>
-                                                <td>' . \Morilog\Jalali\CalendarUtils::strftime('d M Y', strtotime(invoice::find($invoice_id)->created_at)) . '</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="font-size:11px;min-height:25px;padding:0 15px;font-weight:bold;">شماره پیگیری : </td>
-                                                <td>' . invoice::find($invoice_id)->tracking_code . '</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="font-size:11px;min-height:25px;padding:0 15px;font-weight:bold;">کد مشتری : </td>
-                                                <td>' . Auth::user()->id . '</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <table dir="rtl" style="font-family:Tahoma;font-size:11px;text-align:center;border:1px solid #3c3c3c;" width="98%" cellspacing="0" cellpadding="0" align="center">
-                            <tbody>
-                            <tr style="background-color:#f0f0f0;">
-                                <td style="border-bottom:1px solid #3c3c3c;padding:5px 0;width:30px;">کد محصول</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;width:200px;">نام محصول</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;width:30px;">تعداد</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;width:100px;">قیمت واحد(تومان)</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;width:100px;">قیمت کل(تومان)</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;width:30px;">تخفیف(درصد)</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;width:100px;">قیمت نهایی (تومان)</td>
-                            </tr>';
-
-            foreach ($pre_order as $order) {
-                $pname = '<span>' . Product::find($order->product_id)->name . '</span>';
-
-                if ($order->color_id != 0 && $order->size_id == 0) {
-                    $pname .= ' <span>
-                رنگ
-                   ' . Color::find($order->color_id)->name . '</span>';
-                } elseif ($order->color_id != 0 && $order->size_id != 0) {
-                    $pname .= '<span>
-                                                    رنگ
-
-                                                    ' . Color::find($order->color_id)->name . '
-                                                    </span>
-                                                    <span>
-                سایز
-                                                    ' . size::find($order->size_id)->name . '
-                                                    </span>';
-                }
-                $text .= '<tr>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;">' . $order->product_id . '</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;">' . $pname . '</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;text-align:right;">' . $order->qty . '</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;text-align:right;">' . number_format($order->price) . '</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;">' . number_format($order->price * $order->qty) . '</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;">' . $order->off_percent . '</td>
-                                <td style="border-right:1px solid #3c3c3c;padding:5px 0;border-bottom:1px solid #3c3c3c;">' . number_format($order->off_price * $order->qty) . '</td>
-                            </tr>';
-            }
-            $text .= '<tr style="background-color:#f0f0f0;">
-                                <td colspan="4" style="border-top:1px solid #3c3c3c;text-align:right;padding-right:5px;min-height:30px;">
-                                    <span style="width:137px;display:inline-block;">هزینه ارسال : ' . @number_format(invoice::find($invoice_id)->post_price) . ' تومان</span>
-                                    <span style="width:136px;display:inline-block;">کارت هدیه :' . number_format($off_total_price * ($gift->value('percent')) / 100) . ' تومان</span>
-                                </td>
-                                <td colspan="2" style="font-weight:bold;font-size:11px;border-right:1px solid #3c3c3c;border-top:1px solid #3c3c3c;">جمع مبلغ کل پس از تخفیف و هزینه ارسال(تومان)</td>
-                                <td style="border-right:1px solid #3c3c3c;border-top:1px solid #3c3c3c;">' . number_format(invoice::find($invoice_id)->transaction_amount) . '</td>
-                            </tr>
-                            </tbody>
-                        </table>';
             if ($gift->count() != 0) {
                 $giftupdate = gift_card::find($gift->value('id'));
                 $giftupdate->used = 1;
