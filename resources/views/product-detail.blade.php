@@ -595,8 +595,11 @@
         $('#size' + sizep).addClass('selectedSize')
         jQuery.ajax({
 
-                url: "{{ route('loadPrice') }}",
-                method: 'get',
+                url: "{{ route('loadPrice') }}?timestamp=" + new Date() * 1000,
+                method: 'post',
+                beforeSend: function (request) {
+                    request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                },
                 data: {
                     size: sizep,
                     product_id: $('#productId').val()
@@ -627,8 +630,11 @@
 
             jQuery.ajax({
 
-                    url: "{{ route('loadPrice') }}",
-                    method: 'get',
+                    url: "{{ route('loadPrice') }}?timestamp=" + new Date() * 1000,
+                    method: 'post',
+                    beforeSend: function (request) {
+                        request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                    },
                     data: {
                         size: size,
                         product_id: $('#productId').val()
@@ -695,22 +701,42 @@
                     product_id: $('#productId').val(),
                     qty: $('#num-product').val()
                 };
-                if(cart){
+                if (cart) {
                     cart = [...cart, data]
-                }else{
-                    cart = [ data]
+                } else {
+                    cart = [data]
                 }
 
                 //save to localstorage
                 localStorage.setItem("arasCart", JSON.stringify(cart));
                 jQuery.ajax({
-                        url: "{{ route('addToCart') }}",
-                        method: 'get',
+                        url: "{{ route('addToCart') }}?timestamp=" + new Date() * 1000,
+                        method: 'post',
+                        beforeSend: function (request) {
+                            request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                        },
                         data: data,
                         success: function (response) {
                             $('.header-wrapicon2 ').html(response);
                             size = 0;
                             color = 0;
+                            Swal.fire({
+                                title: "محصول مورد نظر",
+                                text: "به سبد خرید افزوده شد",
+                                icon: 'success',
+                                confirmButtonText: 'مشاهده سبد خرید',
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    window.location.replace('/cart');
+                                }
+                            });
+                            // swal({
+                            //     title: "محصول مورد نظر",
+                            //     text: "به سبد خرید افزوده شد",
+                            //     type: "success",
+                            //     confirmButtonText: "مشاهده سبد خرید",
+                            // })
                         }
                     }
                 )
@@ -820,6 +846,13 @@
     }
 
 }
+
+
+
+
+
+
+
 
 
 

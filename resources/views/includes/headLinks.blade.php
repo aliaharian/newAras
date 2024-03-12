@@ -73,7 +73,8 @@
 <script src="/js/jquery.min.js"></script>
 
 <script src="/packages/owl/owl.carousel.min.js"></script>
-
+<script src="/js/sweetalert2.all.min.js"></script>
+<link href="/css/sweetalert2.min.css" rel="stylesheet">
 
 <style>
     .displaynone{display:none}.modal{display:none;position:fixed;z-index:1000;top:0;left:0;height:100%;width:100%;background:rgba(255,255,255,1) 50% 50% no-repeat}body.loading .modal{overflow:hidden;display:block}.newprice{display:inline-block;direction:rtl;color:purple}.line-through{text-decoration:line-through!important;display:inline-block;direction:rtl}

@@ -236,9 +236,9 @@ Route::group(['prefix'=>'profile','middleware'=>['auth','verified']], function()
 
 
 //ajax routes
-Route::get('loadPrice','AjaxController@loadPrice')->name('loadPrice');
-Route::get('addToCart','AjaxController@addToCart')->name('addToCart');
-Route::get('deleteFromCart','AjaxController@deleteFromCart')->name('deleteFromCart');
+Route::post('loadPrice','AjaxController@loadPrice')->name('loadPrice');
+Route::post('addToCart','AjaxController@addToCart')->name('addToCart');
+Route::post('deleteFromCart','AjaxController@deleteFromCart')->name('deleteFromCart');
 Route::get('addToWishlist','AjaxController@addToWishlist')->name('addToWishlist');
 Route::get('selectCity','AjaxController@selectCity')->name('selectCity');
 Route::get('newsletter','AjaxController@newsletter')->name('newsletter');

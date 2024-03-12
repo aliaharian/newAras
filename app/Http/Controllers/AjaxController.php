@@ -73,7 +73,7 @@ class AjaxController extends Controller
     public function addToCart(Request $request)
     {
         //save if user logged in
-        if (isset($request->size) && isset($request->userId)) {
+        if (isset($request->size)) {
             $selectedSize = $request->size;
             $selectedColor = $request->color;
             $product_id = $request->product_id;

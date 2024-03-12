@@ -87,9 +87,9 @@
         $('.header-cart').toggleClass('show-header-dropdown');
     }
 
-    jQuery(document).ready(function () {
-        window.location.replace('/cart');
-    });
+    // jQuery(document).ready(function () {
+    //     window.location.replace('/cart');
+    // });
 
 </script>
 

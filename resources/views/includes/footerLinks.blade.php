@@ -11,8 +11,11 @@
                 $body.removeClass("loading")
             }
         }), jQuery.ajax({
-            url: "{{ route('deleteFromCart') }}",
-            method: "get",
+            url: "{{ route('deleteFromCart') }}?timestamp=" + new Date() * 1000,
+            method: "post",
+            beforeSend: function (request) {
+                request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+            },
             data: {pre_order_id: o},
             success: function (t) {
                 $(".header-wrapicon2 ").html(t)
@@ -23,11 +26,13 @@
     $(".selection-1").select2({
         minimumResultsForSearch: 20,
         dropdownParent: $("#dropDownSelect1")
-    }), $(".addtocart").each(function () {
-        $(this).on("click", function () {
-            swal("محصول مورد نظر", "به سبد خرید افزوده شد", "success")
-        })
-    }), $(".addtocartfake").each(function () {
+    })
+    //     $(".addtocart").each(function () {
+    //     $(this).on("click", function () {
+    //         swal("محصول مورد نظر", "به سبد خرید افزوده شد", "success")
+    //     })
+    // })
+        , $(".addtocartfake").each(function () {
         $(this).on("click", function () {
             swal("ابتدا رنگ و سایز", "مورد نظر خود را انتخاب کنید", "error")
         })
