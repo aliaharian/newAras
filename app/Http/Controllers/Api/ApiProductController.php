@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Product;
+use App\product_to_size;
 use Illuminate\Http\Request;
 
 class ApiProductController extends Controller
@@ -16,9 +17,18 @@ class ApiProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('published', 1)->orderBy('qty', 'DESC')->orderBy('created_at', 'DESC')->get()->toArray();
+        $products = Product::whereHas('categories', function ($q) {
+            $q->where('english_name', '<>', 'promotional-towel')->where('english_name', '<>', 'gift-towel');
+        })->where('published', 1)->with(['categories' => function ($q) {
+            $q->where('english_name', '<>', 'promotional-towel')->where('english_name', '<>', 'gift-towel');
+        }])->where('published', 1)->orderBy('qty', 'desc')->get();
 
         return response()->json(["products" => $products]);
+    }
+
+    public function list()
+    {
+        
     }
 
     /**
@@ -47,9 +57,12 @@ class ApiProductController extends Controller
     {
         $product = Product::find($id);
         $product->galleries;
-        $product->size;
+//        $product->size;
         $product->color;
         $product->categories;
+        foreach ($product->size as $size){
+            $size->price = product_to_size::where("product_id",$id)->where("size_id",$size->id)->first()->price;
+        }
         return response()->json(["product"=>$product]);
 
     }
@@ -87,4 +100,6 @@ class ApiProductController extends Controller
     {
         //
     }
+
+
 }

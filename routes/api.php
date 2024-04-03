@@ -18,10 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(["prefix"=>"products"],function(){
     Route::get('', 'Api\ApiProductController@index');
+    Route::get('list', 'Api\ApiProductController@list');
     Route::get('{id}', 'Api\ApiProductController@show');
 });
 
 Route::get('homepage', 'Api\MainController@homepage');
+Route::post('loadCart', 'Api\MainController@loadCart');
 
 
 Route::post('/testfinger',function(Request $request){
