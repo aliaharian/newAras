@@ -138,7 +138,7 @@
             document.addEventListener("scroll", () => {
                 if (window.scrollY > 1000 && flag) {
                     $("#logosFooter").append(`
-<div style="display: flex">
+<div style="display: flex;flex-direction: column">
 
 <a style="display: block;
     border: 1px solid #4187c7;
