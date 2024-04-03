@@ -27,11 +27,11 @@
         minimumResultsForSearch: 20,
         dropdownParent: $("#dropDownSelect1")
     })
-    //     $(".addtocart").each(function () {
-    //     $(this).on("click", function () {
-    //         swal("محصول مورد نظر", "به سبد خرید افزوده شد", "success")
-    //     })
-    // })
+        //     $(".addtocart").each(function () {
+        //     $(this).on("click", function () {
+        //         swal("محصول مورد نظر", "به سبد خرید افزوده شد", "success")
+        //     })
+        // })
         , $(".addtocartfake").each(function () {
         $(this).on("click", function () {
             swal("ابتدا رنگ و سایز", "مورد نظر خود را انتخاب کنید", "error")
@@ -137,12 +137,23 @@
             let flag = true;
             document.addEventListener("scroll", () => {
                 if (window.scrollY > 1000 && flag) {
-                    $("#logosFooter").append(`<a referrerpolicy='origin' target='_blank'
+                    $("#logosFooter").append(`<a style="display: block;
+    border: 1px solid #4187c7;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+}" referrerpolicy='origin' target='_blank'
                    href='https://trustseal.enamad.ir/?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'><img
                         referrerpolicy='origin'
                         src='https://trustseal.enamad.ir/logo.aspx?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'
                         alt='' style='cursor:pointer;max-width: 100%;' Code='e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'></a>
-                <img referrerpolicy='origin' id='rgvjfukzfukzfukzjxlzrgvj' style='cursor:pointer;max-width: 100%;'
+                <img referrerpolicy='origin' id='rgvjfukzfukzfukzjxlzrgvj' style='cursor:pointer;max-width: 100%;
+    display: block;
+    border: 1px solid #4187c7;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+'
                      onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=366613&p=xlaogvkagvkagvkarfthxlao", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")'
                      alt='logo-samandehi'
                      src='https://logo.samandehi.ir/logo.aspx?id=366613&p=qftiwlbqwlbqwlbqnbpdqfti'/>`);
