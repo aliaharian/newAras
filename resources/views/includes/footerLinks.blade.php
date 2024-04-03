@@ -137,7 +137,10 @@
             let flag = true;
             document.addEventListener("scroll", () => {
                 if (window.scrollY > 1000 && flag) {
-                    $("#logosFooter").append(`<a style="display: block;
+                    $("#logosFooter").append(`
+<div style="display: flex">
+
+<a style="display: block;
     border: 1px solid #4187c7;
     padding: 12px;
     border-radius: 8px;
@@ -160,7 +163,9 @@ style="width: 100%;height:100%;object-fit: contain"
 '
                      onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=366613&p=xlaogvkagvkagvkarfthxlao", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")'
                      alt='logo-samandehi'
-                     src='https://logo.samandehi.ir/logo.aspx?id=366613&p=qftiwlbqwlbqwlbqnbpdqfti'/>`);
+                     src='https://logo.samandehi.ir/logo.aspx?id=366613&p=qftiwlbqwlbqwlbqnbpdqfti'/>
+</div>
+`);
                     flag = false;
 
                 }
