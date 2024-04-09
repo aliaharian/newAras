@@ -834,7 +834,7 @@
 
 <script>
     $(window).on("load", () => {
-        const worker = new Worker('./js/worker.js')
+        const worker = new Worker('../../js/worker.js')
         worker.postMessage({
             work: "loadProductGallery",
             id: "{{$product->id}}",
