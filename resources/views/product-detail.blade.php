@@ -323,8 +323,10 @@
                     <div class="slick3">
                         <div class="item-slick3 mainimagethumb"
                              data-thumb="<?=Croppa::url($product->image, 86, 115); ?>">
-                            <div class="wrap-pic-w zoomi">
+                            <div class="wrap-pic-w zoomi"
+                                 style="display: flex;align-items: center;justify-content: center;">
                                 <img src="/files/loading.gif"
+                                     style="max-width: 40px;margin:50% 0;"
                                      alt="{{$product->name}}"
                                      class="mainimage" id="gallery{{$product->id}}0">
                             </div>
@@ -896,6 +898,7 @@
     }
 
 }
+
 
 
 
