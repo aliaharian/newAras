@@ -325,14 +325,18 @@
                              data-thumb="<?=Croppa::url($product->image, 86, 115); ?>">
                             <div class="wrap-pic-w zoomi">
                                 <img src="<?=Croppa::url($product->image, 1600, 1600); ?>" alt="{{$product->name}}"
-                                     class="mainimage">
+                                     class="mainimage" id="gallery{{$product->id}}0">
                             </div>
                         </div>
                         @foreach($product->galleries as $gallery)
                             <div class="item-slick3" data-thumb="<?=Croppa::url($gallery->address, 86, 115); ?>"
                                  onclick="changeimage('{{$gallery->address}}')">
-                                <div class="wrap-pic-w zoomi">
-                                    <img src="<?=Croppa::url($gallery->address, 1600, 1600); ?>" alt="{{$product->name}}">
+                                <div class="wrap-pic-w zoomi"
+                                     style="display: flex;align-items: center;justify-content: center;">
+                                    <img id="gallery{{$product->id}}{{$gallery->id}}"
+                                         src="/files/loading.gif"
+                                         style="max-width: 40px;margin:50% 0;"
+                                         alt="{{$product->name}}">
                                 </div>
                             </div>
                         @endforeach
@@ -828,6 +832,37 @@
     }
 </script>
 
+<script>
+    $(window).on("load", () => {
+        const worker = new Worker('./js/worker.js')
+        worker.postMessage({
+            work: "loadProductGallery",
+            id: "{{$product->id}}",
+            galleryId: "0",
+            url: "<?=Croppa::url($product->image, 1600, 1600); ?>"
+        })
+        @foreach($product->galleries as $gallery)
+        worker.postMessage({
+            work: "loadProductGallery",
+            id: "{{$product->id}}",
+            galleryId: "{{$gallery->id}}",
+            url: "<?=Croppa::url($gallery->address, 1600, 1600); ?>"
+        })
+        @endforeach
+
+            worker.onmessage = (e) => {
+            if (e.data.work === "loadProductGallery") {
+                // console.log("url", URL.createObjectURL(e.data.value))
+                $(`#gallery${e.data.id}${e.data.galleryId}`).attr("src", URL.createObjectURL(e.data.value))
+                $(`#gallery${e.data.id}${e.data.galleryId}`).css("max-width", "unset")
+                $(`#gallery${e.data.id}${e.data.galleryId}`).css("margin", "unset")
+            }
+        }
+    })
+
+
+</script>
+
 
 <script type="application/ld+json">
                 {
@@ -860,24 +895,6 @@
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </script>
