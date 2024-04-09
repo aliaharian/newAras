@@ -729,12 +729,12 @@
         const worker = new Worker('./js/worker.js')
         @foreach($template as $temp)
         @if($temp->place=='introRight')
-        worker.postMessage("{{$temp->image}}");
+        worker.postMessage({work: "loadHomepageImage", url: "{{$temp->image}}"});
         @endif
         @endforeach
         // URL.createObjectURL(image)
         worker.onmessage = (e) => {
-            if (e.data.name === "introRight") {
+            if (e.data.work === "loadHomepageImage") {
                 // console.log("url", URL.createObjectURL(e.data.value))
                 $("#introRightImg").attr("src", URL.createObjectURL(e.data.value))
                 $("#introRightImg").css("display", "block")
@@ -742,7 +742,6 @@
 
             }
         }
-        // console.log("dsvsdvsvd")
     })
 
 
