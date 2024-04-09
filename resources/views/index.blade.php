@@ -149,7 +149,7 @@
         @foreach($template as $temp)
             @if($temp->place=='introRight')
                 <img id="introRightImg" style="display: none" src="" title="حوله تبلیغاتی ارس" alt="حوله تبلیغاتی ارس"/>
-                <img id="introRightImgLoader" style="max-width: 40px;" src="/files/loading.gif"/>
+                <img id="introRightImgLoader" style="max-width: 40px;margin:50% 0" src="/files/loading.gif"/>
             @endif
         @endforeach
     </div>
@@ -729,7 +729,7 @@
         const worker = new Worker('./js/worker.js')
         @foreach($template as $temp)
         @if($temp->place=='introRight')
-        worker.postMessage({work: "loadHomepageImage", url: "{{$temp->image}}"});
+        worker.postMessage({work: "loadHomepageImage", url: "<?=Croppa::url($temp->image, 1600, 1600); ?>"});
         @endif
         @endforeach
         // URL.createObjectURL(image)
