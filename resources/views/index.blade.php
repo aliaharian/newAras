@@ -144,11 +144,12 @@
             </div>
         </div>
     </div>
-    <div>
+    <div style="display: flex;justify-content: center">
 
         @foreach($template as $temp)
             @if($temp->place=='introRight')
-                <img src="{{$temp->image}}" title="حوله تبلیغاتی ارس" alt="حوله تبلیغاتی ارس"/>
+                <img id="introRightImg" style="display: none" src="" title="حوله تبلیغاتی ارس" alt="حوله تبلیغاتی ارس"/>
+                <img id="introRightImgLoader" style="max-width: 40px;" src="/files/loading.gif"/>
             @endif
         @endforeach
     </div>
@@ -312,7 +313,8 @@
                                     @endphp
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
-                                    <a href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C" class="homepageMoreLink">مشاهده بیشتر</a>
+                                    <a href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C"
+                                       class="homepageMoreLink">مشاهده بیشتر</a>
                                 </a>
                             </div>
                         @endif
@@ -335,7 +337,8 @@
                                     @endphp
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
-                                    <a href="/product/245/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%7C-MR-&-MRS-%7C--%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C" class="homepageMoreLink">مشاهده بیشتر</a>
+                                    <a href="/product/245/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%7C-MR-&-MRS-%7C--%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C"
+                                       class="homepageMoreLink">مشاهده بیشتر</a>
 
                                 </a>
                             </div>
@@ -360,7 +363,8 @@
                                     @endphp
                                     <h3>{{$names[0]}}</h3>
                                     <p>{{$names[1]}}</p>
-                                    <a href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C" class="homepageMoreLink">مشاهده بیشتر</a>
+                                    <a href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C"
+                                       class="homepageMoreLink">مشاهده بیشتر</a>
 
                                 </a>
                             </div>
@@ -686,6 +690,11 @@
 
 
 
+
+
+
+
+
 </script>
 
 
@@ -713,6 +722,30 @@
     function modal(d, l) {
         $(".modalPlace").html('<div id="img_popup" class="modal fade" style="background-color: rgba(0,0,0,0.5);z-index: 1400;" role="dialog">\n    <div class="modal-dialog" style="max-width: 743px">\n        <div class="modal-content" style="margin-top:14% ">\n            <div class="modal-body">\n                <p><img title="حوله تبلیغاتی ارس" alt="حوله تبلیغاتی ارس" style="width: 100%" src="' + d + '"/> </p>\n            </div>\n        </div>\n    </div>\n</div>')
     }
+</script>
+
+<script>
+    $(window).on("load", () => {
+        const worker = new Worker('./js/worker.js')
+        @foreach($template as $temp)
+        @if($temp->place=='introRight')
+        worker.postMessage("{{$temp->image}}");
+        @endif
+        @endforeach
+        // URL.createObjectURL(image)
+        worker.onmessage = (e) => {
+            if (e.data.name === "introRight") {
+                // console.log("url", URL.createObjectURL(e.data.value))
+                $("#introRightImg").attr("src", URL.createObjectURL(e.data.value))
+                $("#introRightImg").css("display", "block")
+                $("#introRightImgLoader").css("display", "none")
+
+            }
+        }
+        // console.log("dsvsdvsvd")
+    })
+
+
 </script>
 </body>
 </html>
