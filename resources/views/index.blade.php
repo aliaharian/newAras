@@ -729,7 +729,7 @@
         const worker = new Worker('./js/worker.js')
         @foreach($template as $temp)
         @if($temp->place=='introRight')
-        worker.postMessage({work: "loadHomepageImage", url: "<?=Croppa::url($temp->image, 1600, 1600); ?>"});
+        worker.postMessage({work: "loadHomepageImage", url: "{{$temp->image}}"});
         @endif
         @endforeach
         // URL.createObjectURL(image)
