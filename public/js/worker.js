@@ -12,6 +12,7 @@ self.onmessage = (e) => {
             })
             break;
         case "loadProductImage":
+            console.log("url is:",e.data.url)
             fetch(e.data.url).then((response) => {
                 return response.blob()
             }).then((blob) => {
