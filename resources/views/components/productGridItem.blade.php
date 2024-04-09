@@ -2,7 +2,7 @@
     <a href="{{route('shop.product',['product_id' => $product->id , 'product_name'=>str_replace(' ','-',$product->name)])}}">
 
         <img
-            src="{{$product->image}}"
+            src=""
             alt="{{$product->name}}"
             style="aspect-ratio: 1/1;display: none"
             id="imageProduct{{$product->id}}"
