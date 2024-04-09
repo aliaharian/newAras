@@ -94,7 +94,11 @@
         const worker = new Worker('./js/worker.js')
         @foreach($products as $product)
         @if($product->published==1)
-        worker.postMessage({work: "loadProductImage", id: "{{$product->id}}", url: "<?=Croppa::url($product->image, 2000, 2000); ?>"})
+        worker.postMessage({
+            work: "loadProductImage",
+            id: "{{$product->id}}",
+            url: "<?=Croppa::url($product->image, 1600, 1600); ?>"
+        })
         @endif
         @endforeach
 

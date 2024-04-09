@@ -324,7 +324,7 @@
                         <div class="item-slick3 mainimagethumb"
                              data-thumb="<?=Croppa::url($product->image, 86, 115); ?>">
                             <div class="wrap-pic-w zoomi">
-                                <img src="<?=Croppa::url($product->image, 500, 500); ?>" alt="{{$product->name}}"
+                                <img src="<?=Croppa::url($product->image, 1600, 1600); ?>" alt="{{$product->name}}"
                                      class="mainimage">
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                             <div class="item-slick3" data-thumb="<?=Croppa::url($gallery->address, 86, 115); ?>"
                                  onclick="changeimage('{{$gallery->address}}')">
                                 <div class="wrap-pic-w zoomi">
-                                    <img src="<?=Croppa::url($gallery->address, 500, 500); ?>" alt="{{$product->name}}">
+                                    <img src="<?=Croppa::url($gallery->address, 1600, 1600); ?>" alt="{{$product->name}}">
                                 </div>
                             </div>
                         @endforeach
@@ -372,7 +372,7 @@
                                                class="js-variant-selector colors">
                                         <label class="c-ui-variant color-hover" for="selectedfor{{$color->id}}"
                                                data-code="{{$color->english_name}}"
-                                               onclick="hilightcolor('color{{$color->id}}'); changeimage('{{$selectedcolorImage}}'); isvalid();">
+                                               onclick="hilightcolor('color{{$color->id}}'); changeimage('<?=Croppa::url($selectedcolorImage, 1600, 1600); ?>'); isvalid();">
                                     <span class="c-ui-variant__shape colorpicker" id="color{{$color->id}}"
                                           style="
                                           @if($color->image!=null)
