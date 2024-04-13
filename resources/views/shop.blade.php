@@ -9,6 +9,83 @@
     @include('includes.headLinks')
     <link rel="canonical" href="{{route('shop')}}"/>
 
+    {{--    load images --}}
+    <script>
+        $(document).ready(() => {
+            const worker = new Worker('./js/worker.js')
+            @foreach($products as $product)
+            @if($product->published==1)
+            worker.postMessage({
+                work: "loadProductImage",
+                id: "{{$product->id}}",
+                name: "thumbSmall",
+                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=100&h=100&blur=10"
+            })
+            @endif
+            @endforeach
+            @foreach($products as $product)
+            @if($product->published==1)
+
+            worker.postMessage({
+                work: "loadProductImage",
+                id: "{{$product->id}}",
+                name: "thumbBig",
+                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=300&h=300&blur=5"
+            })
+            @endif
+            @endforeach
+            @foreach($products as $product)
+            @if($product->published==1)
+            worker.postMessage({
+                work: "loadProductImage",
+                id: "{{$product->id}}",
+                name: "originalImage",
+                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
+            })
+            @endif
+            @endforeach
+
+
+            // URL.createObjectURL(image)
+            worker.onmessage = (e) => {
+                const elem = $(`#imageProduct${e.data.id}`);
+                if (e.data.work === "loadProductImage") {
+                    let flag = false;
+                    if (e.data.name === "thumbSmall" && !elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
+                        flag = true
+                    } else if (e.data.name === "thumbBig" && !elem.hasClass("fullyLoaded")) {
+                        flag = true
+                    } else if (e.data.name === "originalImage") {
+                        flag = true
+                    }
+
+                    if (flag) {
+                        elem.attr("src", URL.createObjectURL(e.data.value))
+                        elem.css("display", "block")
+                        $(`#imageProductLoader${e.data.id}`).css("display", "none")
+                        switch (e.data.name) {
+                            case "thumbSmall":
+                                elem.addClass("thumbSmall")
+                                break;
+                            case "thumbBig":
+                                elem.removeClass("thumbSmall")
+                                elem.addClass("thumbBig")
+                                break;
+                            case "originalImage":
+                                elem.removeClass("thumbSmall")
+                                elem.removeClass("thumbBig")
+                                elem.addClass("fullyLoaded")
+                                break;
+                        }
+                    }
+
+                }
+            }
+        })
+
+
+    </script>
+
 </head>
 <body class="animsition loading">
 
@@ -89,83 +166,6 @@
 
 @include('includes.footerLinks')
 
-<script>
-    $(document).on("readystatechange", () => {
-        if (document.readyState === "complete") {
-            const worker = new Worker('./js/worker.js')
-            @foreach($products as $product)
-            @if($product->published==1)
-            worker.postMessage({
-                work: "loadProductImage",
-                id: "{{$product->id}}",
-                name: "thumbSmall",
-                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=100&h=100&blur=10"
-            })
-            @endif
-            @endforeach
-            @foreach($products as $product)
-            @if($product->published==1)
-
-            worker.postMessage({
-                work: "loadProductImage",
-                id: "{{$product->id}}",
-                name: "thumbBig",
-                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=300&h=300&blur=5"
-            })
-            @endif
-            @endforeach
-            @foreach($products as $product)
-            @if($product->published==1)
-            worker.postMessage({
-                work: "loadProductImage",
-                id: "{{$product->id}}",
-                name: "originalImage",
-                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
-            })
-            @endif
-            @endforeach
-
-
-            // URL.createObjectURL(image)
-            worker.onmessage = (e) => {
-                const elem = $(`#imageProduct${e.data.id}`);
-                if (e.data.work === "loadProductImage") {
-                    let flag = false;
-                    if (e.data.name === "thumbSmall" && !elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
-                        flag = true
-                    } else if (e.data.name === "thumbBig" && !elem.hasClass("fullyLoaded")) {
-                        flag = true
-                    } else if (e.data.name === "originalImage") {
-                        flag = true
-                    }
-
-                    if (flag) {
-                        elem.attr("src", URL.createObjectURL(e.data.value))
-                        elem.css("display", "block")
-                        $(`#imageProductLoader${e.data.id}`).css("display", "none")
-                        switch (e.data.name) {
-                            case "thumbSmall":
-                                elem.addClass("thumbSmall")
-                                break;
-                            case "thumbBig":
-                                elem.removeClass("thumbSmall")
-                                elem.addClass("thumbBig")
-                                break;
-                            case "originalImage":
-                                elem.removeClass("thumbSmall")
-                                elem.removeClass("thumbBig")
-                                elem.addClass("fullyLoaded")
-                                break;
-                        }
-                    }
-
-                }
-            }
-        }
-    })
-
-
-</script>
 
 </body>
 </html>
