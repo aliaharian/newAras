@@ -842,23 +842,69 @@
             work: "loadProductGallery",
             id: "{{$product->id}}",
             galleryId: "0",
-            url: "<?=Croppa::url($product->image, 1900, 1900); ?>"
+            name: "originalImage",
+            url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
         })
         @foreach($product->galleries as $gallery)
         worker.postMessage({
             work: "loadProductGallery",
             id: "{{$product->id}}",
+            name: "thumbSmall",
             galleryId: "{{$gallery->id}}",
-            url: "<?=Croppa::url($gallery->address, 1900, 1900); ?>"
+            url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=100&h=100&blur=10"
+        })
+        @endforeach
+        @foreach($product->galleries as $gallery)
+        worker.postMessage({
+            work: "loadProductGallery",
+            id: "{{$product->id}}",
+            name: "thumbBig",
+            galleryId: "{{$gallery->id}}",
+            url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=300&h=300&blur=5"
+        })
+        @endforeach
+        @foreach($product->galleries as $gallery)
+        worker.postMessage({
+            work: "loadProductGallery",
+            id: "{{$product->id}}",
+            name: "originalImage",
+            galleryId: "{{$gallery->id}}",
+            url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=900&h=900"
         })
         @endforeach
 
             worker.onmessage = (e) => {
             if (e.data.work === "loadProductGallery") {
-                // console.log("url", URL.createObjectURL(e.data.value))
-                $(`#gallery${e.data.id}${e.data.galleryId}`).attr("src", URL.createObjectURL(e.data.value))
-                $(`#gallery${e.data.id}${e.data.galleryId}`).css("max-width", "unset")
-                $(`#gallery${e.data.id}${e.data.galleryId}`).css("margin", "unset")
+                const elem = $(`#gallery${e.data.id}${e.data.galleryId}`);
+                let flag = false;
+                if (e.data.name === "thumbSmall" && !elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
+                    flag = true
+                } else if (e.data.name === "thumbBig" && !elem.hasClass("fullyLoaded")) {
+                    flag = true
+                } else if (e.data.name === "originalImage") {
+                    flag = true
+                }
+
+                if (flag) {
+                    // console.log("url", URL.createObjectURL(e.data.value))
+                    elem.attr("src", URL.createObjectURL(e.data.value))
+                    elem.css("max-width", "unset")
+                    elem.css("margin", "unset")
+                    switch (e.data.name) {
+                        case "thumbSmall":
+                            elem.addClass("thumbSmall")
+                            break;
+                        case "thumbBig":
+                            elem.removeClass("thumbSmall")
+                            elem.addClass("thumbBig")
+                            break;
+                        case "originalImage":
+                            elem.removeClass("thumbSmall")
+                            elem.removeClass("thumbBig")
+                            elem.addClass("fullyLoaded")
+                            break;
+                    }
+                }
             }
         }
     })
@@ -898,6 +944,8 @@
     }
 
 }
+
+
 
 
 

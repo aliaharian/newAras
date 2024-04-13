@@ -142,20 +142,20 @@
                     elem.attr("src", URL.createObjectURL(e.data.value))
                     elem.css("display", "block")
                     $(`#imageProductLoader${e.data.id}`).css("display", "none")
-                }
-                switch (e.data.name) {
-                    case "thumbSmall":
-                        elem.addClass("thumbSmall")
-                        break;
-                    case "thumbBig":
-                        elem.removeClass("thumbSmall")
-                        elem.addClass("thumbBig")
-                        break;
-                    case "originalImage":
-                        elem.removeClass("thumbSmall")
-                        elem.removeClass("thumbBig")
-                        elem.addClass("fullyLoaded")
-                        break;
+                    switch (e.data.name) {
+                        case "thumbSmall":
+                            elem.addClass("thumbSmall")
+                            break;
+                        case "thumbBig":
+                            elem.removeClass("thumbSmall")
+                            elem.addClass("thumbBig")
+                            break;
+                        case "originalImage":
+                            elem.removeClass("thumbSmall")
+                            elem.removeClass("thumbBig")
+                            elem.addClass("fullyLoaded")
+                            break;
+                    }
                 }
 
             }
