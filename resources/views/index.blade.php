@@ -422,19 +422,20 @@
                     @foreach($template as $temp)
                         @if($temp->place=='bath1')
                             <div class="singleGrid">
-                                <!--<a href="#" data-toggle="modal" data-target="#img_popup"-->
-                            <!--   onclick="modal('{{$temp->image}}')">-->
-                                <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
-                                     data-target="#img_popup"
-                                     onclick="modal('{{$temp->image}}')"
-                                     alt="حوله های تبلیغاتی ارس">
-                                <!--</a>-->
+                                <a title="حوله تن پوش"
+                                   href="/product/250/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%A8%D8%A7%D8%B1%D9%88%D9%86-Barron-%D8%B3%D8%A7%DB%8C%D8%B2-115">
+
+                                    <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
+                                         data-target="#img_popup"
+                                         onclick="modal('{{$temp->image}}')"
+                                         alt="حوله های تبلیغاتی ارس">
+                                </a>
                                 @php
                                     $names = explode("|",$temp->text)
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
+                                <a href="/product/250/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%A8%D8%A7%D8%B1%D9%88%D9%86-Barron-%D8%B3%D8%A7%DB%8C%D8%B2-115" class="homepageMoreLink">مشاهده بیشتر</a>
                             </div>
                         @endif
 
@@ -443,6 +444,8 @@
                     @foreach($template as $temp)
                         @if($temp->place=='bath2')
                             <div class="singleGrid">
+                                <a title="حوله تن پوش"
+                                   href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C">
 
                                 <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
                                      data-target="#img_popup"
@@ -453,8 +456,8 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
-
+                                <a href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C" class="homepageMoreLink">مشاهده بیشتر</a>
+                                </a>
                             </div>
                         @endif
 
@@ -463,6 +466,8 @@
                     @foreach($template as $temp)
                         @if($temp->place=='bath3')
                             <div class="singleGrid">
+                                <a title="حوله تن پوش"
+                                   href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5">
 
                                 <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
                                      data-target="#img_popup"
@@ -474,7 +479,7 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
+                                <a href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5" class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
@@ -695,6 +700,8 @@
 
 
 
+
+
 </script>
 
 
@@ -729,7 +736,10 @@
         const worker = new Worker('./js/worker.js')
         @foreach($template as $temp)
         @if($temp->place=='introRight')
-        worker.postMessage({work: "loadHomepageImage", url: "{{str_replace("/files/","/getFile/files/",$temp->image)}}?w=1100&h=1100"});
+        worker.postMessage({
+            work: "loadHomepageImage",
+            url: "{{str_replace("/files/","/getFile/files/",$temp->image)}}?w=1100&h=1100"
+        });
         @endif
         @endforeach
         // URL.createObjectURL(image)
