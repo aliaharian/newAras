@@ -18,7 +18,7 @@ self.onmessage = (e) => {
                 return response.blob()
             }).then((blob) => {
                 console.log(blob)
-                self.postMessage({work: "loadProductImage", id: e.data.id, value: blob})
+                self.postMessage({work: "loadProductImage", name: e.data.name, id: e.data.id, value: blob})
             }).catch
             ((error) => {
                 console.log("error", error)
