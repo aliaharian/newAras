@@ -1084,6 +1084,7 @@ class mainController extends Controller
 
     public function showImage($filename, $extension, Request $request)
     {
+        return "/{$filename}.{$extension}";
         $path = public_path("/{$filename}.{$extension}");
 
         if (!file_exists($path)) {
@@ -1108,6 +1109,11 @@ class mainController extends Controller
             // Use Imagick driver if available
             $img->getCore()->setResolution($dpi, $dpi);
         }
+
+//        $img->contrast(5);
+//        $img->brightness(1);
+        $img->gamma(0.9);
+
 
         // Convert to specified extension
         $supportedFormats = ['jpg', 'jpeg', 'png', 'gif'];
