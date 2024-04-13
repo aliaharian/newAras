@@ -1086,7 +1086,7 @@ class mainController extends Controller
     {
 //        return "/{$filename}.{$extension}";
         $path = public_path("/{$filename}.{$extension}");
-
+    return $path;
         if (!file_exists($path)) {
             abort(404, 'Image not found.');
         }
