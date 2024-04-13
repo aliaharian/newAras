@@ -95,12 +95,12 @@
         @foreach($products as $product)
         @if($product->published==1)
         worker.postMessage({
-            work: "loadProductImage",
+            work: "loadProductImageThumbSmall",
             id: "{{$product->id}}",
             url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=100&h=100&blur=40"
         })
         worker.postMessage({
-            work: "loadProductImage",
+            work: "loadProductImageThumbBig",
             id: "{{$product->id}}",
             url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=300&h=300&blur=20"
         })
@@ -115,12 +115,32 @@
 
         // URL.createObjectURL(image)
         worker.onmessage = (e) => {
-            if (e.data.work === "loadProductImage") {
-                // console.log("url", URL.createObjectURL(e.data.value))
-                $(`#imageProduct${e.data.id}`).attr("src", URL.createObjectURL(e.data.value))
-                $(`#imageProduct${e.data.id}`).css("display", "block")
+            const elem = $(`#imageProduct${e.data.id}`);
+            if (e.data.work === "loadProductImageThumbSmall") {
+                if (!elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
+                    elem.attr("src", URL.createObjectURL(e.data.value))
+                    elem.css("display", "block")
+                    $(`#imageProductLoader${e.data.id}`).css("display", "none")
+                    //add final badge to product image
+                    elem.addClass("thumbSmall")
+                }
+            } else if (e.data.work === "loadProductImageThumbBig") {
+                if (!elem.hasClass("fullyLoaded")) {
+                    elem.attr("src", URL.createObjectURL(e.data.value))
+                    elem.css("display", "block")
+                    $(`#imageProductLoader${e.data.id}`).css("display", "none")
+                    //add final badge to product image
+                    elem.removeClass("thumbSmall")
+                    elem.addClass("thumbBig")
+                }
+            } else if (e.data.work === "loadProductImage") {
+                elem.attr("src", URL.createObjectURL(e.data.value))
+                elem.css("display", "block")
                 $(`#imageProductLoader${e.data.id}`).css("display", "none")
-
+                //add final badge to product image
+                elem.removeClass("thumbSmall")
+                elem.removeClass("thumbBig")
+                elem.addClass("fullyLoaded")
             }
         }
     })
