@@ -11,7 +11,7 @@
 
     {{--    load images --}}
     <script>
-        $(document).ready(() => {
+        // $(document).ready(() => {
             const worker = new Worker('./js/worker.js')
             @foreach($products as $product)
             @if($product->published==1)
@@ -81,7 +81,7 @@
 
                 }
             }
-        })
+        // })
 
 
     </script>
