@@ -100,12 +100,21 @@
             name: "thumbSmall",
             url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=100&h=100&blur=10"
         })
+        @endif
+        @endforeach
+        @foreach($products as $product)
+        @if($product->published==1)
+
         worker.postMessage({
             work: "loadProductImage",
             id: "{{$product->id}}",
             name: "thumbBig",
             url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=300&h=300&blur=5"
         })
+        @endif
+        @endforeach
+        @foreach($products as $product)
+        @if($product->published==1)
         worker.postMessage({
             work: "loadProductImage",
             id: "{{$product->id}}",
