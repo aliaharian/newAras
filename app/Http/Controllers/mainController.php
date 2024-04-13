@@ -60,6 +60,19 @@ class mainController extends Controller
         return $ip;
     }
 
+    public function calculateShippingPrice($totalPrice)
+    {
+        if ($totalPrice < 1000000) {
+            return 40000;
+        } else if ($totalPrice < 2000000) {
+            return 70000;
+        } else if ($totalPrice < 3000000) {
+            return 100000;
+        } else {
+            return 0;
+        }
+    }
+
     public function index()
     {
         $products = Product::where('published', 1)->paginate(999999999);
@@ -229,8 +242,13 @@ class mainController extends Controller
         $user_browser = $agent->browser();
         $pre_order = Pre_order::where('user_ip', $user_ip)->where('user_platform', $user_platform)->where('user_browser', $user_browser)->get();
         $addresses = address::where('user_id', Auth::user()->id)->paginate(99999);
+        $total_price = 0;
+        foreach ($pre_order as $order) {
+            $total_price += $order->off_price * $order->qty;
+        }
+        $shippingPrice = $this->calculateShippingPrice($total_price);
         //return $pre_order;
-        return view('shipping', compact('pre_order', 'addresses'));
+        return view('shipping', compact('pre_order', 'addresses', 'total_price', 'shippingPrice'));
 
     }
 
@@ -693,7 +711,7 @@ class mainController extends Controller
             $address = address::find($address_id);
             $invoice->full_name = $address->name . ' ' . $address->last_name;
             $invoice->phone_number = $address->phone_number;
-            $invoice->address =  Province::find($address->province_id)->name.' - شهرستان ' . country::find($address->country_id)->name . '- شهر' . city::find($address->city_id)->name . '-' . $address->address . ' کد پستی :' . $address->postal_code;
+            $invoice->address = Province::find($address->province_id)->name . ' - شهرستان ' . country::find($address->country_id)->name . '- شهر' . city::find($address->city_id)->name . '-' . $address->address . ' کد پستی :' . $address->postal_code;
 
             ///
             /// /////for address
@@ -713,29 +731,16 @@ class mainController extends Controller
                 $total_price += ($order->price * $order->qty);
             }
 
+
             $gift = gift_card::where('user_id', Auth::user()->id)->where('used', 0)->where('in_pre', 1)->where('user_ip', $user_ip)->where('user_browser', $user_browser)->where('user_platform', $user_platform);
-            $post_price = 0;
+            $post_price = $this->calculateShippingPrice($off_total_price);
 
             if ($gift->count() == 0) {
-                if ($off_total_price <= 500000) {
-                    $invoice->post_price = $post_price;
-                    $invoice->transaction_amount = $off_total_price + $post_price;
-
-                } else {
-                    $invoice->post_price = 0;
-                    $invoice->transaction_amount = $off_total_price;
-                }
+                $invoice->post_price = $post_price;
+                $invoice->transaction_amount = $off_total_price + $post_price;
             } else {
-                if ($off_total_price <= 500000) {
-
-                    $invoice->post_price = $post_price;
-                    $invoice->transaction_amount = $post_price + ($off_total_price * (100 - $gift->value('percent')) / 100);
-
-                } else {
-                    $invoice->post_price = 0;
-                    $invoice->transaction_amount = $off_total_price * (100 - $gift->value('percent')) / 100;
-                }
-
+                $invoice->post_price = $post_price;
+                $invoice->transaction_amount = $post_price + ($off_total_price * (100 - $gift->value('percent')) / 100);
             }
             $invoice->save();
 
@@ -765,21 +770,11 @@ class mainController extends Controller
 
             $gift = gift_card::where('user_id', Auth::user()->id)->where('used', 0)->where('in_pre', 1)->where('user_ip', $user_ip)->where('user_browser', $user_browser)->where('user_platform', $user_platform);
             if ($gift->count() == 0) {
-                if ($off_total_price <= 500000) {
 
-                    $zarinpay = $off_total_price + $post_price;
+                $zarinpay = $off_total_price + $post_price;
 
-                } else {
-                    $zarinpay = $off_total_price;
-                }
             } else {
-                if ($off_total_price <= 500000) {
-
-                    $zarinpay = $post_price + $off_total_price * (100 - $gift->value('percent')) / 100;
-
-                } else {
-                    $zarinpay = $off_total_price * (100 - $gift->value('percent')) / 100;
-                }
+                $zarinpay = $post_price + $off_total_price * (100 - $gift->value('percent')) / 100;
             }
 
 
