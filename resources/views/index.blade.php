@@ -729,7 +729,7 @@
         const worker = new Worker('./js/worker.js')
         @foreach($template as $temp)
         @if($temp->place=='introRight')
-        worker.postMessage({work: "loadHomepageImage", url: "{{$temp->image}}"});
+        worker.postMessage({work: "loadHomepageImage", url: "{{str_replace("/files/","/getFile/files/",$temp->image)}}?w=2000&h=2000"});
         @endif
         @endforeach
         // URL.createObjectURL(image)

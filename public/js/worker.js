@@ -1,7 +1,8 @@
 self.onmessage = (e) => {
     switch (e.data.work) {
         case "loadHomepageImage":
-            fetch(e.data.url, {cache: "force-cache"}).then((response) => {
+            console.log("url is:", e.data.url)
+            fetch(e.data.url, {cache: "reload"}).then((response) => {
                 return response.blob()
             }).then((blob) => {
                 console.log(blob)
@@ -13,7 +14,7 @@ self.onmessage = (e) => {
             break;
         case "loadProductImage":
             console.log("url is:", e.data.url)
-            fetch(e.data.url, {cache: "force-cache"}).then((response) => {
+            fetch(e.data.url, {cache: "reload"}).then((response) => {
                 return response.blob()
             }).then((blob) => {
                 console.log(blob)
@@ -25,7 +26,7 @@ self.onmessage = (e) => {
             break;
         case "loadProductGallery":
             console.log("url is:", e.data.url)
-            fetch(e.data.url, {cache: "force-cache"}).then((response) => {
+            fetch(e.data.url, {cache: "reload"}).then((response) => {
                 return response.blob()
             }).then((blob) => {
                 console.log(blob)

@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Additional_information;
-use App\Color;
 use App\countHome;
 use App\gift_card;
 use App\logHomeUsers;
 use App\Province;
-use App\size;
 use App\templateSetting;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 use Mail;
 use App\InstagramPost;
 use App\address;
@@ -1082,6 +1079,44 @@ class mainController extends Controller
             </script>
             <?php
 
+        }
+    }
+
+    public function showImage($filename, $extension, Request $request)
+    {
+        $path = public_path("/{$filename}.{$extension}");
+
+        if (!file_exists($path)) {
+            abort(404, 'Image not found.');
+        }
+
+
+        $width = $request->input('w', null);
+        $height = $request->input('h', null);
+        $dpi = $request->input('dpi', 72);
+        $extension = $request->input('ext', 'jpg');
+
+        $img = Image::make($path);
+
+        if ($width && $height) {
+            $img->resize($width, $height, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+        }
+        // Check driver type and set DPI if supported
+        if (strtolower($img->mime()) === 'image/jpeg' && class_exists('Imagick')) {
+            // Use Imagick driver if available
+            $img->getCore()->setResolution($dpi, $dpi);
+        }
+
+        // Convert to specified extension
+        $supportedFormats = ['jpg', 'jpeg', 'png', 'gif'];
+        if (in_array($extension, $supportedFormats)) {
+            $img->encode($extension);
+            return response($img)->header('Content-Type', "image/{$extension}");
+        } else {
+            $img->encode("jpg");
+            return response($img)->header('Content-Type', "image/jpg");
         }
     }
 }

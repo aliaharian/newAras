@@ -549,4 +549,5 @@ Route::get('add_date', function () {
 });
 
 
+Route::get('getFile/{filename}.{extension}', 'mainController@showImage')->where(['filename' => '.*', 'extension' => '.*'])->name('image.show');
 

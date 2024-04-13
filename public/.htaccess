@@ -49,9 +49,9 @@
 RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
-    
 
-    
+
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
@@ -77,8 +77,8 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
     RewriteRule ^ index.php [L]
-    
-    
+
+
     RewriteCond %{HTTP_HOST} ^arastowel\.com$ [OR]
     RewriteCond %{HTTP_HOST} ^www\.arastowel\.com$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$

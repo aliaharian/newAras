@@ -74,5 +74,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'viewTracker' => \App\Http\Middleware\viewTracker::class,
+        'checkCustomRoute' => \App\Http\Middleware\CheckCustomRoute::class,
+
     ];
 }
