@@ -1084,7 +1084,7 @@ class mainController extends Controller
 
     public function showImage($filename, $extension, Request $request)
     {
-        return "/{$filename}.{$extension}";
+//        return "/{$filename}.{$extension}";
         $path = public_path("/{$filename}.{$extension}");
 
         if (!file_exists($path)) {
