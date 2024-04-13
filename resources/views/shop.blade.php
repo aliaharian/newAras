@@ -97,6 +97,11 @@
         worker.postMessage({
             work: "loadProductImage",
             id: "{{$product->id}}",
+            url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=100&h=100"
+        })
+        worker.postMessage({
+            work: "loadProductImage",
+            id: "{{$product->id}}",
             url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
         })
         @endif
