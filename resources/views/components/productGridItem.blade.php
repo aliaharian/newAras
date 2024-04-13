@@ -9,7 +9,7 @@
         >
         <div
             id="imageProductLoader{{$product->id}}"
-             style="width:100%;display: flex;justify-content: center">
+             style="width:100%;display: flex;justify-content: center;">
             <img
                 src="/files/loading.gif"
                 style="aspect-ratio: 1/1;max-width: 40px; margin:50% 0;"

@@ -1095,6 +1095,8 @@ class mainController extends Controller
         $width = $request->input('w', null);
         $height = $request->input('h', null);
         $dpi = $request->input('dpi', 72);
+        $blur = $request->input('blur');
+
         $extension = $request->input('ext', 'jpg');
 
         $img = Image::make($path);
@@ -1103,6 +1105,9 @@ class mainController extends Controller
             $img->resize($width, $height, function ($constraint) {
                 $constraint->aspectRatio();
             });
+        }
+        if($blur){
+            $img->blur($blur);
         }
         // Check driver type and set DPI if supported
         if (strtolower($img->mime()) === 'image/jpeg' && class_exists('Imagick')) {
