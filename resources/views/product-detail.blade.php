@@ -379,7 +379,7 @@
                                                class="js-variant-selector colors">
                                         <label class="c-ui-variant color-hover" for="selectedfor{{$color->id}}"
                                                data-code="{{$color->english_name}}"
-                                               onclick="hilightcolor('color{{$color->id}}'); changeimage('<?=Croppa::url($selectedcolorImage, 1600, 1600); ?>'); isvalid();">
+                                               onclick="hilightcolor('color{{$color->id}}'); changeimage('<?=Croppa::url($selectedcolorImage, 1900, 1900); ?>'); isvalid();">
                                     <span class="c-ui-variant__shape colorpicker" id="color{{$color->id}}"
                                           style="
                                           @if($color->image!=null)
@@ -842,14 +842,14 @@
             work: "loadProductGallery",
             id: "{{$product->id}}",
             galleryId: "0",
-            url: "<?=Croppa::url($product->image, 1600, 1600); ?>"
+            url: "<?=Croppa::url($product->image, 1900, 1900); ?>"
         })
         @foreach($product->galleries as $gallery)
         worker.postMessage({
             work: "loadProductGallery",
             id: "{{$product->id}}",
             galleryId: "{{$gallery->id}}",
-            url: "<?=Croppa::url($gallery->address, 1600, 1600); ?>"
+            url: "<?=Croppa::url($gallery->address, 1900, 1900); ?>"
         })
         @endforeach
 

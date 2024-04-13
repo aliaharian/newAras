@@ -97,7 +97,7 @@
         worker.postMessage({
             work: "loadProductImage",
             id: "{{$product->id}}",
-            url: "<?=Croppa::url($product->image, 1600, 1600); ?>"
+            url: "<?=Croppa::url($product->image, 1900, 1900); ?>"
         })
         @endif
         @endforeach
