@@ -48,6 +48,88 @@
     @include('includes.headLinks')
 
     <script defer src="/js/jquery-bootstrap.js"></script>
+
+
+    {{--    load images--}}
+    <script>
+        $(document).ready(() => {
+            const worker = new Worker('../../js/worker.js')
+            worker.postMessage({
+                work: "loadProductGallery",
+                id: "{{$product->id}}",
+                galleryId: "0",
+                name: "originalImage",
+                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
+            })
+            @foreach($product->galleries as $gallery)
+            worker.postMessage({
+                work: "loadProductGallery",
+                id: "{{$product->id}}",
+                name: "thumbSmall",
+                galleryId: "{{$gallery->id}}",
+                url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=100&h=100&blur=10"
+            })
+            @endforeach
+            @foreach($product->galleries as $gallery)
+            worker.postMessage({
+                work: "loadProductGallery",
+                id: "{{$product->id}}",
+                name: "thumbBig",
+                galleryId: "{{$gallery->id}}",
+                url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=300&h=300&blur=5"
+            })
+            @endforeach
+            @foreach($product->galleries as $gallery)
+            worker.postMessage({
+                work: "loadProductGallery",
+                id: "{{$product->id}}",
+                name: "originalImage",
+                galleryId: "{{$gallery->id}}",
+                url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=900&h=900"
+            })
+            @endforeach
+
+                worker.onmessage = (e) => {
+                if (e.data.work === "loadProductGallery") {
+                    const elem = $(`#gallery${e.data.id}${e.data.galleryId}`);
+                    let flag = false;
+                    if (e.data.name === "thumbSmall" && !elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
+                        flag = true
+                    } else if (e.data.name === "thumbBig" && !elem.hasClass("fullyLoaded")) {
+                        flag = true
+                    } else if (e.data.name === "originalImage") {
+                        flag = true
+                    }
+
+                    if (flag) {
+                        // console.log("url", URL.createObjectURL(e.data.value))
+                        elem.attr("src", URL.createObjectURL(e.data.value))
+                        elem.css("max-width", "unset")
+                        elem.css("margin", "unset")
+                        switch (e.data.name) {
+                            case "thumbSmall":
+                                elem.addClass("thumbSmall")
+                                break;
+                            case "thumbBig":
+                                elem.removeClass("thumbSmall")
+                                elem.addClass("thumbBig")
+                                break;
+                            case "originalImage":
+                                elem.removeClass("thumbSmall")
+                                elem.removeClass("thumbBig")
+                                elem.addClass("fullyLoaded")
+                                $(`#overlay${e.data.id}${e.data.galleryId}`).remove();
+                                break;
+                        }
+                    }
+                }
+            }
+        })
+
+
+    </script>
+
+
     <style>
         @keyframes spin {
             0% {
@@ -871,84 +953,6 @@
     }
 </script>
 
-<script>
-    $(window).on("load", () => {
-        const worker = new Worker('../../js/worker.js')
-        worker.postMessage({
-            work: "loadProductGallery",
-            id: "{{$product->id}}",
-            galleryId: "0",
-            name: "originalImage",
-            url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
-        })
-        @foreach($product->galleries as $gallery)
-        worker.postMessage({
-            work: "loadProductGallery",
-            id: "{{$product->id}}",
-            name: "thumbSmall",
-            galleryId: "{{$gallery->id}}",
-            url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=100&h=100&blur=10"
-        })
-        @endforeach
-        @foreach($product->galleries as $gallery)
-        worker.postMessage({
-            work: "loadProductGallery",
-            id: "{{$product->id}}",
-            name: "thumbBig",
-            galleryId: "{{$gallery->id}}",
-            url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=300&h=300&blur=5"
-        })
-        @endforeach
-        @foreach($product->galleries as $gallery)
-        worker.postMessage({
-            work: "loadProductGallery",
-            id: "{{$product->id}}",
-            name: "originalImage",
-            galleryId: "{{$gallery->id}}",
-            url: "{{str_replace("/files/","/getFile/files/",$gallery->address)}}?w=900&h=900"
-        })
-        @endforeach
-
-            worker.onmessage = (e) => {
-            if (e.data.work === "loadProductGallery") {
-                const elem = $(`#gallery${e.data.id}${e.data.galleryId}`);
-                let flag = false;
-                if (e.data.name === "thumbSmall" && !elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
-                    flag = true
-                } else if (e.data.name === "thumbBig" && !elem.hasClass("fullyLoaded")) {
-                    flag = true
-                } else if (e.data.name === "originalImage") {
-                    flag = true
-                }
-
-                if (flag) {
-                    // console.log("url", URL.createObjectURL(e.data.value))
-                    elem.attr("src", URL.createObjectURL(e.data.value))
-                    elem.css("max-width", "unset")
-                    elem.css("margin", "unset")
-                    switch (e.data.name) {
-                        case "thumbSmall":
-                            elem.addClass("thumbSmall")
-                            break;
-                        case "thumbBig":
-                            elem.removeClass("thumbSmall")
-                            elem.addClass("thumbBig")
-                            break;
-                        case "originalImage":
-                            elem.removeClass("thumbSmall")
-                            elem.removeClass("thumbBig")
-                            elem.addClass("fullyLoaded")
-                            $(`#overlay${e.data.id}${e.data.galleryId}`).remove();
-                            break;
-                    }
-                }
-            }
-        }
-    })
-
-
-</script>
-
 
 <script type="application/ld+json">
                 {
@@ -981,6 +985,7 @@
     }
 
 }
+
 
 
 
