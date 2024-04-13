@@ -415,7 +415,7 @@
                                                class="js-variant-selector colors">
                                         <label class="c-ui-variant color-hover" for="selectedfor{{$color->id}}"
                                                data-code="{{$color->english_name}}"
-                                               onclick="hilightcolor('color{{$color->id}}'); changeimage('<?=Croppa::url($selectedcolorImage, 1900, 1900); ?>'); isvalid();">
+                                               onclick="hilightcolor('color{{$color->id}}'); changeimage('{{str_replace("/files/","/getFile/files/",$selectedcolorImage)}}?w=900&h=900'); isvalid();">
                                     <span class="c-ui-variant__shape colorpicker" id="color{{$color->id}}"
                                           style="
                                           @if($color->image!=null)
@@ -981,6 +981,7 @@
     }
 
 }
+
 
 
 
