@@ -49,6 +49,14 @@
 
     <script defer src="/js/jquery-bootstrap.js"></script>
     <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
         .c-ui-variant__shape {
             border: 1px solid #bbb7b7;
@@ -335,11 +343,39 @@
                             <div class="item-slick3" data-thumb="<?=Croppa::url($gallery->address, 86, 115); ?>"
                                  onclick="changeimage('{{$gallery->address}}')">
                                 <div class="wrap-pic-w zoomi"
-                                     style="display: flex;align-items: center;justify-content: center;">
+                                     style="display: flex;align-items: center;justify-content: center;position:relative;">
                                     <img id="gallery{{$product->id}}{{$gallery->id}}"
                                          src="/files/loading.gif"
                                          style="max-width: 40px;margin:50% 0;"
                                          alt="{{$product->name}}">
+                                    <div
+                                        style="
+                                        position: absolute;
+                                        left:0;
+                                        top:0;
+                                        width:100%;
+                                        height:100%;
+                                        background-color: rgba(0,0,0,0.6);
+                                        border-radius: 8px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                            "
+                                        id="overlay{{$product->id}}{{$gallery->id}}">
+                                        <div
+                                            style="
+                                          border: 8px solid #f3f3f3; /* Light grey */
+                                          border-top: 8px solid #3498db; /* Blue */
+                                          border-radius: 50%;
+                                          width: 70px;
+                                          height: 70px;
+                                          animation: spin 1s linear infinite;
+
+                                        "
+                                        >
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -902,6 +938,7 @@
                             elem.removeClass("thumbSmall")
                             elem.removeClass("thumbBig")
                             elem.addClass("fullyLoaded")
+                            $(`#overlay${e.data.id}${e.data.galleryId}`).remove();
                             break;
                     }
                 }
@@ -944,6 +981,8 @@
     }
 
 }
+
+
 
 
 
