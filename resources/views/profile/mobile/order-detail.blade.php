@@ -50,8 +50,25 @@
                                 <div class="c-profile-info__row">
                                     <div class="c-profile-info__label">مبلغ قابل پرداخت</div>
                                     <div class="c-profile-info__value">
-                                        <div>@if($invoice->payed==0)
+                                        <div>
+{{--                                            @if($invoice->payed==0)--}}
+{{--                                                {{number_format($invoice->transaction_amount)}}  تومان--}}
+{{--                                            @else--}}
+{{--                                                0--}}
+{{--                                            @endif--}}
+
+                                            @if($invoice->payed==0)
                                                 {{number_format($invoice->transaction_amount)}}  تومان
+                                                <form method="post" action="{{route('pay-from-gateway')}}">
+                                                    @csrf
+                                                    <input type="text" name="invoice_number" hidden style="display: none;opacity: 0"
+                                                           value="{{$invoice->invoice_number}}" readonly/>
+                                                    <button
+                                                        type="submit"
+                                                        style="background-color:#4187c7;padding:4px 8px; border-radius: 8px;margin-right: 12px; color: #fff">
+                                                        پرداخت از طریق در گاه بانکی
+                                                    </button>
+                                                </form>
                                             @else
                                                 0
                                             @endif
