@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class usersController extends Controller
 {
@@ -34,5 +35,12 @@ class usersController extends Controller
         User::find($id)->delete();
 //        $articles=DB::table('articles')->get();
         return redirect('/aras-admin/users');
+    }
+
+    public function loginAs($id)
+    {
+        Auth::loginUsingId($id);
+        return redirect('/profile');
+
     }
 }
