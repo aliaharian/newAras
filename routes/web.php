@@ -142,7 +142,7 @@ Route::group(['prefix'=>'aras-admin','middleware' => ['auth','adminAuth']], func
     Route::resource('users','usersController', [
         'except' => ['show','create','store','edit','update']
     ]);
-    Route::post("users/loginAs","usersController@loginAs")->name("users.loginAs");
+    Route::post("users/loginAs/{id}","usersController@loginAs")->name("users.loginAs");
     /// /////////////////////////////prod. color
 
     Route::resource('colors','ColorController', [
