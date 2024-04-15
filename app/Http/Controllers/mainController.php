@@ -59,14 +59,18 @@ class mainController extends Controller
 
     public function calculateShippingPrice($totalPrice)
     {
-        if ($totalPrice < 1000000) {
-            return 40000;
-        } else if ($totalPrice < 2000000) {
-            return 70000;
-        } else if ($totalPrice < 3000000) {
-            return 100000;
-        } else {
+        if ($totalPrice == 0) {
             return 0;
+        } else {
+            if ($totalPrice < 1000000) {
+                return 40000;
+            } else if ($totalPrice < 2000000) {
+                return 70000;
+            } else if ($totalPrice < 3000000) {
+                return 100000;
+            } else {
+                return 0;
+            }
         }
     }
 
@@ -1106,7 +1110,7 @@ class mainController extends Controller
                 $constraint->aspectRatio();
             });
         }
-        if($blur){
+        if ($blur) {
             $img->blur($blur);
         }
         // Check driver type and set DPI if supported
