@@ -87,7 +87,7 @@
                     <th class="mailbox-star">نام و نام خانوادگی</th>
                     <th class="mailbox-name">موبایل/ایمیل</th>
                     <th class="mailbox-subject">وضعیت</th>
-                    <th class="mailbox-subject">حذف</th>
+{{--                    <th class="mailbox-subject">حذف</th>--}}
                   </tr>
                   </thead>
 
@@ -98,13 +98,13 @@
                     <td class="mailbox-star"><a> {{$user->name}} {{$user->last_name}}</a></td>
                     <td class="mailbox-name">{{$user->additionalInformation?$user->additionalInformation->phone_number:$user->email}}</td>
                     <td class="mailbox-subject">@if($user->email_verified_at==null) غیر فعال @else فعال @endif </td>
-                    <td class="mailbox-subject">
-                      <form action="{{route('users.destroy',['user'=>$user->id])}}" method="post">
-                        {{method_field('delete')}}
-                        {{csrf_field()}}
-                        <button type="submit" class="btn btn-danger fa fa-trash"></button>
-                      </form>
-                    </td>
+{{--                    <td class="mailbox-subject">--}}
+{{--                      <form action="{{route('users.destroy',['user'=>$user->id])}}" method="post">--}}
+{{--                        {{method_field('delete')}}--}}
+{{--                        {{csrf_field()}}--}}
+{{--                        <button type="submit" class="btn btn-danger fa fa-trash"></button>--}}
+{{--                      </form>--}}
+{{--                    </td>--}}
 
                   </tr>
                   @endforeach
