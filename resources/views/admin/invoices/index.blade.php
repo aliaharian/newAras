@@ -112,7 +112,7 @@
                     <th class="mailbox-subject">کد پیگیری</th>
                     <th class="mailbox-subject">وضعیت</th>
                     <th class="mailbox-subject">جزئیات</th>
-                    <th class="mailbox-subject">حذف</th>
+{{--                    <th class="mail box-subject">حذف</th>--}}
 
                   </tr>
                   </thead>
@@ -130,13 +130,13 @@
                     <td class="mailbox-subject">{{$invoice->tracking_code}}</td>
                     <td class="mailbox-subject">{{$invoice->status}}</td>
                     <td class="mailbox-subject"><a href="{{route('invoices.show',['invoice' => $invoice->id])}}" class="btn btn-info fa fa-eye"></a> </td>
-                    <td class="mailbox-subject">
-                      <form action="{{route('invoices.destroy',['invoice'=>$invoice->id])}}" method="post">
-                        {{method_field('delete')}}
-                        {{csrf_field()}}
-                        <button type="submit" class="btn btn-danger fa fa-trash"></button>
-                      </form>
-                    </td>
+{{--                    <td class="mailbox-subject">--}}
+{{--                      <form action="{{route('invoices.destroy',['invoice'=>$invoice->id])}}" method="post">--}}
+{{--                        {{method_field('delete')}}--}}
+{{--                        {{csrf_field()}}--}}
+{{--                        <button type="submit" class="btn btn-danger fa fa-trash"></button>--}}
+{{--                      </form>--}}
+{{--                    </td>--}}
 
                   </tr>
                   @endforeach
