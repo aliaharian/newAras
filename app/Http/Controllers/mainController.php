@@ -63,7 +63,7 @@ class mainController extends Controller
             return 0;
         } else {
             if ($totalPrice < 1000000) {
-                return 40000;
+                return 0;
             } else if ($totalPrice < 2000000) {
                 return 70000;
             } else if ($totalPrice < 3000000) {
