@@ -787,7 +787,7 @@ class mainController extends Controller
 
             if ($request->bank_id == 'zarinpal') {
 
-                $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186' . '&Payload=' . $invoice_number;
+                $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98784217' . '&Payload=' . $invoice_number;
                 $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
                 $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
                 $decode_TokenArray = json_decode($TokenArray);
@@ -809,7 +809,7 @@ class mainController extends Controller
 
                     <form action="<?php echo $AddressIpgPay; ?>" method="POST" id="ipg">
                         <input name="TerminalID" type="hidden" required="required"
-                               value="98610186">
+                               value="98784217">
 
                         <input name="token" type="hidden" required="required" value="<?php echo $AccessToken; ?>">
 
@@ -1030,7 +1030,7 @@ class mainController extends Controller
         $invoice = invoice::where('invoice_number', $request->invoice_number)->first();
         $zarinpay = $invoice->transaction_amount;
         $invoice_number = $request->invoice_number;
-        $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98610186' . '&Payload=' . $invoice_number;
+        $dataQuery = 'Amount=' . $zarinpay * 10 . '&callbackURL=' . route('pay-from-zarrin', [$invoice_number]) . '&InvoiceID=' . $invoice_number . '&TerminalID=98784217' . '&Payload=' . $invoice_number;
         $AddressServiceToken = "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken";
         $TokenArray = $this->makeHttpChargeRequest('POST', $dataQuery, $AddressServiceToken);
         $decode_TokenArray = json_decode($TokenArray);
@@ -1052,7 +1052,7 @@ class mainController extends Controller
 
             <form action="<?php echo $AddressIpgPay; ?>" method="POST" id="ipg">
                 <input name="TerminalID" type="hidden" required="required"
-                       value="98610186">
+                       value="98784217">
 
                 <input name="token" type="hidden" required="required" value="<?php echo $AccessToken; ?>">
 

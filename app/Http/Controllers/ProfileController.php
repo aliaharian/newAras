@@ -394,7 +394,7 @@ class ProfileController extends Controller
 //        dd($request->all());
 //        "respmsg" => "تراکنش توسط کاربر لغو شد."
 //  "respcode" => "-1"
-//  "terminalid" => "98610186"
+//  "terminalid" => "98784217"
 //  "invoiceid" => "27039570"
 //  "amount" => "207000"
 //  "payload" => "27039570"
