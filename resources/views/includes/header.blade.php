@@ -329,7 +329,7 @@
                             <div class="mm_menu">
                                 @foreach($template as $temp)
                                     @if($temp->place=='promoMenu1' || $temp->place=='promoMenu2' || $temp->place=='promoMenu3' || $temp->place=='promoMenu4')
-                                        <a href="{{$temp->link}}">
+                                        <a href="{{$temp->link}}" title="حوله تبلیغاتی" aria-label="حوله تبلیغاتی" >
                                             <div>
                                                 <img data-toggle="modal" data-target="#img_popup"
                                                      src="<?=Croppa::url($temp->image, 590, 590); ?>"
@@ -347,7 +347,7 @@
                             <div class="mm_menu">
                                 @foreach($template as $temp)
                                         @if($temp->place=='bathrobeMenu1' || $temp->place=='bathrobeMenu2' || $temp->place=='bathrobeMenu3' || $temp->place=='bathrobeMenu4')
-                                            <a href="{{$temp->link}}">
+                                            <a href="{{$temp->link}}" title="حوله تن پوش" aria-label="حوله تن پوش" >
                                                 <div>
                                                     <img data-toggle="modal" data-target="#img_popup"
                                                          src="<?=Croppa::url($temp->image, 590, 590); ?>"
