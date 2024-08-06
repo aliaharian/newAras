@@ -20,7 +20,7 @@
         <img src="/images/intro/04.jpg" style="visibility: hidden"/>
 
         <div class="p-b-30 contactFormContainer" style="text-align: right!important;direction: rtl!important;">
-            <form class="leave-comment" action="{{route('mail-contact-us')}}" method="post">c
+            <form class="leave-comment" action="{{route('mail-contact-us')}}" method="post">
                 @csrf
                 <h4 class="m-text26 p-b-36 p-t-15">
                     پیام خود را ارسال کنید

@@ -81,7 +81,9 @@
 
                   </div>
 
-                  @if($selectedTemplate->place=='bathrobeMenu1'||$selectedTemplate->place=='bathrobeMenu2'||$selectedTemplate->place=='bathrobeMenu3'||$selectedTemplate->place=='bathrobeMenu4')
+                  @if($selectedTemplate->place=='bathrobeMenu1'||$selectedTemplate->place=='bathrobeMenu2'||$selectedTemplate->place=='bathrobeMenu3'||$selectedTemplate->place=='bathrobeMenu4'
+                        ||$selectedTemplate->place=='promoMenu1'||$selectedTemplate->place=='promoMenu2'||$selectedTemplate->place=='promoMenu3'||$selectedTemplate->place=='promoMenu4'
+                        )
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">لینک</label>
@@ -116,7 +118,12 @@
 
                   @endif
 
-                  @if($selectedTemplate->place=='gift1'||$selectedTemplate->place=='gift2'||$selectedTemplate->place=='gift3'||$selectedTemplate->place=='bath1'||$selectedTemplate->place=='bath2'||$selectedTemplate->place=='bath3'||$selectedTemplate->place=='promo1'||$selectedTemplate->place=='promo2'||$selectedTemplate->place=='promo3'||$selectedTemplate->place=='bathrobeMenu1'||$selectedTemplate->place=='bathrobeMenu2'||$selectedTemplate->place=='bathrobeMenu3'||$selectedTemplate->place=='bathrobeMenu4')
+                  @if($selectedTemplate->place=='gift1'||$selectedTemplate->place=='gift2'||$selectedTemplate->place=='gift3'
+                        ||$selectedTemplate->place=='bath1'||$selectedTemplate->place=='bath2'||$selectedTemplate->place=='bath3'
+                        ||$selectedTemplate->place=='promo1'||$selectedTemplate->place=='promo2'||$selectedTemplate->place=='promo3'
+                        ||$selectedTemplate->place=='bathrobeMenu1'||$selectedTemplate->place=='bathrobeMenu2'||$selectedTemplate->place=='bathrobeMenu3'||$selectedTemplate->place=='bathrobeMenu4'
+                        ||$selectedTemplate->place=='promoMenu1'||$selectedTemplate->place=='promoMenu2'||$selectedTemplate->place=='promoMenu3'||$selectedTemplate->place=='promoMenu4'
+                        )
 
 
                     <div class="form-group">
