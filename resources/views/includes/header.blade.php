@@ -5,7 +5,8 @@
              $user_platform = $agent->platform();
              $user_browser = $agent->browser();
          $pre_order=\App\Pre_order::where('user_ip',$user_ip)->where('user_platform',$user_platform)->where('user_browser',$user_browser)->get();
-@endphp
+         $template = \App\templateSetting::all();
+         @endphp
 <div class="modal">
     <div class="animsition-loading-1">
         <div data-loader="ball-scale">
