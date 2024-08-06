@@ -9,6 +9,7 @@
     <link rel="alternate" href="https://arastowel.com/products/category/{{$categoryArray->english_name}}"
           hreflang="x-default">
     <title>{{$categoryArray->header}}</title>
+    <meta name="description" content="خرید اینترنتی بهترین حوله تن پوش، پالتویی، استخری، مسافرتی، دست و صورت با قیمت مناسب از حوله ارس">
     @include('includes.headLinks')
 
 </head>

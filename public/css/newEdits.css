@@ -290,7 +290,8 @@ a.share-link:hover {
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight:bolder;
     margin-top: 30px;
 }
 
@@ -845,7 +846,7 @@ a.share-link:hover {
 }
 
 .blogGrid {
-     display: grid;
+    display: grid;
     column-gap: 15px;
     grid-template-columns: repeat(3, calc((100% - 30px) / 3));
 }
@@ -1147,11 +1148,11 @@ a.share-link:hover {
 
 @media (max-width: 700px) {
     .productDetailContainer > div > div:nth-child(1) {
-    width: 100% !important;
+        width: 100% !important;
     }
-      .productDetailContainer > div > div:nth-child(2) {
-    width: 100% !important;
-    margin: 0 !important;
+    .productDetailContainer > div > div:nth-child(2) {
+        width: 100% !important;
+        margin: 0 !important;
     }
 }
 
