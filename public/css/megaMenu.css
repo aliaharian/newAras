@@ -1,13 +1,15 @@
 .mm_grand_parent {
     position: relative;
 }
-.main_menu li{
-    height:100%;
+
+.main_menu li {
+    height: 100%;
     display: flex;
     align-items: center;
     padding: 20px 0px;
 }
-.mm_parent:hover>.mm_menu{
+
+.mm_parent:hover > .mm_menu {
     opacity: 1;
     z-index: 999;
     pointer-events: auto;
@@ -41,6 +43,49 @@
 
 .mm_menu > a > div > h4 {
     font-size: 14px;
-    color:#14334c !important;
+    color: #14334c !important;
     text-decoration: none;
+}
+
+.intro_badge {
+    display: flex;
+    color: #ffffff !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: #4187c7;
+    border-radius: 50%;
+    left: 60px;
+    top: 50px;
+}
+
+.intro_badge > p {
+    color: #f2f2f2 !important;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+.intro_badge > h2 {
+    margin: 4px 0;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 600px) {
+    .intro_badge {
+        width: 100px;
+        height: 100px;
+        left: 20px;
+        top: 20px;
+    }
+
+    .intro_badge > p {
+        font-size: 10px;
+    }
+
+    .intro_badge > h2 {
+        font-size: 12px;
+    }
 }
