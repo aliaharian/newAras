@@ -508,7 +508,7 @@ a.share-link:hover {
 
 @media (max-width: 950px) {
     .introSectionHome {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .introSectionHome > div {

@@ -542,6 +542,9 @@
                     <a title="فروشگاه اینترنتی" href="{{route('promotional-towels')}}">حوله های تبلیغاتی</a>
                 </li>
                 <li class="item-menu-mobile">
+                    <a title="حوله تن پوش" href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">حوله تن پوش</a>
+                </li>
+                <li class="item-menu-mobile">
                     <a title="حوله های هدیه" href="{{route('gift-pack')}}">حوله های هدیه</a>
                 </li>
 
