@@ -152,7 +152,7 @@
                 <img id="introRightImgLoader" style="max-width: 40px;margin:50% 0" src="/files/loading.gif"/>
                 <a title="حوله تن پوش" aria-label="حوله تن پوش" href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">
                     <div
-                        style="display:flex;color:#ffffff!important; flex-direction:column;align-items:center;justify-content:center;position: absolute;width: 150px; height:150px; background-color: #4187c7; border-radius: 50%;left:60px;top:40px;">
+                        style="display:flex;color:#ffffff!important; flex-direction:column;align-items:center;justify-content:center;position: absolute;width: 150px; height:150px; background-color: #4187c7; border-radius: 50%;left:60px;top:60px;">
                         <p style="color:#f2f2f2 !important;margin-bottom: 0;font-size: 12px;">
                             برای خرید اینترنتی
                         </p>
