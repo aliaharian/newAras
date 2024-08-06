@@ -42,7 +42,8 @@ class templateController extends Controller
     {
         $template=templateSetting::find($id);
         $template->image=$request->mainImage;
-        if ($template->place=='slide1'||$template->place=='slide2'||$template->place=='slide3'||$template->place=='slide4'){
+        if ($template->place=='bathrobeMenu1'||$template->place=='bathrobeMenu2'||$template->place=='bathrobeMenu3'||$template->place=='bathrobeMenu4'
+            ||$template->place=='promoMenu1'||$template->place=='promoMenu2'||$template->place=='promoMenu3'||$template->place=='promoMenu4'){
             $template->link=$request->link;
         }
 
@@ -54,7 +55,11 @@ class templateController extends Controller
             $template->link=$request->link;
         }
 
-        if($template->place=='gift1'||$template->place=='gift2'||$template->place=='gift3'||$template->place=='bath1'||$template->place=='bath2'||$template->place=='bath3'||$template->place=='promo1'||$template->place=='promo2'||$template->place=='promo3'){
+        if($template->place=='gift1'||$template->place=='gift2'||$template->place=='gift3'
+            ||$template->place=='bath1'||$template->place=='bath2'||$template->place=='bath3'
+            ||$template->place=='promo1'||$template->place=='promo2'||$template->place=='promo3'
+            ||$template->place=='bathrobeMenu1'||$template->place=='bathrobeMenu2'||$template->place=='bathrobeMenu3'||$template->place=='bathrobeMenu4'
+            ||$template->place=='promoMenu1'||$template->place=='promoMenu2'||$template->place=='promoMenu3'||$template->place=='promoMenu4'){
 //            $template->logo=$request->mainImage2;
             $template->text=$request->text;
         }
