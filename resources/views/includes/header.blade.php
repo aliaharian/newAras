@@ -34,6 +34,10 @@
                 <li>
                     <a title="فروشگاه اینترنتی" href="{{route('promotional-towels')}}">حوله های تبلیغاتی</a>
                 </li>
+                <li>
+                    <a title="فروشگاه اینترنتی" href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">حوله
+                        تن پوش</a>
+                </li>
 
                 <li>
                     <a title="حوله های هدیه" href="{{route('gift-pack')}}">حوله های هدیه</a>
@@ -292,8 +296,6 @@
                     </div>
 
 
-
-
                 </div>
 
                 <span class="linedivide1"></span>
@@ -307,7 +309,7 @@
             </div>
         </div>
 
-        <div class="wrap_header">
+        <div class="wrap_header mm_grand_parent">
 
             <div class="wrap_menu">
                 <nav class="menu">
@@ -321,8 +323,42 @@
                         <li>
                             <a title="فروشگاه اینترنتی" href="{{route('shop')}}">فروشگاه</a>
                         </li>
-                        <li>
+                        <li class="mm_parent">
                             <a title="فروشگاه اینترنتی" href="{{route('promotional-towels')}}">حوله های تبلیغاتی</a>
+                            <div class="mm_menu">
+                                @foreach($template as $temp)
+                                    @if($temp->place=='promoMenu1' || $temp->place=='promoMenu2' || $temp->place=='promoMenu3' || $temp->place=='promoMenu4')
+                                        <a href="">
+                                            <div>
+                                                <img data-toggle="modal" data-target="#img_popup"
+                                                     onclick="modal('{{$temp->image}}')"
+                                                     src="<?=Croppa::url($temp->image, 590, 590); ?>"
+                                                     alt="{{$temp->text}}">
+                                                <h4>{{$temp->text}}</h4>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </li>
+                        <li class="mm_parent">
+                            <a title="فروشگاه اینترنتی"
+                               href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">حوله تن پوش</a>
+                            <div class="mm_menu">
+                                @foreach($template as $temp)
+                                        @if($temp->place=='bathrobeMenu1' || $temp->place=='bathrobeMenu2' || $temp->place=='bathrobeMenu3' || $temp->place=='bathrobeMenu4')
+                                            <a href="">
+                                                <div>
+                                                    <img data-toggle="modal" data-target="#img_popup"
+                                                         onclick="modal('{{$temp->image}}')"
+                                                         src="<?=Croppa::url($temp->image, 590, 590); ?>"
+                                                         alt="{{$temp->text}}">
+                                                    <h4>{{$temp->text}}</h4>
+                                                </div>
+                                            </a>
+                                        @endif
+                                @endforeach
+                            </div>
                         </li>
                         <li>
                             <a title="حوله های هدیه" href="{{route('gift-pack')}}">حوله های هدیه</a>
