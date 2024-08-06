@@ -144,12 +144,22 @@
             </div>
         </div>
     </div>
-    <div style="display: flex;justify-content: center">
+    <div style="display: flex;justify-content: center;position: relative">
 
         @foreach($template as $temp)
             @if($temp->place=='introRight')
                 <img id="introRightImg" style="display: none" src="" title="حوله تبلیغاتی ارس" alt="حوله تبلیغاتی ارس"/>
                 <img id="introRightImgLoader" style="max-width: 40px;margin:50% 0" src="/files/loading.gif"/>
+                <a href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">
+                    <div
+                        style="display:flex;color:#ffffff!important; flex-direction:column;align-items:center;justify-content:center;position: absolute;width: 150px; height:150px; background-color: #4187c7; border-radius: 50%;left:60px;top:40px;">
+                        <p style="color:#f2f2f2 !important;margin-bottom: 0;font-size: 12px;">
+                            برای خرید اینترنتی
+                        </p>
+                        <h2 style="margin:4px 0; font-weight: bolder;">بهترین حوله تن پوش</h2>
+                        <p style="color:#f2f2f2 !important;margin-bottom: 0;font-size: 12px;">کلیک کنید</p>
+                    </div>
+                </a>
             @endif
         @endforeach
     </div>
@@ -435,7 +445,8 @@
                                 @endphp
                                 <h3>{{$names[0]}}</h3>
                                 <p>{{$names[1]}}</p>
-                                <a href="/product/250/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%A8%D8%A7%D8%B1%D9%88%D9%86-Barron-%D8%B3%D8%A7%DB%8C%D8%B2-115" class="homepageMoreLink">مشاهده بیشتر</a>
+                                <a href="/product/250/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%A8%D8%A7%D8%B1%D9%88%D9%86-Barron-%D8%B3%D8%A7%DB%8C%D8%B2-115"
+                                   class="homepageMoreLink">مشاهده بیشتر</a>
                             </div>
                         @endif
 
@@ -447,16 +458,17 @@
                                 <a title="حوله تن پوش"
                                    href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C">
 
-                                <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
-                                     data-target="#img_popup"
-                                     onclick="modal('{{$temp->image}}')"
-                                     alt="حوله های تبلیغاتی ارس">
-                                @php
-                                    $names = explode("|",$temp->text)
-                                @endphp
-                                <h3>{{$names[0]}}</h3>
-                                <p>{{$names[1]}}</p>
-                                <a href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C" class="homepageMoreLink">مشاهده بیشتر</a>
+                                    <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
+                                         data-target="#img_popup"
+                                         onclick="modal('{{$temp->image}}')"
+                                         alt="حوله های تبلیغاتی ارس">
+                                    @php
+                                        $names = explode("|",$temp->text)
+                                    @endphp
+                                    <h3>{{$names[0]}}</h3>
+                                    <p>{{$names[1]}}</p>
+                                    <a href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C"
+                                       class="homepageMoreLink">مشاهده بیشتر</a>
                                 </a>
                             </div>
                         @endif
@@ -469,17 +481,18 @@
                                 <a title="حوله تن پوش"
                                    href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5">
 
-                                <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
-                                     data-target="#img_popup"
-                                     onclick="modal('{{$temp->image}}')"
-                                     alt="حوله های تبلیغاتی ارس">
+                                    <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
+                                         data-target="#img_popup"
+                                         onclick="modal('{{$temp->image}}')"
+                                         alt="حوله های تبلیغاتی ارس">
 
-                                @php
-                                    $names = explode("|",$temp->text)
-                                @endphp
-                                <h3>{{$names[0]}}</h3>
-                                <p>{{$names[1]}}</p>
-                                <a href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5" class="homepageMoreLink">مشاهده بیشتر</a>
+                                    @php
+                                        $names = explode("|",$temp->text)
+                                    @endphp
+                                    <h3>{{$names[0]}}</h3>
+                                    <p>{{$names[1]}}</p>
+                                    <a href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5"
+                                       class="homepageMoreLink">مشاهده بیشتر</a>
 
                             </div>
                         @endif
@@ -594,7 +607,6 @@
                        title="مشاهده مقاله {{$post->title}}" class="homepageMoreLink">مشاهده بیشتر</a>
                 </div>
 
-
             @endforeach
         </div>
 
@@ -641,65 +653,52 @@
 
 
 <script defer type="application/ld+json">
-       <script type="application/ld+json">
+    <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "حوله تبلیغاتی ارس | aras towel",
-  "image": "https://arastowel.com/images/footer/footerLogo.svg",
-  "@id": "arastowel.com",
-  "url": "https://arastowel.com",
-  "telephone": "+989121331044",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "استاد نجات اللهی کوچه سلمان پاک",
-    "addressLocality": "Tehran",
-    "postalCode": "1599674815",
-    "addressCountry": "IR",
-    "addressRegion": "Tehran"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "35.7028692",
-    "longitude": "51.4149565"
-  },
-  "sameAs": [
-    "https://www.instagram.com/arastowel/",
-    "https://www.facebook.com/Arastowel/",
-    "https://www.pinterest.com/arastowel/",
-    "https://www.linkedin.com/in/arastowel?trk=hp-identity-name",
-    "https://twitter.com/ArasTowel",
-    "https://www.youtube.com/channel/UCbPadIvVrH0MIciIZz52SGA"
-  ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens": "09:00",
-      "closes": "18:00"
-    }
-  ]
+"@context": "https://schema.org",
+"@type": "LocalBusiness",
+"name": "حوله تبلیغاتی ارس | aras towel",
+"image": "https://arastowel.com/images/footer/footerLogo.svg",
+"@id": "arastowel.com",
+"url": "https://arastowel.com",
+"telephone": "+989121331044",
+"address": {
+ "@type": "PostalAddress",
+ "streetAddress": "استاد نجات اللهی کوچه سلمان پاک",
+ "addressLocality": "Tehran",
+ "postalCode": "1599674815",
+ "addressCountry": "IR",
+ "addressRegion": "Tehran"
+},
+"geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "35.7028692",
+ "longitude": "51.4149565"
+},
+"sameAs": [
+ "https://www.instagram.com/arastowel/",
+ "https://www.facebook.com/Arastowel/",
+ "https://www.pinterest.com/arastowel/",
+ "https://www.linkedin.com/in/arastowel?trk=hp-identity-name",
+ "https://twitter.com/ArasTowel",
+ "https://www.youtube.com/channel/UCbPadIvVrH0MIciIZz52SGA"
+],
+"openingHoursSpecification": [
+ {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": [
+     "Monday",
+     "Tuesday",
+     "Wednesday",
+     "Thursday",
+     "Saturday",
+     "Sunday"
+   ],
+   "opens": "09:00",
+   "closes": "18:00"
+ }
+]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </script>
