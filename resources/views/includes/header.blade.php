@@ -332,7 +332,6 @@
                                         <a href="{{$temp->link}}">
                                             <div>
                                                 <img data-toggle="modal" data-target="#img_popup"
-                                                     onclick="modal('{{$temp->image}}')"
                                                      src="<?=Croppa::url($temp->image, 590, 590); ?>"
                                                      alt="{{$temp->text}}">
                                                 <h4>{{$temp->text}}</h4>
@@ -351,7 +350,6 @@
                                             <a href="{{$temp->link}}">
                                                 <div>
                                                     <img data-toggle="modal" data-target="#img_popup"
-                                                         onclick="modal('{{$temp->image}}')"
                                                          src="<?=Croppa::url($temp->image, 590, 590); ?>"
                                                          alt="{{$temp->text}}">
                                                     <h4>{{$temp->text}}</h4>
