@@ -171,7 +171,7 @@
                             @php
                                 $names = explode("|",$product->name)
                             @endphp
-                            <h3>{{@$names[0]}}</h3>
+                            <h4>{{@$names[0]}}</h4>
                             <p>{{@$names[1]}}</p>
                             <!--<a href="/blog/7/%D8%AD%D9%88%D9%84%D9%87-%D9%87%D8%A7%DB%8C-%D8%AA%D8%A8%D9%84%DB%8C%D8%BA%D8%A7%D8%AA%DB%8C-%D8%B4%D8%B1%DA%A9%D8%AA-%D8%AD%D9%88%D9%84%D9%87-%D8%A7%D8%B1%D8%B3">اطلاعات بیشتر</a>-->
                             <a href="/promotional-towels/{{ $product->id }}/{{str_replace(' ','-',$product->name)}}">اطلاعات بیشتر</a>
@@ -285,9 +285,9 @@
                                         <p style="font-size: 19px;"><img src="/files/mailfooter-20x13.png" style="margin-right:3px;width:20px"/><a
                                                 href="mailto:info@arastowel.com" style="font-size: 18px;"> info[at]arastowel.com </a></p>
                                     </div>
-            
-            
-         
+
+
+
         </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
         </div>
 
 
-        <h3>{{$product->name}}</h3>
+        <h4>{{$product->name}}</h4>
         <p class="block2-price m-text6 p-r-5 home-product-price">
             @if($product->qty!=0)
                 @if($product->variable!=2)
