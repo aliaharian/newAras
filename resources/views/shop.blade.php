@@ -5,7 +5,7 @@
 
     <link rel="alternate" hreflang="ar" href="https://arastowel.com/ar/product">
     <link rel="alternate" href="https://arastowel.com/product" hreflang="x-default">
-    <title>حوله ارس - لیست محصولات و قیمت انواع حوله ی تن پوش، دست و صورت، استخری و حمام</title>
+    <title>حوله ارس - لیست محصولات و قیمت انواع حوله تن پوش، دست و صورت، استخری و حمام</title>
     @include('includes.headLinks')
     <link rel="canonical" href="{{route('shop')}}"/>
 
