@@ -3,7 +3,7 @@
 
         <div class="footerMenus">
             <div id="logosFooter">
-                <img src="/images/footer/footerLogo.svg" style="max-width:100px;margin-bottom: 8px;"/>
+                <img alt="حوله تن پوش ارس" src="/images/footer/footerLogo.svg" style="max-width:100px;margin-bottom: 8px;"/>
 
             </div>
             <div class="respon4 ">

@@ -153,7 +153,7 @@ width:100px;
                         referrerpolicy='origin'
 style="width: 100%;height:100%;object-fit: contain"
                         src='https://trustseal.enamad.ir/logo.aspx?id=110429&Code=e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'
-                        alt='' style='cursor:pointer;max-width: 100%;' Code='e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'></a>
+                        alt='enamad' style='cursor:pointer;max-width: 100%;' Code='e7SeT3eDdwJ6yfldVd0AGqagD0oKLmeu'></a>
                 <img referrerpolicy='origin' id='rgvjfukzfukzfukzjxlzrgvj' style='cursor:pointer;max-width: 100px;
     display: block;
     border: 1px solid #4187c7;

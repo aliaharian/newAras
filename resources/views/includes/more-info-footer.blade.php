@@ -1,6 +1,6 @@
 <div class="c-footer__more-info">
                 <article class="c-footer__seo" style="text-align: right !important;">
-                    <h1>برند حوله ارس ، تولیدکننده انواع حوله تن پوش ، حوله دست و صورت ، حوله حمام، حوله استخری ، پالتویی و ...</h1>
+                    <h1>حوله ارس : خرید انواع حوله تن پوش ، حوله دست و صورت و حوله تبلیغاتی</h1>
                     {{--<h2>حوله های زیبا و باکیفیت ارس، در رنگ بندی های متنوع </h2>--}}
                     <p>
                         <span class="c-footer__seo--content" id="seo-main-content" >

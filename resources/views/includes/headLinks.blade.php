@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
 <!--===============================================================================================-->
 <meta name="csrf-token" content="{{ csrf_token() }}" />
+<link rel="canonical" href="https://arastowel.com" />
 
 {{--favicons--}}
 <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">

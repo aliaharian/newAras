@@ -9,7 +9,7 @@
     <link rel="alternate" hreflang="ar" href="https://arastowel.com/ar">
     <link rel="alternate" href="https://arastowel.com/" hreflang="x-default">
 
-    <title>حوله ارس - خرید اینترنتی حوله تن پوش، حوله حمام، پالتویی، حوله دست و صورت</title>
+    <title>حوله ارس - خرید اینترنتی حوله تن پوش، حوله تبلیغاتی، حوله دست و صورت</title>
 
     <meta name="description"
           content="برند حوله ارس، تولیدکننده انواع حوله های پالتویی، دستی، استخری، حمام و حوله های تن پوش و تبلیغاتی تلاش می کند تا با ارایه محصولاتی باکیفیت و با قیمت مناسب رضایت شما مشتریان عزیز را جلب نماید.">
@@ -148,8 +148,8 @@
 
         @foreach($template as $temp)
             @if($temp->place=='introRight')
-                <img id="introRightImg" style="display: none" src="" title="حوله تبلیغاتی ارس" alt="حوله تبلیغاتی ارس"/>
-                <img id="introRightImgLoader" style="max-width: 40px;margin:50% 0" src="/files/loading.gif"/>
+                <img id="introRightImg" style="display: none" src="" title="حوله تن پوش ارس" alt="حوله تن پوش ارس"/>
+                <img alt="حوله تن پوش ارس" id="introRightImgLoader" style="max-width: 40px;margin:50% 0" src="/files/loading.gif"/>
                 <a title="حوله تن پوش" aria-label="حوله تن پوش" href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">
                     <div
                         class="intro_badge">
@@ -348,7 +348,7 @@
                                     <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
                                          data-target="#img_popup"
                                          onclick="modal('{{$temp->image}}')"
-                                         alt="حوله های تبلیغاتی ارس">
+                                         alt="حوله تن پوش ارس">
                                 </a>
                                 @php
                                     $names = explode("|",$temp->text)
