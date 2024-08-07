@@ -149,7 +149,7 @@
         </div>
 
 
-        <div class="row" style="background-color:#e3f2e5;">
+        <div class="row" style="background-color:#f2f2f2;">
             <div class="col-md-4 p-b-2">
 
 
