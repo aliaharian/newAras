@@ -1,5 +1,5 @@
 <div class="instaContainer">
-    <h3>#enjoyarastowel</h3>
+    <h5>#enjoyarastowel</h5>
     <div class="owl-carousel">
          @foreach($instas as $insta)
             <div class="insta-item">
