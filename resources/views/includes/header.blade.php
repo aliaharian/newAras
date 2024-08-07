@@ -334,7 +334,7 @@
                                                 <img data-toggle="modal" data-target="#img_popup"
                                                      src="<?=Croppa::url($temp->image, 590, 590); ?>"
                                                      alt="{{$temp->text}}">
-                                                <h4>{{$temp->text}}</h4>
+                                                <h3>{{$temp->text}}</h3>
                                             </div>
                                         </a>
                                     @endif
@@ -352,7 +352,7 @@
                                                     <img data-toggle="modal" data-target="#img_popup"
                                                          src="<?=Croppa::url($temp->image, 590, 590); ?>"
                                                          alt="{{$temp->text}}">
-                                                    <h4>{{$temp->text}}</h4>
+                                                    <h3>{{$temp->text}}</h3>
                                                 </div>
                                             </a>
                                         @endif

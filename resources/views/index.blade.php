@@ -132,9 +132,9 @@
             @endif
         @endforeach
         <div>
-            <h2 class="introTitle">
+            <h5 class="introTitle">
                 تشنه ترین حوله دنیا!
-            </h2>
+            </h5>
             <p class="introSubTitle">
                 حوله ارس صد درصد پنبه
             </p>
@@ -200,7 +200,7 @@
 
                 <div class="gridContainer" style="margin-bottom:50px">
                     @foreach($template as $temp)
-                        @if($temp->place=='promo1')
+                        @if($temp->place=='promo1' || $temp->place=='promo2' || $temp->place=='promo3')
                             <div class="singleGrid">
 
                                 <img data-toggle="modal" data-target="#img_popup"
@@ -210,45 +210,7 @@
                                 @php
                                     $names = explode("|",$temp->text)
                                 @endphp
-                                <h3>{{$names[0]}}</h3>
-                                <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
-
-                            </div>
-                        @endif
-
-                    @endforeach
-                    @foreach($template as $temp)
-                        @if($temp->place=='promo2')
-                            <div class="singleGrid">
-
-                                <img data-toggle="modal" data-target="#img_popup"
-                                     onclick="modal('{{$temp->image}}')"
-                                     src="<?=Croppa::url($temp->image, 590, 590); ?>"
-                                     alt="{{$temp->text}}">
-                                @php
-                                    $names = explode("|",$temp->text)
-                                @endphp
-                                <h3>{{$names[0]}}</h3>
-                                <p>{{$names[1]}}</p>
-                                <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
-
-                            </div>
-                        @endif
-
-                    @endforeach
-                    @foreach($template as $temp)
-                        @if($temp->place=='promo3')
-                            <div class="singleGrid">
-
-                                <img data-toggle="modal" data-target="#img_popup"
-                                     onclick="modal('{{$temp->image}}')"
-                                     src="<?=Croppa::url($temp->image, 590, 590); ?>"
-                                     alt="{{$temp->text}}">
-                                @php
-                                    $names = explode("|",$temp->text)
-                                @endphp
-                                <h3>{{$names[0]}}</h3>
+                                <h4>{{$names[0]}}</h4>
                                 <p>{{$names[1]}}</p>
                                 <a href="/promotional-towels?ref=homePromo" class="homepageMoreLink">مشاهده بیشتر</a>
 
@@ -308,7 +270,7 @@
                 <div class="gridContainer" style="margin-bottom:50px">
 
                     @foreach($template as $temp)
-                        @if($temp->place=='gift1')
+                        @if($temp->place=='gift1'||$temp->place=='gift2'||$temp->place=='gift3')
 
                             <div class="singleGrid">
                                 <a title="حوله هدیه"
@@ -321,7 +283,7 @@
                                     @php
                                         $names = explode("|",$temp->text)
                                     @endphp
-                                    <h3>{{$names[0]}}</h3>
+                                    <h4>{{$names[0]}}</h4>
                                     <p>{{$names[1]}}</p>
                                     <a href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C"
                                        class="homepageMoreLink">مشاهده بیشتر</a>
@@ -330,58 +292,6 @@
                         @endif
 
                     @endforeach
-
-                    @foreach($template as $temp)
-                        @if($temp->place=='gift2')
-
-                            <div class="singleGrid">
-                                <a title="حوله هدیه"
-                                   href="/product/245/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%7C-MR-&-MRS-%7C--%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
-
-                                    <img data-toggle="modal" data-target="#img_popup"
-                                         onclick="modal('{{$temp->image}}')"
-                                         src="<?=Croppa::url($temp->image, 590, 590); ?>"
-                                         alt="حوله های تبلیغاتی ارس">
-                                    @php
-                                        $names = explode("|",$temp->text)
-                                    @endphp
-                                    <h3>{{$names[0]}}</h3>
-                                    <p>{{$names[1]}}</p>
-                                    <a href="/product/245/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%7C-MR-&-MRS-%7C--%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C"
-                                       class="homepageMoreLink">مشاهده بیشتر</a>
-
-                                </a>
-                            </div>
-                        @endif
-
-                    @endforeach
-
-                    @foreach($template as $temp)
-                        @if($temp->place=='gift3')
-
-                            <div class="singleGrid">
-                                <a title="حوله هدیه"
-                                   href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C">
-
-                                    <img
-                                        {{--                                        data-toggle="modal" data-target="#img_popup"--}}
-                                        {{--                                         onclick="modal('{{$temp->image}}')"--}}
-                                        src="<?=Croppa::url($temp->image, 590, 590); ?>"
-                                        alt="حوله های تبلیغاتی ارس">
-                                    @php
-                                        $names = explode("|",$temp->text)
-                                    @endphp
-                                    <h3>{{$names[0]}}</h3>
-                                    <p>{{$names[1]}}</p>
-                                    <a href="/product/244/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%28%D9%87%D8%AF%DB%8C%D9%87%29-%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B4%DB%B0*%DB%B6%DB%B0-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C"
-                                       class="homepageMoreLink">مشاهده بیشتر</a>
-
-                                </a>
-                            </div>
-                        @endif
-
-                    @endforeach
-
 
                 </div>
                 <div class="col-lg-12 col-md-12 padding-15 pt-0">
@@ -410,7 +320,7 @@
                 <h2 class="direction-rtl text-center" style="margin-bottom: 15px;">
                     <!--<i class="fa fa-circle color-purple ml-5px"></i>-->
                     <a href="/promotional-towels?ref=homePromo" class="mainpagelink" style="font-size:24px">
-                        حوله های ابعادی و تن پوش
+                        حوله تن پوش و ابعادی
                     </a>
                 </h2>
 
@@ -430,7 +340,7 @@
 
                 <div class="gridContainer" style="margin-bottom:50px">
                     @foreach($template as $temp)
-                        @if($temp->place=='bath1')
+                        @if($temp->place=='bath1' || $temp->place=='bath2' || $temp->place=='bath3')
                             <div class="singleGrid">
                                 <a title="حوله تن پوش"
                                    href="/product/250/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%A8%D8%A7%D8%B1%D9%88%D9%86-Barron-%D8%B3%D8%A7%DB%8C%D8%B2-115">
@@ -443,57 +353,10 @@
                                 @php
                                     $names = explode("|",$temp->text)
                                 @endphp
-                                <h3>{{$names[0]}}</h3>
+                                <h4>{{$names[0]}}</h4>
                                 <p>{{$names[1]}}</p>
                                 <a href="/product/250/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%A8%D8%A7%D8%B1%D9%88%D9%86-Barron-%D8%B3%D8%A7%DB%8C%D8%B2-115"
                                    class="homepageMoreLink">مشاهده بیشتر</a>
-                            </div>
-                        @endif
-
-                    @endforeach
-
-                    @foreach($template as $temp)
-                        @if($temp->place=='bath2')
-                            <div class="singleGrid">
-                                <a title="حوله تن پوش"
-                                   href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C">
-
-                                    <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
-                                         data-target="#img_popup"
-                                         onclick="modal('{{$temp->image}}')"
-                                         alt="حوله های تبلیغاتی ارس">
-                                    @php
-                                        $names = explode("|",$temp->text)
-                                    @endphp
-                                    <h3>{{$names[0]}}</h3>
-                                    <p>{{$names[1]}}</p>
-                                    <a href="/product/242/%D8%AD%D9%88%D9%84%D9%87-%D8%AF%D8%B3%D8%AA%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D9%88%DB%8C%D9%86-%D8%B3%D8%A7%DB%8C%D8%B2-40*60-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-4-%D8%B9%D8%AF%D8%AF%DB%8C"
-                                       class="homepageMoreLink">مشاهده بیشتر</a>
-                                </a>
-                            </div>
-                        @endif
-
-                    @endforeach
-
-                    @foreach($template as $temp)
-                        @if($temp->place=='bath3')
-                            <div class="singleGrid">
-                                <a title="حوله تن پوش"
-                                   href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5">
-
-                                    <img src="<?=Croppa::url($temp->image, 590, 590); ?>" data-toggle="modal"
-                                         data-target="#img_popup"
-                                         onclick="modal('{{$temp->image}}')"
-                                         alt="حوله های تبلیغاتی ارس">
-
-                                    @php
-                                        $names = explode("|",$temp->text)
-                                    @endphp
-                                    <h3>{{$names[0]}}</h3>
-                                    <p>{{$names[1]}}</p>
-                                    <a href="/product/151/%D8%AD%D9%88%D9%84%D9%87-%D9%BE%D8%A7%D9%84%D8%AA%D9%88%DB%8C%DB%8C-%D8%A7%D8%B1%D8%B3-%D9%85%D8%AF%D9%84-%D8%B3%D8%A7%DB%8C%D8%A7--Saya--%D8%B3%D8%A7%DB%8C%D8%B2-%DB%B1%DB%B3%DB%B5"
-                                       class="homepageMoreLink">مشاهده بیشتر</a>
-
                             </div>
                         @endif
 
@@ -592,9 +455,9 @@
 
 <section class="homeBlogSection  p-t-40 p-b-60">
     <div class="sec-title p-b-35">
-        <h3 class="m-text5 t-center">
+        <h4 class="m-text5 t-center">
             بلاگ
-        </h3>
+        </h4>
     </div>
 
     <div>
@@ -602,7 +465,7 @@
             @foreach($posts as $post)
                 <div class="singleGrid">
                     <img title="{{$post->title}}" alt="{{$post->title}}" src="{{$post->image}}"/>
-                    <h3>{{$post->title}}</h3>
+                    <h4>{{$post->title}}</h4>
                     <a href="/blog/{{$post->id}}/{{str_replace(' ','-',$post->title)}}"
                        title="مشاهده مقاله {{$post->title}}" class="homepageMoreLink">مشاهده بیشتر</a>
                 </div>
