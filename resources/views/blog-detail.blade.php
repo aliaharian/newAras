@@ -110,13 +110,13 @@
 	/*	font-weight: 800;*/
 	/*}*/
 	.blog-detail-txt>ul>li {
-		font-size: 25px;
+		font-size: 14px;
 		font-family: iranSans,Montserrat-Regular!important;
 		margin: 0;
 		list-style-type: disc;
 	}
 	.blog-detail-txt>ul>li {
-		font-size: 25px;
+		font-size: 14px;
 		font-family: iranSans,Montserrat-Regular!important;
 		margin: 0;
 		list-style-type: disc;
