@@ -68,8 +68,9 @@ a.share-link:hover {
     transform: scale(1);
     transition: all 0.5s ease-in-out;
 }
-.hov-img-zoom img{
-    border-radius:5px !important;
+
+.hov-img-zoom img {
+    border-radius: 5px !important;
 }
 
 .mainpage-img:hover {
@@ -291,7 +292,7 @@ a.share-link:hover {
     color: #fff;
     cursor: pointer;
     font-size: 14px;
-    font-weight:bolder;
+    font-weight: bolder;
     margin-top: 30px;
 }
 
@@ -321,12 +322,12 @@ a.share-link:hover {
     flex-direction: column;
 }
 
-.singleGrid  img {
+.singleGrid img {
     width: 100%;
     border-radius: 5px;
 }
 
-.singleGrid  h4 {
+.singleGrid h4 {
     margin-top: 24px;
     color: #14334c;
     font-size: 14px !important;
@@ -334,7 +335,7 @@ a.share-link:hover {
     direction: rtl;
 }
 
-.singleGrid  p {
+.singleGrid p {
     margin-top: 0;
     margin-bottom: 0;
     color: #14334c;
@@ -351,7 +352,8 @@ a.share-link:hover {
     justify-content: center;
     width: 100%;
 }
-.homepageMoreLink{
+
+.homepageMoreLink {
     margin-top: 10px;
     color: #14334c;
     font-size: 10px !important;
@@ -583,6 +585,35 @@ a.share-link:hover {
     margin: 30px 60px 0;
     background-color: #4187c7;
     padding: 20px;
+}
+
+.promotionalHeader p {
+    color: white;
+    direction: rtl;
+}
+
+.promotionalContent {
+    width: 100%;
+    padding: 0 35px 35px;
+    max-height: 100%;
+    overflow:scroll;
+}
+
+.promotionalContent a {
+    color: white;
+
+}
+.promotionalContent p {
+    color: white;
+    direction: rtl;
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+.promotionalContent p strong{
+    font-weight: bolder;
+    margin: 8px 0;
+    display: block;
 }
 
 .promotionalHeader > .promotionalHeaderInner {
@@ -1076,7 +1107,7 @@ a.share-link:hover {
 
 }
 
-.contactListContainer{
+.contactListContainer {
     width: 50%;
     display: flex;
     align-items: center;
@@ -1085,7 +1116,8 @@ a.share-link:hover {
     border-bottom: 1px solid #fff;
 
 }
-.contactListItem{
+
+.contactListItem {
     width: 270px;
     display: flex;
     align-items: center;
@@ -1094,34 +1126,39 @@ a.share-link:hover {
     margin-bottom: 40px;
 
 }
-.contactListItem a{
-    color:#fff;
+
+.contactListItem a {
+    color: #fff;
     text-align: left;
 }
-.contactListIcon{
+
+.contactListIcon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border:1px solid #fff;
+    border: 1px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
 }
 
-.contactFormContainer{
-    padding:101px 35px 0;
+.contactFormContainer {
+    padding: 101px 35px 0;
     justify-content: flex-start !important;
 }
-.contactFormContainer h4{
+
+.contactFormContainer h4 {
     padding-bottom: 32px !important;
     font-size: 20px !important;
     text-align: center !important;
 }
-.leave-comment{
+
+.leave-comment {
     width: 100%;
 }
-.leave-comment input{
+
+.leave-comment input {
     font-size: 14px;
 }
 
@@ -1139,7 +1176,8 @@ a.share-link:hover {
     font-size: 12px;
     margin-top: 20px;
 }
-.conFormContainer{
+
+.conFormContainer {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -1150,6 +1188,7 @@ a.share-link:hover {
     .productDetailContainer > div > div:nth-child(1) {
         width: 100% !important;
     }
+
     .productDetailContainer > div > div:nth-child(2) {
         width: 100% !important;
         margin: 0 !important;
