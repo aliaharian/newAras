@@ -162,7 +162,7 @@
 </div>
 
 	<!-- content page -->
-	<section class="bgwhite p-t-60 p-b-25" style="direction: rtl;padding:24px;">
+	<section class="bgwhite p-t-60 p-b-25" style="direction: rtl;padding:24px 12px;">
 		<div class="container" style="max-width:800px !important;">
 			<div style="display: block;width: 100%">
 				<div class=" p-b-80">
