@@ -201,7 +201,7 @@
 
     </div>
 </section>
-<section class="bgwhite" style="background-color:#e3f2e5;padding:50px 0 ;overflow:hidden;">
+<section class="bgwhite" style="background-color:#f2f2f2;padding:50px 0 ;overflow:hidden;">
     <div>
         <div class="p-b-28 pad0 paddingNormal f-ch-12" style="direction: rtl!important;text-align: justify!important;">
             <p>پیشنهاد ویژه ما برای هدایای تبلیغاتی شما:</p>
