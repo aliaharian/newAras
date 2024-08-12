@@ -3,7 +3,6 @@
 
         <div class="footerMenus">
             <div id="logosFooter">
-                <img alt="حوله تن پوش ارس" src="/images/footer/footerLogo.svg" style="max-width:100px;margin-bottom: 8px;"/>
 
             </div>
             <div class="respon4 ">
@@ -111,11 +110,14 @@
         </div>
         <div class="footerContactMain">
             <div class="footerContactInside">
-                <h4 class="s-text12 m-b-18" style="direction: rtl;text-align: right;font-weight:bold;">با ما در ارتباط
+                <img alt="حوله تن پوش ارس" src="/images/footer/footerLogoWhite.svg"
+                     style="max-width:100px;margin-bottom: 8px;"/>
+
+                <h4 style="margin-bottom:8px;font-size:14px;direction: rtl;text-align: right;font-weight:normal;">با ما در
+                    ارتباط
                     باشید</h4>
 
                 <div>
-
                     <div class="s-text7 w-size27" itemscope itemtype="https://schema.org/Organization"
                          style="direction: rtl;font-size: 16px;">
                         <p style="color: #14334c;margin-bottom:2px" itemprop="telephone fa-2x"><i class="fa fa-phone"
@@ -123,11 +125,15 @@
                             ۰۲۱-۸۸۹۳۲۷۶۸ &nbsp;<br/>
                             <i class="fa fa-mobile fa-2x" style="margin-left:5px;"></i>&zwnj;&nbsp;۰۹۱۲-۱۳۳۱۰۴۴</p>
 
-                        <p style="color: #14334c;margin-bottom: 0"><i class="fa fa-envelope-o" style="margin-left:5px;"></i><a
+                        <p style="color: #14334c;margin-bottom: 0"><i class="fa fa-envelope-o"
+                                                                      style="margin-left:5px;"></i><a
                                 itemprop="email" title="ایمیل حوله ارس" href="mailto:info@arastowel.com"
                                 style="color: #14334c"> info[at]arastowel[dot]com </a></p>
-                        <p style="color: #ccc"><i class="fa fa-envelope-o"></i><a hreflang="en-us" itemprop="email" title="Aras towel email" href="mailto:admin@arastowel.com" style="color: #ccc"> admin[at]arastowel[dot]com </a></p>
-
+                        <p style="color: #ccc"><i class="fa fa-envelope-o"></i><a hreflang="en-us" itemprop="email"
+                                                                                  title="Aras towel email"
+                                                                                  href="mailto:admin@arastowel.com"
+                                                                                  style="color: #ccc">
+                                admin[at]arastowel[dot]com </a></p>
 
 
                     </div>

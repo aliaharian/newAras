@@ -144,7 +144,7 @@
     border: 1px solid #4187c7;
     padding: 12px;
     border-radius: 8px;
-    margin: 8px 0;
+    margin-bottom: 8px;
 max-height: 100px;
 height:100px;
 width:100px;
