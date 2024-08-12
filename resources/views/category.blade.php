@@ -13,6 +13,84 @@
           content="خرید اینترنتی بهترین حوله تن پوش، پالتویی، استخری، مسافرتی، دست و صورت با قیمت مناسب از حوله ارس">
     @include('includes.headLinks')
 
+    <script>
+        const worker = new Worker('./js/worker.js')
+        @foreach($products as $product)
+        @if($product->published==1)
+        worker.postMessage({
+            work: "loadProductImage",
+            id: "{{$product->id}}",
+            name: "thumbSmall",
+            url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=100&h=100&blur=10"
+        })
+        @endif
+            @endforeach
+
+            worker.onmessage = (e) => {
+            const elem = $(`#imageProduct${e.data.id}`);
+            if (e.data.work === "loadProductImage") {
+                let flag = false;
+                if (e.data.name === "thumbSmall" && !elem.hasClass("thumbBig") && !elem.hasClass("fullyLoaded")) {
+                    flag = true
+                } else if (e.data.name === "thumbBig" && !elem.hasClass("fullyLoaded")) {
+                    flag = true
+                } else if (e.data.name === "originalImage") {
+                    flag = true
+                }
+
+                if (flag) {
+                    elem.attr("src", URL.createObjectURL(e.data.value))
+                    elem.css("display", "block")
+                    $(`#imageProductLoader${e.data.id}`).css("display", "none")
+                    switch (e.data.name) {
+                        case "thumbSmall":
+                            elem.addClass("thumbSmall")
+                            break;
+                        case "thumbBig":
+                            elem.removeClass("thumbSmall")
+                            elem.addClass("thumbBig")
+                            break;
+                        case "originalImage":
+                            elem.removeClass("thumbSmall")
+                            elem.removeClass("thumbBig")
+                            elem.addClass("fullyLoaded")
+                            break;
+                    }
+                }
+
+            }
+        }
+
+        $(window).on("load", () => {
+            @foreach($products as $product)
+            @if($product->published==1)
+
+            worker.postMessage({
+                work: "loadProductImage",
+                id: "{{$product->id}}",
+                name: "thumbBig",
+                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=300&h=300&blur=5"
+            })
+            @endif
+            @endforeach
+
+            @foreach($products as $product)
+            @if($product->published==1)
+            worker.postMessage({
+                work: "loadProductImage",
+                id: "{{$product->id}}",
+                name: "originalImage",
+                url: "{{str_replace("/files/","/getFile/files/",$product->image)}}?w=900&h=900"
+            })
+            @endif
+            @endforeach
+
+
+        })
+
+
+    </script>
+
 </head>
 <body class="animsition loading">
 
@@ -65,75 +143,9 @@
                                 @endif
                             @endforeach
                             @if($correct==1)
-                                <div class="singleGrid" style="margin-bottom: 30px">
+                                @component('components.productGridItem',["product"=>$product,"sizes"=>$sizes])
 
-                                    <img
-                                        src="<?=Croppa::url($product->image, 590, 590); ?>"
-                                        alt="{{$product->name}}">
-
-                                    <h4>{{$product->name}}</h4>
-                                    <p class="block2-price m-text6 p-r-5 home-product-price">
-                                        @if($product->qty!=0)
-                                            @if($product->variable!=2)
-                                                @if($product->off->count()>0)
-                                                    @php($oldprice=$product->price)
-                                                    @foreach($product->off as $off)
-                                                        @if(strtotime($off->start)<time() && strtotime($off->end)>time())
-                                                            @php($percent=100-$off->percent) @php($newprice=$oldprice*$percent/100)
-                                                            <span style="text-decoration: line-through"
-                                                                  class="home-product-price"> {{number_format($oldprice)}} تومان</span>
-
-                                                            <span style="color: purple;"
-                                                                  class="home-product-price"> {{number_format(($newprice))}}تومان </span>
-                                                            @php($hasoff=1)
-                                                        @else
-                                                            {{number_format($product->price)}} تومان
-
-                                                        @endif
-                                                    @endforeach
-                                                @else
-                                                    {{number_format($product->price)}} تومان
-                                                @endif
-
-                                            @endif
-                                            @if($product->variable==2)
-                                                @php($price=0)
-
-                                                @foreach($sizes as $size)
-                                                    @if($size->product_id==$product->id)
-                                                        @php($price=$size->price)
-                                                    @endif
-
-                                                @endforeach
-
-                                                @if($product->off->count()>0)
-                                                    @php($oldprice=$price)
-                                                    @foreach($product->off as $off)
-                                                        @if(strtotime($off->start)<time() && strtotime($off->end)>time())
-                                                            @php($percent=100-$off->percent) @php($newprice=$oldprice*$percent/100)
-                                                            <span style="text-decoration: line-through;"
-                                                                  class="home-product-price"> {{number_format($oldprice)}} تومان</span>
-                                                            <span style="color: purple;"
-                                                                  class="home-product-price"> {{number_format(($newprice))}}تومان </span>
-                                                            @php($hasoff=1)
-                                                        @else
-                                                            {{number_format($price)}} تومان
-                                                        @endif
-                                                    @endforeach
-                                                @else
-                                                    {{number_format($price)}} تومان
-                                                @endif
-
-                                            @endif
-                                        @else
-                                            ناموجود
-                                        @endif
-                                    </p>
-                                    <a href="{{route('shop.product',['product_id' => $product->id , 'product_name'=>str_replace(' ','-',$product->name)])}}">خرید
-                                        محصول</a>
-
-                                </div>
-
+                                @endcomponent
                             @endif
                         @endif
                     @endforeach
