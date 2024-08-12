@@ -14,7 +14,7 @@
     @include('includes.headLinks')
 
     <script>
-        const worker = new Worker('./js/worker.js')
+        const worker = new Worker('../js/worker.js')
         @foreach($products as $product)
         @if($product->published==1)
         worker.postMessage({
