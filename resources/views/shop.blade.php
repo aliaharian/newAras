@@ -97,7 +97,7 @@
         <a href="{{route('shop')}}" class="activeMenu">همه</a>
         <a href="{{route('shop.category', ['category' => 'bathrobe-towel'])}}">حوله تن پوش</a>
         <a href="{{route('shop.category', ['category' => 'kids-towel'])}}">تن پوش کودک</a>
-        <a href="{{route('shop.category', ['category' => 'hands-towel'])}}">حوله دستی ، حوله استخری و حوله حمام</a>
+        <a href="{{route('shop.category', ['category' => 'hands-towel'])}}">حوله دستی ، حوله استخری ، حوله حمام</a>
     </div>
 </div>
 

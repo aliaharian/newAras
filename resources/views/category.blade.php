@@ -104,7 +104,7 @@
         <a class="@if($currCat=='kids-towel') activeMenu @endif"
            href="{{route('shop.category', ['category' => 'kids-towel'])}}">تن پوش کودک</a>
         <a class="@if($currCat=='hands-towel') activeMenu @endif"
-           href="{{route('shop.category', ['category' => 'hands-towel'])}}">حوله دستی ، حوله استخری و حوله حمام</a>
+           href="{{route('shop.category', ['category' => 'hands-towel'])}}">حوله دستی ، حوله استخری ، حوله حمام</a>
     </div>
 </div>
 
