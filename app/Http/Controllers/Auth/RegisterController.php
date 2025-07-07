@@ -72,6 +72,9 @@ class RegisterController extends Controller
             if ($request->promo == "newYear1403Pro") {
                 $attach = "جشنواره تخفیف ویژه نوروز ۱۴۰۳";
                 $percent = 25;
+            } if ($request->promo == "linkedin") {
+                $attach = "هدیه ویژه گروه لینکدین";
+                $percent = 20;
             }
         }
         return view("auth.register", compact("attach", "percent"));
